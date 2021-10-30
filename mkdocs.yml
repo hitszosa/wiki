@@ -1,3 +1,18 @@
 site_name: HITSZ LUG Wiki
+repo_url: https://github.com/hitszlug/wiki
+edit_uri: edit/main/docs/
 theme:
   name: material
+
+nav:
+  - Home: index.md
+  - About: about.md
+
+extra:
+  alternate:
+    - name: Chinese
+      link: /cn/
+      lang: cn
+    - name: English
+      link: /en/
+      lang: en
