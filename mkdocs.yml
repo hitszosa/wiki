@@ -9,3 +9,7 @@ nav:
   - About: about.md
   - Linux Tricks:
       - 另类好用的 Linux 命令行工具: linux-tricks/handy-cli-apps.md
+  - Guide for Beginner: 
+      - WSL 安装教程: guide-for-beginner/wsl-install-guide.md
+  - popular science:
+      - 编译器: popular-science/compile.md
