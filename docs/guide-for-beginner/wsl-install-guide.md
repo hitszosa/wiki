@@ -8,7 +8,7 @@ WSL，全称Windows Subsystem for Linux（适用于 Linux 的 Windows 子系统�
 
 ## 为什么要安装WSL？
 
-> 为什么要在windows下安装WSL，<s>教我使用windows系统你们真的不是windows user group？</s>
+> 为什么要在windows下安装WSL，~~教我使用windows系统你们真的不是windows user group？~~
 
 ### WSL的有什么优势？
 
@@ -30,7 +30,7 @@ WSL，全称Windows Subsystem for Linux（适用于 Linux 的 Windows 子系统�
 
 ## WSL 1 与 WSL 2
 
-<!-- |功能|WSL 1|WSL 2|
+|功能|WSL 1|WSL 2|
 |:--|:-:|:-:|
 |Windows 和 Linux 之间的集成|:ballot_box_with_check:|:ballot_box_with_check:|
 |启动时间短|:ballot_box_with_check:|:ballot_box_with_check:|
@@ -39,9 +39,9 @@ WSL，全称Windows Subsystem for Linux（适用于 Linux 的 Windows 子系统�
 |托管 VM|:x:|:ballot_box_with_check:|
 |完整的 Linux 内核|:x:|:ballot_box_with_check:|
 |完全的系统调用兼容性|:x:|:ballot_box_with_check:|
-|跨 OS 文件系统的性能|:ballot_box_with_check:|:x:| -->
+|跨 OS 文件系统的性能|:ballot_box_with_check:|:x:|
 
-![wsl1vswsl2](https://gitee.com/SoraShu/image/raw/master/image_0/wsl1vswsl2.png)
+<!-- ![wsl1vswsl2](https://gitee.com/SoraShu/image/raw/master/image_0/wsl1vswsl2.png) -->
 
 摘自[微软官方文档](https://docs.microsoft.com/zh-cn/windows/wsl/compare-versions#comparing-features)
 
