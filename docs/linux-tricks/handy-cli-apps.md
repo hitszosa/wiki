@@ -20,12 +20,13 @@ Homebrew 是一款起源于服务 macOS 的包管理器，特色是在用户态�
 
 ### 简介
 
-Too long; didn't read. 废话不多说，就是这款小工具的目的。想必各位时不时都要用一些自己没用过的命令，做一些简单的事情，但却要翻看天书一般 man，可谓杀鸡用牛刀。tldr 提供的文档则恰恰相反：直击痛点，通俗易懂，示例清晰。
+Too long; didn't read. ~~即“太长不看”~~ 废话不多说，就是这款小工具的目的。想必各位时不时都要用一些自己没用过的命令，做一些简单的事情，但却要翻看天书一般 man，可谓杀鸡用牛刀。tldr 提供的文档则恰恰相反：直击痛点，通俗易懂，示例清晰。
 
 ### 资源
 
 - 官方网站：[https://tldr.sh](https://tldr.sh)
 - 快速入门：安装 Homebrew 后使用 `brew install tldr` 命令即可安装。
+- 其他实现：~~因为是使用 NodeJS 实现~~，官方的实现很慢。可以使用 Rust 实现 tealdeer 来代替。 ![tealdeer homebrew version](https://img.shields.io/homebrew/v/tealdeer)
 - 相关中文教程：[https://learnku.com/articles/23834](https://learnku.com/articles/23834)
 
 ## fasd ![fasd homebrew version](https://img.shields.io/homebrew/v/fasd)
