@@ -16,7 +16,7 @@ Homebrew 是一款起源于服务 macOS 的包管理器，特色是在用户态�
 - 官方网站、快速入门：[https://brew.sh](https://brew.sh)
 - Homebrew TUNA 镜像源配置教程：[https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/](https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/)
 
-## tldr
+## tldr ![tldr homebrew version](https://img.shields.io/homebrew/v/tldr)
 
 ### 简介
 
@@ -28,7 +28,7 @@ Too long; didn't read. 废话不多说，就是这款小工具的目的。想必
 - 快速入门：安装 Homebrew 后使用 `brew install tldr` 命令即可安装。
 - 相关中文教程：[https://learnku.com/articles/23834](https://learnku.com/articles/23834)
 
-## fasd
+## fasd ![fasd homebrew version](https://img.shields.io/homebrew/v/fasd)
 
 ### 简介
 
