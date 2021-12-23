@@ -1,8 +1,18 @@
 site_name: HITSZ LUG Wiki
+repo_name: hitszlug/wiki
 repo_url: https://github.com/hitszlug/wiki
 edit_uri: edit/main/docs/
 theme:
   name: material
+  logo: assets/hitsz-lug-mono.svg
+  favicon: assets/hitsz-lug-mono.svg
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/hitszlug
+    - icon: fontawesome/solid/sitemap
+      link: https://lug.pub
 
 nav:
   - Home: index.md
