@@ -5,7 +5,7 @@ edit_uri: edit/main/docs/
 theme:
   name: material
   logo: assets/lug-wiki-outline.svg
-  favicon: assets/lug-wiki-outline.png
+  favicon: assets/lug-wiki-outline.tiny.png
 
 extra:
   social:
