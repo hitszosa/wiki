@@ -1,8 +1,18 @@
 site_name: HITSZ LUG Wiki
+repo_name: hitszlug/wiki
 repo_url: https://github.com/hitszlug/wiki
 edit_uri: edit/main/docs/
 theme:
   name: material
+  logo: assets/lug-wiki-outline.svg
+  favicon: assets/lug-wiki-outline.png
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/hitszlug
+    - icon: fontawesome/solid/sitemap
+      link: https://lug.pub
 
 nav:
   - Home: index.md
@@ -34,6 +44,9 @@ markdown_extensions:
   - pymdownx.tabbed
   - pymdownx.tilde
   - admonition
+
+extra_css:
+  - stylesheets/extra.css
 
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML
