@@ -10,6 +10,7 @@ nav:
   - Linux Tricks:
     - 另类好用的 Linux 命令行工具: linux-tricks/handy-cli-apps.md
   - Guide for Beginner: 
+    - 自学计算机科学(改): guide-for-beginner/teach-yourself-cs.md
     - 提问的智慧(改): guide-for-beginner/how-to-ask-questions-the-smart-way.md
     - WSL 安装教程: guide-for-beginner/wsl-install-guide.md
   - Popular Science:
