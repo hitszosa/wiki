@@ -4,8 +4,8 @@ repo_url: https://github.com/hitszlug/wiki
 edit_uri: edit/main/docs/
 theme:
   name: material
-  logo: assets/hitsz-lug-mono.svg
-  favicon: assets/hitsz-lug-mono.svg
+  logo: assets/lug-wiki-outline.svg
+  favicon: assets/lug-wiki-outline.png
 
 extra:
   social:
