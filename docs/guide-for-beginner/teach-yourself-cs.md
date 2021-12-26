@@ -27,7 +27,7 @@
 | [数学知识](#数学知识)                 | 计算机科学基本上是应用数学的一个「跑偏的」分支，因此学习数学将会给你带来竞争优势。     | [《计算机科学中的数学》](https://book.douban.com/subject/33396340/)                      | Tom Leighton’s MIT 6.042J         |
 | [操作系统](#操作系统)                 | 你所写的代码，基本上都由操作系统来运行，因此你应当了解其运作的原理。                   | [《操作系统导论》](https://book.douban.com/subject/33463930/)                            | Berkeley CS 162                   |
 | [计算机网络](#计算机网络)             | 互联网已然势不可挡：理解工作原理才能解锁全部潜力。                                     | [《计算机网络：自顶向下方法》](https://book.douban.com/subject/30280001/)                | Stanford CS 144                   |
-| [数据库](#数据库)                     | 对于多数重要程序，数据是其核心，然而很少人理解数据库系统的工作原理。                   | _[Readings in Database Systems](https://book.douban.com/subject/2256069/)_（暂无中译本） | Joe Hellerstein’s Berkeley CS 186 |
+| [数据库](#数据库)                     | 对于多数重要程序，数据是其核心，然而很少人理解数据库系统的工作原理。                   | _[Readings in Database Systems](https://book.douban.com/subject/2256069/)_（暂无中译本）| Joe Hellerstein’s Berkeley CS 186 |
 | [编程语言与编译器](#编程语言与编译器) | 若你懂得编程语言和编译器如何工作，你就能写出更好的代码，更轻松地学习新的编程语言。     | _[Crafting Interpreters](https://craftinginterpreters.com/)_                             | Alex Aiken’s course on Lagunita   |
 | [分布式系统](#分布式系统）)           | 如今，**多数** 系统都是分布式的。                                                      | [《数据密集型应用系统设计》](https://book.douban.com/subject/30329536/)                  | MIT 6.824                         |
 
