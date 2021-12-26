@@ -1,6 +1,6 @@
-# 提问的智慧
+# 提问的智慧（改）
 
-> O4: 这里是 提问的智慧 的 HITsz Linux 修改版。任何以 "O4:" 开头的都是本协会自行添加的注释
+> O4: 这是《提问的智慧》HITSZ Linux User Group 修改版。任何以 "O4:" 开头的都是本协会自行添加的注释
 
 > O4: 中文原文地址: https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md
 
@@ -15,8 +15,6 @@ Copyright © 2001,2006,2014 Eric S. Raymond, Rick Moen
 Copyleft 2001 by D.H.Grand(nOBODY/Ginux), 2010 by Gasolin, 2015 by Ryan Wu
 
 本中文指南是基于原文 3.10 版以及 2010 年由 [Gasolin](https://github.com/gasolin) 所翻译版本的最新翻译；
-
-协助指出翻译问题， **请 [发 issue](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/issues/new)，或直接 [发 pull request](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/compare) 给我。**
 
 ## 声明
 
