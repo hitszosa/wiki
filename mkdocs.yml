@@ -25,6 +25,20 @@ nav:
       - WSL 安装教程: guide-for-beginner/wsl-install-guide.md
   - Popular Science:
       - 编译器: popular-science/compile.md
+  - 编译原理:
+      - LLVM Kaleidoscope 教程翻译:
+          - 翻译者的话: llvm-kaleidoscope/ch--1.md
+          - 前言：我的第一个基于 LLVM 的语言前端: llvm-kaleidoscope/ch-0.md
+          - 第一章：Kaleidoscope 与 lexer: llvm-kaleidoscope/ch-1.md
+          - 第二章：实现 Parser 与 AST: llvm-kaleidoscope/ch-2.md
+          - 第三章：生成 LLVM IR: llvm-kaleidoscope/ch-3.md
+          - 第四章：增加 JIT 与优化: llvm-kaleidoscope/ch-4.md
+          - 第五章：扩展语言：控制流: llvm-kaleidoscope/ch-5.md
+          - 第六章：扩展语言：自定义运算符: llvm-kaleidoscope/ch-6.md
+          - 第七章：扩展语言：变量: llvm-kaleidoscope/ch-7.md
+          - 第八章：编译到目标文件: llvm-kaleidoscope/ch-8.md
+          - 第九章：调试信息 : llvm-kaleidoscope/ch-9.md
+          - 第十章：结语与其他: llvm-kaleidoscope/ch-10.md
 
 markdown_extensions:
   - pymdownx.betterem:
