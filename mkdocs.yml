@@ -1,6 +1,6 @@
 site_name: HITSZ LUG Wiki
 repo_name: hitszlug/wiki
-site_url: https://wiki.hitsz.org
+site_url: https://wiki.hitsz.org/
 repo_url: https://github.com/hitszlug/wiki
 edit_uri: edit/main/docs/
 theme:
