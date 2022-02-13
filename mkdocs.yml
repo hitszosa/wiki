@@ -60,6 +60,8 @@ markdown_extensions:
   - pymdownx.tabbed
   - pymdownx.tilde
   - admonition
+  - toc:
+      slugify: !!python/name:pymdownx.slugs.uslugify
 
 extra_css:
   - stylesheets/extra.css
