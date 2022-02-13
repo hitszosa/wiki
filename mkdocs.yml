@@ -40,6 +40,7 @@ nav:
           - 第八章：编译到目标文件: llvm-kaleidoscope/ch-8.md
           - 第九章：调试信息 : llvm-kaleidoscope/ch-9.md
           - 第十章：结语与其他: llvm-kaleidoscope/ch-10.md
+      - 毕昇杯用 ARMv7 汇编急救: bisheng/armv7-basic.md
 
 markdown_extensions:
   - pymdownx.betterem:
