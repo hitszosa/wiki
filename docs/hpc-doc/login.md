@@ -183,7 +183,7 @@ cat ~/.ssh/id_rsa.pub
 mkdir -p ~/.ssh
 vim ~/.ssh/authorized_keys
 ```
-这时会打开vim文本编辑器
+这时会打开 vim 文本编辑器
 
 按下 `i` 按键，进入编辑模式，并右键粘贴到上面节点终端中编辑界面的一个新行里。按下 `Esc` ，按下 `:wq` 可保存并退出。
 
