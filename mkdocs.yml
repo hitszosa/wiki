@@ -24,6 +24,7 @@ nav:
       - 自学计算机科学（改）: guide-for-beginner/teach-yourself-cs.md
       - 提问的智慧（改）: guide-for-beginner/how-to-ask-questions-the-smart-way.md
       - WSL 安装教程: guide-for-beginner/wsl-install-guide.md
+      - VirtualBox + Ubuntu 安装教程: guide-for-beginner/vbox-ubuntu-guide.md
   - Popular Science:
       - 编译器: popular-science/compile.md
   - 编译原理:
