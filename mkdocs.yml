@@ -42,6 +42,10 @@ nav:
           - 第九章：调试信息 : llvm-kaleidoscope/ch-9.md
           - 第十章：结语与其他: llvm-kaleidoscope/ch-10.md
       - 毕昇杯用 ARMv7 汇编急救: bisheng/armv7-basic.md
+  - HITsz HPC Document:
+      - Linux 下登录到集群: hpc-doc/login.md
+      - 使用 vscode-remote: hpc-doc/vscode-remote.md
+      - Anaconda3 & Jupyter 环境配置: hpc-doc/anaconda.md
 
 markdown_extensions:
   - pymdownx.betterem:
