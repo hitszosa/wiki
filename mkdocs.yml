@@ -45,6 +45,7 @@ nav:
   - HITsz HPC Document:
       - Linux 下登录到集群: hpc-doc/login.md
       - 使用 vscode-remote: hpc-doc/vscode-remote.md
+      - Anaconda3 & Jupyter 环境配置: hpc-doc/anaconda.md
 
 markdown_extensions:
   - pymdownx.betterem:
