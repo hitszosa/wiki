@@ -4,7 +4,7 @@
 >
 > ~~防止 EasyConnect 污染自己的环境~~
 
-### 1. Docker 安装
+## 1. Docker 安装
 
 使用浏览器打开 [Get Docker](https://docs.docker.com/get-docker/)
 
@@ -43,7 +43,7 @@ sudo systemctl start docker
 
 
 
-### 2. EasyConnect 
+## 2. EasyConnect 
 
 我们使用的  EasyConnect docker  版来自这里
 
@@ -63,24 +63,24 @@ sudo docker pull hagb/docker-easyconnect:cli
 sudo docker run --device /dev/net/tun --cap-add NET_ADMIN -ti -p 127.0.0.1:1080:1080 -p 127.0.0.1:8888:8888 -e EC_VER=7.6.3 -e CLI_OPTS="-d vpn.hitsz.edu.cn -u username -p password" hagb/docker-easyconnect:cli
 ```
 
->- 其中 `-e EC_VER=7.6.3` 表示使用 7.6.3 版本的 EasyConnect，请根据实际情况修改版本号；
->- vpn 服务器已指定好，其中 `username` 为学号 ， `passwoord`  为密码（若密码中有特殊字符，可能需要使用转义符号）
->- 浏览器（或其他支持的应用）可配置 socks5 代理（可以通过插件配置），地址 127.0.0.1，端口 1080；也可以使用 http 代理，地址 127.0.0.1，端口 8888。
->- 请注意密码会保存在 bash history 中，若有隐私要求请关闭 bash history
+> - 其中 `-e EC_VER=7.6.3` 表示使用 7.6.3 版本的 EasyConnect，请根据实际情况修改版本号；
+> - vpn 服务器已指定好，其中 `username` 为学号 ， `passwoord`  为密码（若密码中有特殊字符，可能需要使用转义符号）
+> - 浏览器（或其他支持的应用）可配置 socks5 代理（可以通过插件配置），地址 127.0.0.1，端口 1080；也可以使用 http 代理，地址 127.0.0.1，端口 8888。
+> - 请注意密码会保存在 bash history 中，若有隐私要求请关闭 bash history
 
 
 
-### 3. 浏览器代理
+## 3. 浏览器代理
 
 主要有以下两种方法
 
-#### a. Firefox 和 Chrome 均可使用 SwitchyOmega 进行管理
+### a. Firefox 和 Chrome 均可使用 SwitchyOmega 进行管理
 
 配置大致如下
 
 ![SwitchyOmega](https://gitee.com/villard/wiki-images/raw/master/login/SwitchyOmega.webp)
 
-#### b. 使用系统代理
+### b. 使用系统代理
 
 这里以 Gnome 环境举例
 
@@ -88,7 +88,7 @@ sudo docker run --device /dev/net/tun --cap-add NET_ADMIN -ti -p 127.0.0.1:1080:
 
 ![gnome_set](https://gitee.com/villard/wiki-images/raw/master/login/gnome_settings.webp)
 
-### 4. 登录到集群
+## 4. 登录到集群
 
 浏览器代理配置好后，可输入网址登录集群
 
@@ -112,11 +112,9 @@ http://hpc.hitsz.edu.cn
 
 其中 u 开头的即是用户名
 
-### 5. ssh
+## 5. ssh
 
-前面已经拿到了内网 ip，端口和 ssh 账号
-
-下面介绍如何通过 sock5 代理进行 ssh
+前面已经拿到了内网 ip，端口和 ssh 账号，下面介绍如何通过 sock5 代理进行 ssh 
 
 先安装一个叫 `netcat` 的包，以 ubuntu 为例
 
@@ -153,7 +151,7 @@ ssh -o "ProxyCommand=netcat -X5 -x 127.0.0.1:1080 %h %p" username@hostname -p pe
 
 
 
-### 6. ssh 密钥快捷认证
+## 6. ssh 密钥快捷认证
 
 在本机中输入
 
@@ -185,5 +183,5 @@ vim ~/.ssh/authorized_keys
 ```
 这时会打开 vim 文本编辑器
 
-按下 `i` 按键，进入编辑模式，并右键粘贴到上面节点终端中编辑界面的一个新行里。按下 `Esc` ，按下 `:wq` 可保存并退出。
+按下 <kbd>i</kbd> 按键，进入编辑模式，并右键粘贴到上面节点终端中编辑界面的一个新行里。按下 <kbd>Esc</kbd> ，输入 `:wq` 并敲 <kbd>Enter</kbd> 键可保存并退出。
 

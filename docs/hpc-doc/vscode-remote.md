@@ -4,7 +4,7 @@
 >
 > 接下来我们介绍如何使用 vscode-remote 进行开发
 
-### 1. 安装 Remote - SSH 插件
+## 1. 安装 Remote - SSH 插件
 
 如图所示
 
@@ -12,7 +12,7 @@
 
 
 
-### 2. 添加 Remote Server
+## 2. 添加 Remote Server
 
 左侧会多出一个**远程资源管理器**的图标
 
@@ -36,11 +36,11 @@
 ssh username@hostname -p peer
 ```
 
->成功后会要求输入密码，密码为<b> hpc 平台账号登录密码</b>
-> ##### 不在学校 ？
+> 成功后会要求输入密码，密码为<b> hpc 平台账号登录密码</b>  
+> <b>不在学校 ？</b>  
 > 若需使用 easyconnect 代理，请参考<b> 公共集群的基本使用方法 </b>教程中的 ssh 代理方式
 
-### 3. 添加文件夹
+## 3. 添加文件夹
 
 点击添加文件夹
 
@@ -52,8 +52,8 @@ ssh username@hostname -p peer
 
 
 
-### 4. 终端
+## 4. 终端
 
-按键盘 ``Ctrl + ` `` 呼出终端，这样就可以使用 remote bash 了
+按键盘 <kbd>Ctrl</kbd> + <kbd>`</kbd> 呼出终端，这样就可以使用 remote bash 了
 
-> `键在 1 的左边 ，tab 的上面
+> <kbd>`</kbd> 键在 <kbd>1</kbd> 的左边 ，<kbd>tab</kbd> 的上面
