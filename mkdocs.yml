@@ -53,6 +53,7 @@ markdown_extensions:
       emoji_index: !!python/name:pymdownx.emoji.twemoji
       emoji_generator: !!python/name:pymdownx.emoji.to_svg
   - pymdownx.inlinehilite
+  - pymdownx.keys
   - pymdownx.magiclink
   - pymdownx.mark
   - pymdownx.smartsymbols
