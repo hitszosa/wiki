@@ -30,16 +30,16 @@ WSL，全称 Windows Subsystem for Linux（适用于 Linux 的 Windows 子系统
 
 ## WSL 1 与 WSL 2
 
-| 功能 |WSL 1|WSL 2|
-|:--|:-:|:-:|
-|Windows 和 Linux 之间的集成 |:ballot_box_with_check:|:ballot_box_with_check:|
-| 启动时间短 |:ballot_box_with_check:|:ballot_box_with_check:|
-| 与传统虚拟机相比，占用的资源量少 |:ballot_box_with_check:|:ballot_box_with_check:|
-| 可以与当前版本的 VMware 和 VirtualBox 一起运行 |:ballot_box_with_check:|:ballot_box_with_check:|
-| 托管 VM|:x:|:ballot_box_with_check:|
-| 完整的 Linux 内核 |:x:|:ballot_box_with_check:|
-| 完全的系统调用兼容性 |:x:|:ballot_box_with_check:|
-| 跨 OS 文件系统的性能 |:ballot_box_with_check:|:x:|
+| 功能                                           |          WSL 1          |          WSL 2          |
+| :--------------------------------------------- | :---------------------: | :---------------------: |
+| Windows 和 Linux 之间的集成                    | :ballot_box_with_check: | :ballot_box_with_check: |
+| 启动时间短                                     | :ballot_box_with_check: | :ballot_box_with_check: |
+| 与传统虚拟机相比，占用的资源量少               | :ballot_box_with_check: | :ballot_box_with_check: |
+| 可以与当前版本的 VMware 和 VirtualBox 一起运行 | :ballot_box_with_check: | :ballot_box_with_check: |
+| 托管 VM                                        |           :x:           | :ballot_box_with_check: |
+| 完整的 Linux 内核                              |           :x:           | :ballot_box_with_check: |
+| 完全的系统调用兼容性                           |           :x:           | :ballot_box_with_check: |
+| 跨 OS 文件系统的性能                           | :ballot_box_with_check: |           :x:           |
 
 <!-- ![wsl1vswsl2](https://gitee.com/SoraShu/image/raw/master/image_0/wsl1vswsl2.png) -->
 
@@ -55,8 +55,8 @@ WSL，全称 Windows Subsystem for Linux（适用于 Linux 的 Windows 子系统
 
 ### 1.确认 windows 版本
 
-- 只有 Windows 10 才能安装使用 WSL。Windows 7、8 或之前的任何版本都无法使用，请及时将系统版本更新至最新。  
-- 只有 Windows 10 版本 16215 或以后的版本才能够正常运行 WSL。你可以在「Windows 设置 > 系统 > 关于」处找到你的 Windows 10 操作系统版本。  
+- 只有 Windows 10 才能安装使用 WSL。Windows 7、8 或之前的任何版本都无法使用，请及时将系统版本更新至最新。
+- 只有 Windows 10 版本 16215 或以后的版本才能够正常运行 WSL。你可以在「Windows 设置 > 系统 > 关于」处找到你的 Windows 10 操作系统版本。
 - 只有 Windows 10 版本 18362 或 18363 以及以后的版本，或小版本号为 1049 的版本，才能够正常运行 WSL 2。需要明确，WSL 2 目前只能在 Windows 10 版本 1903、1909 和 2004 中使用（其中 1903 和 1909 仅支持 x64 系统），因此你需要将自己的 Windows 系统进行升级至合适的版本，才能使用正确的 Windows 10 版本安装 WSL 2。
 
 ### 2.启用系统功能
@@ -68,6 +68,7 @@ WSL，全称 Windows Subsystem for Linux（适用于 Linux 的 Windows 子系统
 ```powershell
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 ```
+
 并回车执行。
 
 按照提示重启电脑。
@@ -77,9 +78,11 @@ dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux 
 #### 启用虚拟机功能
 
 以管理员身份运行 PowerShell，输入：
+
 ```powershell
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 ```
+
 并回车执行。
 
 按照提示重启电脑。
@@ -94,9 +97,11 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 ### 4.将 WSL 2 设置为默认版本
 
 运行 PowerShell，输入：
+
 ```powershell
 wsl --set-default-version 2
 ```
+
 并回车执行。
 
 ### 5.下载并安装 Linux 发行版
@@ -116,9 +121,11 @@ wsl --set-default-version 2
 ## WSL 的管理
 
 在 powershell 执行以下命令可查看安装的 Linux 发行版以及 WSL 版本。
+
 ```powershell
 wsl -l -v
 ```
+
 若你下载的发行版是 Ubuntu，则最终结果应该和我这边类似。
 
 ![wsl-l-v](https://gitee.com/SoraShu/image/raw/master/image_0/wsl-l-v.png)
