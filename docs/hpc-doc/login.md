@@ -1,4 +1,4 @@
-# Linux 下登录到集群
+# Linux 如何使用代理登录到集群
 
 > 这里主要介绍 Linux，如何登陆到集群及如何使用 Docker 运行 EasyConnect 
 >
@@ -6,40 +6,37 @@
 
 ## 1. Docker 安装
 
-使用浏览器打开 [Get Docker](https://docs.docker.com/get-docker/)
+### 什么是 Docker
+Docker 是一种容器，容器是一个标准的软件单元，它打包代码及其所有依赖项，以便应用程序从一个计算环境快速可靠地运行到另一个计算环境。
 
+Docker 容器镜像是一个轻量级的、独立的、可执行的软件包，包括运行应用程序所需的一切。容器将软件与其环境隔离开来，并确保尽管开发和暂存之间存在差异，但它仍能统一工作。
+
+传统 vm 虚拟化环境运行应用，每个虚拟机存在一个 Linux 系统，会有很大一部分程序重复运行，浪费资源。
+<center>
+<img src="https://gitee.com/villard/wiki-images/raw/master/login/vm.webp" width ="350px">
+<img src="https://gitee.com/villard/wiki-images/raw/master/login/container.webp" width="350px">
+</center>
+### 下载 Docker
+
+打开终端，输入以下命令安装 Docker
+
+```shell
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
 ```
-https://docs.docker.com/get-docker/
+
+安装完毕后运行以下命令开启 docker
+
+```shell
+sudo systemctl start docker
 ```
-
-选择 Docker for Linux
-
-![install_docker](https://gitee.com/villard/wiki-images/raw/master/login/install_docker.webp)
-
-下面可以看到 Server 一栏，选择你正在使用的发行版，按照指示安装
-
-安装完毕后尝试运行 `hello-world`
+尝试运行 `hello-world`
 
 ```shell
 sudo docker run hello-world
 ```
 
 如果成功出现 `Hello from Docker!` 则正常
-
-若出现如下<b>错误</b>
-
-```shell
-docker: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?.
-See 'docker run --help'.
-```
-
-则运行以下命令开启 docker
-
-```shell
-sudo systemctl start docker
-```
-
-然后再尝试运行 `hello-world`
 
 
 
@@ -59,6 +56,8 @@ sudo docker pull hagb/docker-easyconnect:cli
 
 完成后输入以下命令运行  EasyConnect 
 
+在使用 vpn 时请务必保持终端不要关闭
+
 ```shell
 sudo docker run --device /dev/net/tun --cap-add NET_ADMIN -ti -p 127.0.0.1:1080:1080 -p 127.0.0.1:8888:8888 -e EC_VER=7.6.3 -e CLI_OPTS="-d vpn.hitsz.edu.cn -u username -p password" hagb/docker-easyconnect:cli
 ```
@@ -70,15 +69,32 @@ sudo docker run --device /dev/net/tun --cap-add NET_ADMIN -ti -p 127.0.0.1:1080:
 
 
 
-## 3. 浏览器代理
+## 3. 设置浏览器代理
 
-主要有以下两种方法
+主要有以下两种方法（只需选择一种）
 
 ### a. Firefox 和 Chrome 均可使用 SwitchyOmega 进行管理
 
-配置大致如下
+Firefox 打开下面链接安装  SwitchyOmega 插件
+```
+https://addons.mozilla.org/zh-CN/firefox/addon/switchyomega/
+```
 
-![SwitchyOmega](https://gitee.com/villard/wiki-images/raw/master/login/SwitchyOmega.webp)
+在左边栏选择新建情景模式
+
+在名称中填入一个名字，然后点击创建
+
+![option](https://gitee.com/villard/wiki-images/raw/master/login/option.webp)
+
+创建完成后在情景模式中填入
+
+> - 代理协议 `SOCKS5` 
+> - 代理服务器 `127.0.0.1`
+> - 端口 `1080`
+
+![option](https://gitee.com/villard/wiki-images/raw/master/login/complete.webp)
+
+
 
 ### b. 使用系统代理
 
