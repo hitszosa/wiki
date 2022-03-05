@@ -3,6 +3,8 @@ repo_name: hitszlug/wiki
 site_url: https://wiki.hitsz.org/
 repo_url: https://github.com/hitszlug/wiki
 edit_uri: edit/main/docs/
+copyright: By <a href="https://lug.pub">HITsz LUG</a>. Under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 license</a>.
+
 theme:
   name: material
   logo: assets/lug-wiki-outline.svg
@@ -18,14 +20,14 @@ extra:
 nav:
   - Home: index.md
   - About: about.md
-  - Linux Tricks:
+  - Linux 使用技巧:
       - 另类好用的 Linux 命令行工具: linux-tricks/handy-cli-apps.md
-  - Guide for Beginner:
+  - 初学者指南:
       - 自学计算机科学（改）: guide-for-beginner/teach-yourself-cs.md
       - 提问的智慧（改）: guide-for-beginner/how-to-ask-questions-the-smart-way.md
       - WSL 安装教程: guide-for-beginner/wsl-install-guide.md
       - VirtualBox + Ubuntu 安装教程: guide-for-beginner/vbox-ubuntu-guide.md
-  - Popular Science:
+  - 科普:
       - 编译器: popular-science/compile.md
   - 编译原理:
       - LLVM Kaleidoscope 教程翻译:

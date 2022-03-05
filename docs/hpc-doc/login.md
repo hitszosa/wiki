@@ -59,15 +59,14 @@ sudo docker pull hagb/docker-easyconnect:cli
 在使用 vpn 时请务必保持终端不要关闭
 
 ```shell
-sudo docker run --device /dev/net/tun --cap-add NET_ADMIN -ti -p 127.0.0.1:1080:1080 -p 127.0.0.1:8888:8888 -e EC_VER=7.6.3 -e CLI_OPTS="-d vpn.hitsz.edu.cn -u username -p password" hagb/docker-easyconnect:cli
+sudo docker run --device /dev/net/tun --cap-add NET_ADMIN -ti -p 127.0.0.1:1080:1080 -p 127.0.0.1:8888:8888 -e EC_VER=7.6.3 -e CLI_OPTS="-d vpn.hitsz.edu.cn" hagb/docker-easyconnect:cli
 ```
 
-> - 其中 `-e EC_VER=7.6.3` 表示使用 7.6.3 版本的 EasyConnect，请根据实际情况修改版本号；
-> - vpn 服务器已指定好，其中 `username` 为学号 ， `passwoord`  为密码（若密码中有特殊字符，可能需要使用转义符号）
+> - 其中 `-e EC_VER=7.6.3` 表示使用 7.6.3 版本的 EasyConnect，请根据实际情况修改版本号。
+> - vpn 服务器已指定
 > - 浏览器（或其他支持的应用）可配置 socks5 代理（可以通过插件配置），地址 127.0.0.1，端口 1080；也可以使用 http 代理，地址 127.0.0.1，端口 8888。
-> - 请注意密码会保存在 bash history 中，若有隐私要求请关闭 bash history
 
-
+上述命令输入后会要求输入账号密码， `username` 为学号 ， `passwoord`  为密码
 
 ## 3. 设置浏览器代理
 
@@ -79,6 +78,10 @@ Firefox 打开下面链接安装  SwitchyOmega 插件
 ```
 https://addons.mozilla.org/zh-CN/firefox/addon/switchyomega/
 ```
+
+安装完后，在右上角打开 SwitchyOmega 的选项后出现下面的页面
+
+![option](https://gitee.com/villard/wiki-images/raw/master/login/install.webp)
 
 在左边栏选择新建情景模式
 
@@ -92,9 +95,13 @@ https://addons.mozilla.org/zh-CN/firefox/addon/switchyomega/
 > - 代理服务器 `127.0.0.1`
 > - 端口 `1080`
 
+选择应用更改
+
 ![option](https://gitee.com/villard/wiki-images/raw/master/login/complete.webp)
 
+然后在右上角的 SwitchyOmega 插件里选择你刚刚创建的情景模式，就可以访问学校内网了
 
+![enable](https://gitee.com/villard/wiki-images/raw/master/login/enable.webp)
 
 ### b. 使用系统代理
 
