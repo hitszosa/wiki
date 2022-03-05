@@ -122,7 +122,7 @@ http://hpc.hitsz.edu.cn
 
 在划红线处，选择最右边按钮，**ssh 按钮**，可以看到服务器的**内网 ip**
 
-在**左边导航栏**的 **用户** 一栏，可以看到自己的集群用户名
+在 **左边导航栏** 的 **用户** 一栏，可以看到自己的集群用户名
 
 ![user](https://gitee.com/villard/wiki-images/raw/master/login/user.webp)
 
