@@ -44,7 +44,7 @@ nav:
       - 毕昇杯用 ARMv7 汇编急救: bisheng/armv7-basic.md
   - HITsz HPC Guide:
       - HITsz HPC 文档说明: hpc-doc/main.md
-      - Linux 下登录到集群: hpc-doc/login.md
+      - Linux 如何使用代理登录到集群: hpc-doc/login.md
       - 使用 vscode-remote: hpc-doc/vscode-remote.md
       - Anaconda3 & Jupyter 环境配置: hpc-doc/anaconda.md
       - PyTorch on HPC Clusters: hpc-doc/pytorch.md
