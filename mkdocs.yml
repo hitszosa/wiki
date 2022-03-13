@@ -29,6 +29,7 @@ nav:
       - VirtualBox + Ubuntu 安装教程: guide-for-beginner/vbox-ubuntu-guide.md
   - 科普:
       - 编译器: popular-science/compile.md
+      - 域名与 HTTPS: popular-science/domain-and-https.md
   - 编译原理:
       - LLVM Kaleidoscope 教程翻译:
           - 翻译者的话: llvm-kaleidoscope/ch--1.md
