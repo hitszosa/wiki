@@ -18,6 +18,42 @@
 
 ### 2. Anaconda3 安装
 
+集群上已有安装的 Anaconda，推荐直接使用。集群上的 Anaconda 位于`/opt/app/anaconda3`，使用以下的命令将 Anaconda 加入自己的环境中
+
+```
+export PATH=$PATH:/opt/app/anaconda/bin
+conda init
+```
+这样 Anaconda 会在你的`.bashrc` 中加入类似以下这样的内容
+
+```
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/app/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/app/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/app/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/app/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+```
+
+此时重新登录或`source ~/.bashrc`就可以看到在行首的`(base)`了
+
+接下来需要创建一个新的虚拟环境，因为`base`位于公共位置，因此你无法在这个环境中新安装软件，因此使用以下命令创建并激活新环境
+
+```
+conda create -n <name>
+conda activate <name>
+```
+
+### Anaconda3 自行安装
+
 复制链接，打开 [anaconda 官网](https://www.anaconda.com/products/individual#Download)
 
 ```
@@ -63,7 +99,7 @@ chmod +x ./Anaconda3-2021.11-Linux-x86_64.sh
 在 remote bash 中输入，安装 jupyter 环境和 jupyter notebook
 
 ```shell
-conda install -n base jupyter notebook
+conda install jupyter notebook
 ```
 
 
@@ -81,7 +117,7 @@ cd dev
 
 <b>选择解释器时请务必选择 anaconda3 中的 python </b>
 
-如图中第二个
+如图中第二个，如果创建了虚拟环境需要选择创建时使用的名字
 
 ![interpreter](https://gitee.com/villard/wiki-images/raw/master/anaconda3/chooseinterpreter.webp)
 

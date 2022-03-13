@@ -1,29 +1,30 @@
 # HITSZ LUG Wiki
 
+## 参与建设
 
-## Development
+我们希望 Wiki 的内容有正确的格式，所以我们强制要求提交的内容通过 AutoCorrect 检查。
 
-We required contributed content to be formatted correctly, so we enforced [AutoCorrect](https://github.com/huacnlee/autocorrect) check.
+请安装 [AutoCorrect](https://github.com/huacnlee/autocorrect) 并提交前执行以下命令：
 
-Please install [AutoCorrect](https://github.com/huacnlee/autocorrect) and run the following command before commit
-```
+``` shell
 autocorrect --fix ./
 ```
 
-### Prerequisites
-- Mkdocs
-- Mkdocs-material
+## 依赖
 
-Can be installed by
-```
-pip install mkdocs
-pip install mkdocs-material
+- mkdocs
+- mkdocs-material
+
+可用以下命令安装：
+
+``` shell
+pip install -r requirements.txt
 ```
 
-### Run Locally
+## 本地预览
 
-```
+``` shell
 mkdocs serve
 
-# Or mkdocs serve -a <ip:port>
+# 或 mkdocs serve -a <ip:port>
 ```

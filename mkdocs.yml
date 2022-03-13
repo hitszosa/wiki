@@ -9,17 +9,24 @@ theme:
   name: material
   logo: assets/lug-wiki-outline.svg
   favicon: assets/favicon.png
+  language: zh
 
 extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/hitszlug
-    - icon: fontawesome/solid/sitemap
+    - icon: fontawesome/brands/qq
+      link: https://qm.qq.com/cgi-bin/qm/qr?k=EmOyWeZrOaOeSoVrVLoozyKYdvjOia_t
+    - icon: fontawesome/brands/bilibili
+      link: https://space.bilibili.com/1124374292
+    - icon: fontawesome/brands/telegram
+      link: https://t.me/hitszlug
+    - icon: material/airplane-landing
       link: https://lug.pub
 
 nav:
-  - Home: index.md
-  - About: about.md
+  - 主页: index.md
+  - 关于我们: about.md
   - Linux 使用技巧:
       - 另类好用的 Linux 命令行工具: linux-tricks/handy-cli-apps.md
   - 初学者指南:
@@ -28,7 +35,7 @@ nav:
       - WSL 安装教程: guide-for-beginner/wsl-install-guide.md
       - VirtualBox + Ubuntu 安装教程: guide-for-beginner/vbox-ubuntu-guide.md
   - 科普:
-      - 编译器: popular-science/compile.md
+      - 编译，静态链接，可执行文件的生成: popular-science/compile.md
       - 域名与 HTTPS: popular-science/domain-and-https.md
   - 编译原理:
       - LLVM Kaleidoscope 教程翻译:
@@ -42,15 +49,22 @@ nav:
           - 第六章：扩展语言：自定义运算符: llvm-kaleidoscope/ch-6.md
           - 第七章：扩展语言：变量: llvm-kaleidoscope/ch-7.md
           - 第八章：编译到目标文件: llvm-kaleidoscope/ch-8.md
-          - 第九章：调试信息 : llvm-kaleidoscope/ch-9.md
-          - 第十章：结语与其他: llvm-kaleidoscope/ch-10.md
+          - 第九章：调试信息（未翻译）: llvm-kaleidoscope/ch-9.md
+          - 第十章：结语与其他（未翻译）: llvm-kaleidoscope/ch-10.md
       - 毕昇杯用 ARMv7 汇编急救: bisheng/armv7-basic.md
   - HITsz HPC Guide:
       - HITsz HPC 文档说明: hpc-doc/main.md
       - Linux 如何使用代理登录到集群: hpc-doc/login.md
       - 使用 vscode-remote: hpc-doc/vscode-remote.md
       - Anaconda3 & Jupyter 环境配置: hpc-doc/anaconda.md
-      - PyTorch on HPC Clusters: hpc-doc/pytorch.md
+      - PyTorch on SLURM: hpc-doc/pytorch.md
+
+plugins:
+  - search:
+      lang: 
+        - en
+        # 选择日语来建立中文索引
+        - ja
 
 markdown_extensions:
   - pymdownx.betterem:
