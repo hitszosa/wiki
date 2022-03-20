@@ -91,9 +91,9 @@ https://addons.mozilla.org/zh-CN/firefox/addon/switchyomega/
 
 创建完成后在情景模式中填入
 
-> - 代理协议 `SOCKS5` 
+> - 代理协议 `HTTP` 
 > - 代理服务器 `127.0.0.1`
-> - 端口 `1080`
+> - 端口 `8888`
 
 选择应用更改
 
