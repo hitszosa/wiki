@@ -9,12 +9,12 @@
 可能有同学已经发现了，使用开虚拟机的方式使用集群有诸多不便之处，虽然卡资源是独享的随时可以使用，但是有的时候无法分配到资源，这是因为集群资源不多，有的同学申请了虚拟机仅做测试用，并不实际运行任务，但是忘记了退出或者说想过段时间再用，就没有删除，导致资源利用率低。所以我们推荐大家使用`SLURM`在`public_cluster`中运行任务。
 
 这样做有几个好处
+
 - 无需隔一段时间到控制台打开机器
 - 提高了资源使用效率
 - 提交任务后即使当前没有计算资源，任务也会进入队列`FIFO`执行，能够无需人工操作在当前占用资源的任务结束后自动开始
 
 !!! note "注意"
-
     这篇教程默认你已经登录到集群<br>
     请确定已在集群环境中已安装 Anaconda3 环境<br>
     public_cluster 通过 slurm 调度
@@ -26,8 +26,6 @@
 ```shell
 conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
 ```
-
-
 
 ## Example GPU Job
 
@@ -68,8 +66,6 @@ python ~/install_pytorch/mnist_classify.py --epochs=3
 
     time 必须设定足够，否则 time 截止时，任务会强制被结束，但如果不使用 time，注意保证任务在合理时间内结束
 
-
-
 你可以使用以下命令监视你的任务的状态
 
 ```shell
@@ -81,10 +77,10 @@ squeue -u $USER
 这份文件包含了 PyTorch 和 slurm 的输出。
 
 !!! note "注意"
- 
     `slurm-xxxxx.out` 文件名中 `xxxxx` 为你当前提交的作业的 id
 
 ### 取消作业
+
 可以通过 `scancel` 的命令停止作业，这个命令向进程发送`SIGTERM`
 
 ```shell 
@@ -130,6 +126,3 @@ nvidia-smi
 ```
 
 可以查看 NVIDIA GPU 的利用率
-
-
-

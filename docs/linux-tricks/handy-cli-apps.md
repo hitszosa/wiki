@@ -13,8 +13,8 @@ Homebrew 是一款起源于服务 macOS 的包管理器，特色是在用户态�
 
 ### 资源
 
-- 官方网站、快速入门：[https://brew.sh](https://brew.sh)
-- Homebrew TUNA 镜像源配置教程：[https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/](https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/)
+- 官方网站、快速入门：<https://brew.sh>
+- Homebrew TUNA 镜像源配置教程：<https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/>
 
 ## tldr [![tldr homebrew version](https://img.shields.io/homebrew/v/tldr?style=flat-square)](https://formulae.brew.sh/formula/tldr)
 
@@ -24,10 +24,10 @@ Too long; didn't read. ~~即 “太长不看”~~ 废话不多说，就是这款
 
 ### 资源
 
-- 官方网站：[https://tldr.sh](https://tldr.sh)
+- 官方网站：<https://tldr.sh>
 - 快速入门：安装 Homebrew 后运行 `brew install tldr` 安装。用法与 `man` 类似，在想要查询的命令前加上 `tldr`，比如查询 `tar` 的用法就运行 `tldr tar`。
 - 其他实现：~~因为是使用 NodeJS 实现~~，官方的实现很慢。可以使用 Rust 实现 tealdeer 来代替。 [![tealdeer homebrew version](https://img.shields.io/homebrew/v/tealdeer?style=flat-square)](https://formulae.brew.sh/formula/tealdeer)
-- 相关中文教程：[https://learnku.com/articles/23834](https://learnku.com/articles/23834)
+- 相关中文教程：<https://learnku.com/articles/23834>
 
 ## fasd [![fasd homebrew version](https://img.shields.io/homebrew/v/fasd?style=flat-square)](https://formulae.brew.sh/formula/fasd)
 
@@ -37,9 +37,9 @@ Too long; didn't read. ~~即 “太长不看”~~ 废话不多说，就是这款
 
 ### 资源
 
-- 官方 GitHub：[https://github.com/clvv/fasd](https://github.com/clvv/fasd)
+- 官方 GitHub：<https://github.com/clvv/fasd>
 - 快速入门：同样地，使用 `brew install fasd` 命令即可安装。安装后可能需要配置 rc 文件（如 zsh 为 `.zshrc`），详细配置参考官方文档。
-- 相关中文教程：[https://www.howtoing.com/fasd-quick-access-to-linux-files-and-directories](https://www.howtoing.com/fasd-quick-access-to-linux-files-and-directories)
+- 相关中文教程：<https://www.howtoing.com/fasd-quick-access-to-linux-files-and-directories>
 
 ## 附录
 

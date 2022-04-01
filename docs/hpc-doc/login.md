@@ -1,12 +1,13 @@
 # Linux 如何使用代理登录到集群
 
-> 这里主要介绍 Linux，如何登陆到集群及如何使用 Docker 运行 EasyConnect 
+> 这里主要介绍 Linux，如何登陆到集群及如何使用 Docker 运行 EasyConnect
 >
 > ~~防止 EasyConnect 污染自己的环境~~
 
 ## 1. Docker 安装
 
 ### 什么是 Docker
+
 Docker 是一种容器，容器是一个标准的软件单元，它打包代码及其所有依赖项，以便应用程序从一个计算环境快速可靠地运行到另一个计算环境。
 
 Docker 容器镜像是一个轻量级的、独立的、可执行的软件包，包括运行应用程序所需的一切。容器将软件与其环境隔离开来，并确保尽管开发和暂存之间存在差异，但它仍能统一工作。
@@ -30,6 +31,7 @@ sudo sh get-docker.sh
 ```shell
 sudo systemctl start docker
 ```
+
 尝试运行 `hello-world`
 
 ```shell
@@ -38,23 +40,21 @@ sudo docker run hello-world
 
 如果成功出现 `Hello from Docker!` 则正常
 
+## 2. EasyConnect
 
+我们使用的 EasyConnect docker 版来自这里
 
-## 2. EasyConnect 
-
-我们使用的  EasyConnect docker  版来自这里
-
-```
+```url
 https://github.com/Hagb/docker-easyconnect
 ```
 
-安装纯命令行版 EasyConnect 
+安装纯命令行版 EasyConnect
 
 ```shell
 sudo docker pull hagb/docker-easyconnect:cli
 ```
 
-完成后输入以下命令运行  EasyConnect 
+完成后输入以下命令运行  EasyConnect
 
 在使用 vpn 时请务必保持终端不要关闭
 
@@ -75,7 +75,8 @@ sudo docker run --device /dev/net/tun --cap-add NET_ADMIN -ti -p 127.0.0.1:1080:
 ### a. Firefox 和 Chrome 均可使用 SwitchyOmega 进行管理
 
 Firefox 打开下面链接安装  SwitchyOmega 插件
-```
+
+```url
 https://addons.mozilla.org/zh-CN/firefox/addon/switchyomega/
 ```
 
@@ -119,13 +120,9 @@ https://addons.mozilla.org/zh-CN/firefox/addon/switchyomega/
 http://hpc.hitsz.edu.cn
 ```
 
-
-
 在最上方导航栏选择项目里的 `public_cluster`
 
 ![public](https://gitee.com/villard/wiki-images/raw/master/login/hpchome.webp)
-
-
 
 在划红线处，选择最右边按钮，**ssh 按钮**，可以看到服务器的**内网 ip**
 
@@ -137,7 +134,7 @@ http://hpc.hitsz.edu.cn
 
 ## 5. ssh
 
-前面已经拿到了内网 ip，端口和 ssh 账号，下面介绍如何通过 sock5 代理进行 ssh 
+前面已经拿到了内网 ip，端口和 ssh 账号，下面介绍如何通过 sock5 代理进行 ssh
 
 先安装一个叫 `netcat` 的包，以 ubuntu 为例
 
@@ -150,11 +147,11 @@ sudo apt install netcat
 ```shell
 $netcat
 usage: nc [-46cDdFhklNnrStUuvz] [-C certfile] [-e name] [-H hash] [-I length]
-	  [-i interval] [-K keyfile] [-M ttl] [-m minttl] [-O length]
-	  [-o staplefile] [-P proxy_username] [-p source_port] [-R CAfile]
-	  [-s sourceaddr] [-T keyword] [-V rtable] [-W recvlimit] [-w timeout]
-	  [-X proxy_protocol] [-x proxy_address[:port]] [-Z peercertfile]
-	  [destination] [port]
+   [-i interval] [-K keyfile] [-M ttl] [-m minttl] [-O length]
+   [-o staplefile] [-P proxy_username] [-p source_port] [-R CAfile]
+   [-s sourceaddr] [-T keyword] [-V rtable] [-W recvlimit] [-w timeout]
+   [-X proxy_protocol] [-x proxy_address[:port]] [-Z peercertfile]
+   [destination] [port]
 
 ```
 
@@ -171,8 +168,6 @@ ssh -o "ProxyCommand=netcat -X5 -x 127.0.0.1:1080 %h %p" username@hostname -p pe
 > - hostname 为网站获得的集群 ip
 > - peer 为端口
 > - ssh 登录密码为 hpc 平台登录密码
-
-
 
 ## 6. ssh 密钥快捷认证
 
@@ -204,7 +199,7 @@ cat ~/.ssh/id_rsa.pub
 mkdir -p ~/.ssh
 vim ~/.ssh/authorized_keys
 ```
+
 这时会打开 vim 文本编辑器
 
-按下 <kbd>i</kbd> 按键，进入编辑模式，并右键粘贴到上面节点终端中编辑界面的一个新行里。按下 <kbd>Esc</kbd> ，输入 `:wq` 并敲 <kbd>Enter</kbd> 键可保存并退出。
-
+按下 ++i++ 按键，进入编辑模式，并右键粘贴到上面节点终端中编辑界面的一个新行里。按下 ++esc++ ，输入 `:wq` 并敲 ++enter++ 键可保存并退出。

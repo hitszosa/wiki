@@ -2,7 +2,7 @@
 
 ## 总览
 
-> 主要参考文章: https://thinkingeek.com/arm-assembler-raspberry-pi/
+> 主要参考文章: <https://thinkingeek.com/arm-assembler-raspberry-pi/>
 >
 > **绝大部分示例代码都是从此文章抄来的**
 >
@@ -48,8 +48,8 @@ main:            /* 这是 label main */
 简单地将其编译，然后链接为可执行程序：
 
 ```bash
-$ as -g -mfpu=vfpv2 -o first.o first.s
-$ gcc -o first first.o
+as -g -mfpu=vfpv2 -o first.o first.s
+gcc -o first first.o
 ```
 
 执行它并查看其返回值：
@@ -97,7 +97,7 @@ E:
     mov r0, #2 /* 标号 C, D, E 绑定到这条指令 */
 ```
 
-汇编里的空白是无所谓的，参数依逗号分隔，立即数 (immediate，类比 C 的字面量 (literal)) 以 `#` 开头，参数中用作目的地的参数常常在最左边 (如这里的 `r0`). 
+汇编里的空白是无所谓的，参数依逗号分隔，立即数 (immediate，类比 C 的字面量 (literal)) 以 `#` 开头，参数中用作目的地的参数常常在最左边 (如这里的 `r0`).
 
 单行注释一般也可以用 `@` 打头，类似 bash/python 里的 `#` 跟 C++ 里的 `//`.
 
@@ -131,7 +131,6 @@ main:
     add r0, r1, r2  /* r0 ← r1 + r2 */
     bx lr
 ```
-
 
 ## 内存
 
@@ -275,7 +274,7 @@ Reading symbols from /home/roger/asm/chapter03/store01...(no debugging symbols f
 
 现在我们进入了 GDB 的交互模式。
 
-退出 GDB: 
+退出 GDB:
 
 ```
 (gdb) quit
@@ -298,18 +297,18 @@ Temporary breakpoint 1, 0x00008390 in main ()
 ```
 (gdb) disassemble
 Dump of assembler code for function main:
-=> 0x00008390 :	ldr	r1, [pc, #40]	; 0x83c0 箭头指向**将要**被执行的指令
-   0x00008394 :	mov	r3, #3
-   0x00008398 :	str	r3, [r1]
-   0x0000839c :	ldr	r2, [pc, #32]	; 0x83c4 
-   0x000083a0 :	mov	r3, #4
-   0x000083a4 :	str	r3, [r2]
-   0x000083a8 :	ldr	r1, [pc, #16]	; 0x83c0 
-   0x000083ac :	ldr	r1, [r1]
-   0x000083b0 :	ldr	r2, [pc, #12]	; 0x83c4 
-   0x000083b4 :	ldr	r2, [r2]
-   0x000083b8 :	add	r0, r1, r2
-   0x000083bc :	bx	lr
+=> 0x00008390 : ldr r1, [pc, #40] ; 0x83c0 箭头指向**将要**被执行的指令
+   0x00008394 : mov r3, #3
+   0x00008398 : str r3, [r1]
+   0x0000839c : ldr r2, [pc, #32] ; 0x83c4 
+   0x000083a0 : mov r3, #4
+   0x000083a4 : str r3, [r2]
+   0x000083a8 : ldr r1, [pc, #16] ; 0x83c0 
+   0x000083ac : ldr r1, [r1]
+   0x000083b0 : ldr r2, [pc, #12] ; 0x83c4 
+   0x000083b4 : ldr r2, [r2]
+   0x000083b8 : add r0, r1, r2
+   0x000083bc : bx lr
 End of assembler dump.
 ```
 
@@ -317,10 +316,10 @@ End of assembler dump.
 
 ```
 (gdb) info registers r0 r1 r2 r3
-r0             0x1	1
-r1             0xbefff744	3204446020
-r2             0xbefff74c	3204446028
-r3             0x8390	33680
+r0             0x1 1
+r1             0xbefff744 3204446020
+r2             0xbefff74c 3204446028
+r3             0x8390 33680
 ```
 
 修改寄存器的值：
@@ -331,10 +330,10 @@ r3             0x8390	33680
 (gdb) p $r0 = 2
 $1 = 2                   $1表示执行 p 时求值求出的第一个结果
 (gdb) info registers r0 r1 r2 r3
-r0             0x2	2
-r1             0xbefff744	3204446020
-r2             0xbefff74c	3204446028
-r3             0x8390	33680
+r0             0x2 2
+r1             0xbefff744 3204446020
+r2             0xbefff74c 3204446028
+r3             0x8390 33680
 ```
 
 引用之前输入的值：
@@ -377,7 +376,7 @@ Continuing.
 
 `r15` 在绝大部分情况下充当 `pc` 的作用，寄存器名称 `pc` 就是 `r15` 的别名。
 
-ARMv7 指令集定长，32bit. 
+ARMv7 指令集定长，32bit.
 
 改变 pc 的值的过程称为分支 (Branching). 中文一般也叫跳转，虽然跳转对应的英文应该是 jump.  
 
@@ -402,7 +401,7 @@ end:
 `cpsr`(Current Program Status Register) 寄存器是一个特殊寄存器，保存了程序执行过程中一些条件信息。其保存的四个 flag 分别是：
 
 - `N`: Negative flag: 上一条指令的结果是否为负数
-- `Z`: Zero flag: 上一条指令的结果是否为 0 
+- `Z`: Zero flag: 上一条指令的结果是否为 0
 - `C`: Carry flag: 上一条指令的结果是否需要第 33 个位才能表示 -- 加法溢出或者非借位减法都会使其为真
 - `V`: Overflow flag: 上一条指令的结果是否出现了溢出
 
@@ -420,7 +419,7 @@ end:
 | EQ    | equal                    | `Z == 1`           |
 | NE    | not equal                | `Z == 0`           |
 | GE    | greater or equal than    | `N == V`           |
-| LT    | lower than               | ` N != V`          |
+| LT    | lower than               | `N != V`          |
 | GT    | greather than            | `N == V && Z == 0` |
 | LE    | lower or equal than      | `N != V || Z == 1` |
 | MI    | minus/negative           | `N == 1`           |
@@ -455,7 +454,7 @@ end:
 ## 实现控制流
 
 > 这里描述的实现不是最优的，只是能行的。
-> 
+>
 > 更优的实现 (具有更少跳转语句) 参见龙书
 
 ### if/then/else
@@ -512,13 +511,13 @@ while (B) {
 step:
     C;
 }
-``` 
+```
 
 ## 更紧凑的指令 / 取址模式
 
 ### Indexing modes / 指令参数类型
 
-通过之前的例子，我们可以发现一条 ARM 汇编指令的参数可以是不同的类型 (立即数/寄存器/`[寄存器]`/标号...). 这些类型被称为 indexing mode (这个名字没啥意义，反正你认为是参数类型就是了). 
+通过之前的例子，我们可以发现一条 ARM 汇编指令的参数可以是不同的类型 (立即数/寄存器/`[寄存器]`/标号...). 这些类型被称为 indexing mode (这个名字没啥意义，反正你认为是参数类型就是了).
 
 指令的语法可以总结如下：
 
@@ -669,7 +668,6 @@ loop_end:
 
 > 好怪啊，为什么不把 pre 和 post 的语法反过来
 
-
 ### 访问
 
 要想访问数组的第 i 个元素，我们就直接像上面那样使用 `[a, #i LSL #2]`(`*(a+4*i)`) 就可以了。
@@ -688,7 +686,7 @@ loop_end:
 
 ### 参数传递
 
-首四个参数必须被按顺序存于 `r0`, `r1`, `r2`, `r3`. 
+首四个参数必须被按顺序存于 `r0`, `r1`, `r2`, `r3`.
 
 更多的参数置于栈中 TODO
 
@@ -698,7 +696,7 @@ loop_end:
 - 函数可以自由修改 `r0`, `r1`, `r2`, `r3`
 - 除非被用于传递参数，否则函数不应该依赖于开始执行时 `r0`, `r1`, `r2`, `r3` 内的值
 - 函数内部可以随意修改 `lr`, 但离开函数之后 `sp` 的值总应该是进入函数时 `lr` 的值
-- 函数内部可以随意修改其他寄存器，但离开函数时它们的值应该与进入时相同 
+- 函数内部可以随意修改其他寄存器，但离开函数时它们的值应该与进入时相同
 
 ### 调用函数
 
@@ -710,7 +708,7 @@ loop_end:
 
 直接跳转即可。`bx Rsource1`, 其中 Rsource1 应该保存着进入函数时 `lr` 的值。
 
-> blx 指令在跳转的同时还会将 lr 设为 pc + #4，而函数返回时我们只需要做一个简单跳转就好了，所以直接用 bx 
+> blx 指令在跳转的同时还会将 lr 设为 pc + #4，而函数返回时我们只需要做一个简单跳转就好了，所以直接用 bx
 
 ### 返回值
 
@@ -862,7 +860,6 @@ TODO 详细介绍
 
 GNU as 给我们提供了两个助记符：`push {r4, lr}` 与 `pop {r4, lr}`
 
-
 ## 条件执行
 
 对大部分指令，在它后面加条件后缀 (`eq`, `ne`, ...) 即可：
@@ -874,7 +871,7 @@ addne r1, r1, r1, LSL #1    @ if r2 != 0, r1<-r1+(r1<<1). [r1 <- 3*r1]
 addne r1, r1, #1            @ if r2 != 0, r1 <- r1 + 1
 ```
 
-需要注意的是，一般的指令并不会改变 cpsr 的状态，只有 `cmp` 跟加了后缀 `s` 的指令会改变 cpsr. 
+需要注意的是，一般的指令并不会改变 cpsr 的状态，只有 `cmp` 跟加了后缀 `s` 的指令会改变 cpsr.
 
 ```arm
 /* for (int i = 100 ; i >= 0; i--) */
@@ -894,7 +891,7 @@ loop:
 
 标准没有规定 `fp` 是哪个寄存器，但通行做法是用 `r11`, GNU as 也支持使用 `fp` 作为 `r11` 的简写。
 
-标准对栈帧结构没啥要求，只要你能符合 AAPCS 就可以了。反汇编 `arm-linux-gnueabihf-gcc` 的编译结果可以看到 GCC 对栈帧的处理方式，总结一下就是下面这样子 (对应下面动手实践的星号行的时候的机器状态): 
+标准对栈帧结构没啥要求，只要你能符合 AAPCS 就可以了。反汇编 `arm-linux-gnueabihf-gcc` 的编译结果可以看到 GCC 对栈帧的处理方式，总结一下就是下面这样子 (对应下面动手实践的星号行的时候的机器状态):
 
 ```
          |                                      | Low address
@@ -965,7 +962,7 @@ arm-linux-gnueabihf-gcc -march=armv7-a -O0 -static -g -c arm_stackframe.c -o arm
 arm-linux-gnueabihf-objdump -drwCS arm_stackframe.armv7.O0.o > arm_stackframe.armv7.O0.s
 ```
 
-> 参数解释参见: https://stackoverflow.com/a/1289907
+> 参数解释参见: <https://stackoverflow.com/a/1289907>
 
 ```arm
 
@@ -977,43 +974,43 @@ Disassembly of section .text:
 00000000 <fib>:
 @int fib(int x) {
     /* ==================== 进入函数的处理 ====================== */
-   0:	e92d4810 	push	{r4, fp, lr}            @ 存 r4，因为后面会用
-   4:	e28db008 	add	fp, sp, #8                  @ 让 fp 指向栈里存着的 fp
-   8:	e24dd00c 	sub	sp, sp, #12                 @ 栈空间保留 3 * i32
+   0: e92d4810  push {r4, fp, lr}            @ 存 r4，因为后面会用
+   4: e28db008  add fp, sp, #8                  @ 让 fp 指向栈里存着的 fp
+   8: e24dd00c  sub sp, sp, #12                 @ 栈空间保留 3 * i32
     /* *************************************** 上面的示意图就是现在的状态 *************************************** */   
 
-   c:	e50b0010 	str	r0, [fp, #-16]              @ 根据 AAPCS, r0 里是第一个参数，这里把输入参数放到栈上 (可能是因为开了 O0，默认假设参数都在栈上方便 codegen)
+   c: e50b0010  str r0, [fp, #-16]              @ 根据 AAPCS, r0 里是第一个参数，这里把输入参数放到栈上 (可能是因为开了 O0，默认假设参数都在栈上方便 codegen)
 @    if (x == 1 || x == 2) {
-  10:	e51b3010 	ldr	r3, [fp, #-16]              @ 读取输入参数
-  14:	e3530001 	cmp	r3, #1                      @ 短路比较
-  18:	0a000002 	beq	28 <fib+0x28>
-  1c:	e51b3010 	ldr	r3, [fp, #-16]
-  20:	e3530002 	cmp	r3, #2
-  24:	1a000001 	bne	30 <fib+0x30>
+  10: e51b3010  ldr r3, [fp, #-16]              @ 读取输入参数
+  14: e3530001  cmp r3, #1                      @ 短路比较
+  18: 0a000002  beq 28 <fib+0x28>
+  1c: e51b3010  ldr r3, [fp, #-16]
+  20: e3530002  cmp r3, #2
+  24: 1a000001  bne 30 <fib+0x30>
 @        return 1;
-  28:	e3a03001 	mov	r3, #1                     @ 返回值存 r3 里，跳转到返回
-  2c:	ea00000a 	b	5c <fib+0x5c>
+  28: e3a03001  mov r3, #1                     @ 返回值存 r3 里，跳转到返回
+  2c: ea00000a  b 5c <fib+0x5c>
 @    } else {
 @        return fib(x - 1) + fib(x - 2);
-  30:	e51b3010 	ldr	r3, [fp, #-16]             @ r3 读取第一个，输入参数
-  34:	e2433001 	sub	r3, r3, #1                 @ 减一
-  38:	e1a00003 	mov	r0, r3                     @ 设好参数
-  3c:	ebfffffe 	bl	0 <fib>	3c: R_ARM_CALL	fib @ 调函数
-  40:	e1a04000 	mov	r4, r0                     @ r4 存返回值
+  30: e51b3010  ldr r3, [fp, #-16]             @ r3 读取第一个，输入参数
+  34: e2433001  sub r3, r3, #1                 @ 减一
+  38: e1a00003  mov r0, r3                     @ 设好参数
+  3c: ebfffffe  bl 0 <fib> 3c: R_ARM_CALL fib @ 调函数
+  40: e1a04000  mov r4, r0                     @ r4 存返回值
 
-  44:	e51b3010 	ldr	r3, [fp, #-16]
-  48:	e2433002 	sub	r3, r3, #2
-  4c:	e1a00003 	mov	r0, r3
-  50:	ebfffffe 	bl	0 <fib>	50: R_ARM_CALL	fib
-  54:	e1a03000 	mov	r3, r0                     @ r3 存返回值
+  44: e51b3010  ldr r3, [fp, #-16]
+  48: e2433002  sub r3, r3, #2
+  4c: e1a00003  mov r0, r3
+  50: ebfffffe  bl 0 <fib> 50: R_ARM_CALL fib
+  54: e1a03000  mov r3, r0                     @ r3 存返回值
   
-  58:	e0843003 	add	r3, r4, r3                 @ r3 = r3 + r4
+  58: e0843003  add r3, r4, r3                 @ r3 = r3 + r4
 @    }
 
     /* ==================== 返回的处理 ====================== */
-  5c:	e1a00003 	mov	r0, r3
-  60:	e24bd008 	sub	sp, fp, #8                 @ 局部变量退栈
-  64:	e8bd8810 	pop	{r4, fp, pc}               @ 直接把存着 lr 的内存格子给 pc (相当于 bx lr)
+  5c: e1a00003  mov r0, r3
+  60: e24bd008  sub sp, fp, #8                 @ 局部变量退栈
+  64: e8bd8810  pop {r4, fp, pc}               @ 直接把存着 lr 的内存格子给 pc (相当于 bx lr)
 
 ```
 
@@ -1029,25 +1026,25 @@ Disassembly of section .text:
 00000000 <fib>:
 int fib(int x) {
     if (x == 1 || x == 2) {                    @ 对基本情况直接原地返回，不操作栈
-   0:	e2403001 	sub	r3, r0, #1
-   4:	e3530001 	cmp	r3, #1
-   8:	8a000001 	bhi	14 <fib+0x14>
+   0: e2403001  sub r3, r0, #1
+   4: e3530001  cmp r3, #1
+   8: 8a000001  bhi 14 <fib+0x14>
         return 1;
-   c:	e3a00001 	mov	r0, #1
+   c: e3a00001  mov r0, #1
     } else {
         return fib(x - 1) + fib(x - 2);
     }
-  10:	e12fff1e 	bx	lr
+  10: e12fff1e  bx lr
 int fib(int x) {
-  14:	e92d4070 	push	{r4, r5, r6, lr}
-  18:	e1a04000 	mov	r4, r0                        @ 这下没干存栈里再读回来的蠢事了
+  14: e92d4070  push {r4, r5, r6, lr}
+  18: e1a04000  mov r4, r0                        @ 这下没干存栈里再读回来的蠢事了
         return fib(x - 1) + fib(x - 2);
-  1c:	e1a00003 	mov	r0, r3
-  20:	ebfffffe 	bl	0 <fib>	20: R_ARM_CALL	fib
-  24:	e1a05000 	mov	r5, r0
-  28:	e2440002 	sub	r0, r4, #2
-  2c:	ebfffffe 	bl	0 <fib>	2c: R_ARM_CALL	fib
-  30:	e0850000 	add	r0, r5, r0
-  34:	e8bd8070 	pop	{r4, r5, r6, pc}
+  1c: e1a00003  mov r0, r3
+  20: ebfffffe  bl 0 <fib> 20: R_ARM_CALL fib
+  24: e1a05000  mov r5, r0
+  28: e2440002  sub r0, r4, #2
+  2c: ebfffffe  bl 0 <fib> 2c: R_ARM_CALL fib
+  30: e0850000  add r0, r5, r0
+  34: e8bd8070  pop {r4, r5, r6, pc}
 
 ```
