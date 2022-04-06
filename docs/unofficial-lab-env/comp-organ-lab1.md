@@ -21,22 +21,22 @@
 
 通过以下命令可以安装
 
-```
+```sh
 # Debian
-sudo apt install build-essential git
+sudo apt install build-essential git device-tree-compiler
 # Ubuntu
-sudo apt install build-essential git
+sudo apt install build-essential git device-tree-compiler
 # ArchLinux
-sudo pacman -Sy base-devel git
+sudo pacman -Sy base-devel git dtc
 ```
 
-如果配置环境过程中出现`command not found.`可能是有依赖的工具没装，此时可以利用搜索引擎。
+如果配置环境过程中出现 “command not found.” 可能是有依赖的工具没装，此时可以利用搜索引擎。
 
 ## 安装 riscv64 GCC
 
 常用发行版有预编译的 gcc-riscv64-linux-gnu
 
-```
+```sh
 # Debian
 sudo apt install gcc-riscv64-linux-gnu
 # Ubuntu
@@ -47,9 +47,9 @@ sudo pacman -Sy riscv64-linux-gnu-gcc
 
 ## 安装 spike-pk
 
-在某个你想要的目录下使用 git clone 下载源码
+在某个你想要的目录下使用 `git clone` 下载源码
 
-```
+```sh
 git clone https://github.com/riscv-software-src/riscv-pk
 # 如果连接 github 有问题可用国内镜像
 git clone https://hub.fastgit.xyz/riscv-software-src/riscv-pk
@@ -66,13 +66,13 @@ echo "export PATH=\$PATH:$(pwd)/dist/riscv64-linux-gnu/bin" >> ~/.bashrc # 如�
 
 ## 安装 spike
 
-使用 ArchLinux 的同学可以直接包管理器安装: sudo pacman -Sy spike
+使用 Arch Linux 的同学可以直接包管理器安装：`sudo pacman -Sy spike`
 
 其他发行版需要编译安装
 
 同样在你想要的目录下使用 git 获取源码
 
-```
+```sh
 git clone https://github.com/riscv-software-src/riscv-isa-sim
 # 如果连接 github 有问题可用国内镜像
 git clone https://hub.fastgit.xyz/riscv-software-src/riscv-isa-sim
@@ -87,13 +87,13 @@ make install
 echo "export PATH=\$PATH:$(pwd)/dist/bin" >> ~/.bashrc # 如果使用别的 Shell 自行类比更改
 ```
 
-接下来重启你的 Shell
+接下来重启你的 shell
 
 或使用任何方法使刚才我们对 PATH 环境变量的修改生效
 
 ## 验证安装正常
 
-```
+```sh
 # GCC
 riscv64-linux-gnu-gcc --version
 # 输出类似
@@ -126,9 +126,9 @@ tell me what ELF to load!
 
 ## 实验注意事项
 
-1. 实验中使用`riscv64-unkown-elf-gcc`的地方全部改用`riscv64-linux-gnu-gcc`，两者的区别在于使用的 ABI 不同，也就是 calling-convention 不同，对实验没有影响
-2. `riscv64-linux-gnu-gcc`默认是使用动态链接链接标准库的，因此如果需要在 spike 内运行，需要使用 `riscv64-linux-gnu-gcc -static`来链接最后的可执行文件
-3. 如果`spike pk`报找不到文件错误，可能是因为 spike 没有在`$PATH`中找，简单解决办法是使用`spike $(which pk)`把绝对路径传给 spike
+1. 实验中使用 `riscv64-unknown-elf-gcc` 的地方全部改用 `riscv64-linux-gnu-gcc`，两者的区别在于使用的 ABI 不同，也就是 calling-convention 不同，对实验没有影响
+2. `riscv64-linux-gnu-gcc` 默认是使用动态链接链接标准库的，因此如果需要在 spike 内运行，需要使用 `riscv64-linux-gnu-gcc -static` 来链接最后的可执行文件
+3. 如果 `spike pk` 报找不到文件错误，可能是因为 spike 没有在 PATH 中找，简单解决办法是使用 `spike $(which pk)` 把绝对路径传给 spike
 
 ## 环境卸载清理
 
@@ -137,4 +137,4 @@ tell me what ELF to load!
 卸载 spike，spike-pk 只需两个步骤
 
 - 删除 riscv-pk, riscv-isa-sim 目录
-- 在~/.bashrc 删除安装时插入的"export PATH=..."
+- 在 `~/.bashrc` 删除安装时插入的 `export PATH=...`
