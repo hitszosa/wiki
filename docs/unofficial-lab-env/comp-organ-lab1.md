@@ -66,7 +66,7 @@ echo "export PATH=\$PATH:$(pwd)/dist/riscv64-linux-gnu/bin" >> ~/.bashrc # 如�
 
 ## 安装 spike
 
-使用 Arch Linux 的同学可以直接包管理器安装: `sudo pacman -Sy spike`
+使用 Arch Linux 的同学可以直接包管理器安装：`sudo pacman -Sy spike`
 
 其他发行版需要编译安装
 
