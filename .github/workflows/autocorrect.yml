@@ -27,4 +27,5 @@ jobs:
         uses: actions/checkout@v2
         
       - name: AutoCorrect check
-        uses: huacnlee/autocorrect-action@main
+        uses: docker://huacnlee/autocorrect:latest
+        run: autocorrect --lint .
