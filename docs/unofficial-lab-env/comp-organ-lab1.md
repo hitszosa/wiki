@@ -23,11 +23,11 @@
 
 ```sh
 # Debian
-sudo apt install build-essential git
+sudo apt install build-essential git device-tree-compiler
 # Ubuntu
-sudo apt install build-essential git
+sudo apt install build-essential git device-tree-compiler
 # ArchLinux
-sudo pacman -Sy base-devel git
+sudo pacman -Sy base-devel git dtc
 ```
 
 如果配置环境过程中出现 “command not found.” 可能是有依赖的工具没装，此时可以利用搜索引擎。
@@ -126,7 +126,7 @@ tell me what ELF to load!
 
 ## 实验注意事项
 
-1. 实验中使用 `riscv64-unkown-elf-gcc` 的地方全部改用 `riscv64-linux-gnu-gcc`，两者的区别在于使用的 ABI 不同，也就是 calling-convention 不同，对实验没有影响
+1. 实验中使用 `riscv64-unknown-elf-gcc` 的地方全部改用 `riscv64-linux-gnu-gcc`，两者的区别在于使用的 ABI 不同，也就是 calling-convention 不同，对实验没有影响
 2. `riscv64-linux-gnu-gcc` 默认是使用动态链接链接标准库的，因此如果需要在 spike 内运行，需要使用 `riscv64-linux-gnu-gcc -static` 来链接最后的可执行文件
 3. 如果 `spike pk` 报找不到文件错误，可能是因为 spike 没有在 PATH 中找，简单解决办法是使用 `spike $(which pk)` 把绝对路径传给 spike
 
