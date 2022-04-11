@@ -19,7 +19,7 @@
 
 ### 主题
 
-选择了一款还算可以的主题 `Qogir`:
+选择了一款还算可以的主题 `Qogir`：
 
 - [Qogir Theme](https://github.com/vinceliuice/Qogir-theme)
 - [Qogir Icons](https://github.com/vinceliuice/Qogir-icon-theme)
@@ -34,7 +34,7 @@
 
 ### 本地化支持
 
-系统语言默认为中文. VSCode 安装了中文插件。系统内含基本的中文字体以防止乱码。
+系统语言默认为中文。VS Code 安装了中文插件。系统内含基本的中文字体以防止乱码。
 
 时区设置为东八区。面板右上角时钟格式与文件管理器时间格式设置为适合国人的形式。
 
@@ -50,11 +50,11 @@
 
 #### GUI
 
-添加了 VSCode 作为系统编辑器，Chromium 作为系统浏览器。
+添加了 VS Code 作为系统编辑器，Chromium 作为系统浏览器。
 
 移除了自带的 Firefox 浏览器以及 LibreOffice 办公套件。
 
-安装了 xrdp 以支持基于 rdp 协议的远程桌面访问。
+安装了 Xrdp 以支持基于 rdp 协议的远程桌面访问。
 
 对 VS Code 进行了基本的配置与美化，详见设置。
 
@@ -69,11 +69,11 @@
 
 安装好了现代版本的 Docker 以及 docker-compose 以便于环境部署。配置好了对应的 systemd 启动以及当前用户免 root 执行。源已被修改为道云源以加快国内访问速度。
 
-安装了实用解压工具 atool，版本管理工具 git，默认构建工具链 build-essential (内含 C/C++ 语言编译器 gcc 与构建工具 make).
+安装了实用解压工具 atool，版本管理工具 git，默认构建工具链 build-essential（内含 C/C++ 语言编译器 gcc 与构建工具 make）。
 
 安装了 `python-is-python3` 以将 python3 设置为默认 python 解释器。安装了 `pip` 并将源修改为清华源以加快装包速度。将 `~/.local/bin` 加入到 `PATH` 内以支持调用 pip 安装的包。
 
-启动了 SSH 服务器，允许 X11 forward.
+启动了 SSH 服务器，允许 X11 forward。
 
 - [Docker 指南](https://yeasy.gitbook.io/docker_practice/introduction/what)
 - [Python 文档](https://docs.python.org/zh-cn/3.9/)
@@ -82,6 +82,6 @@
 
 ### 存在问题 & TODO
 
-Linux 一贯地对高分屏 (hidpi) 支持不佳，可能在小的高分辨率屏幕上有的字会看不清楚。在测试者的 15.6 寸 2k 屏幕上，除了输入法之外的 UI 大小一般是适合人眼的。
+Linux 一贯地对高分屏 （HiDPI） 支持不佳，可能在小的高分辨率屏幕上有的字会看不清楚。在测试者的 15.6 寸 2k 屏幕上，除了输入法之外的 UI 大小一般是适合人眼的。
 
 一套基于 Docker 与 VSCode 的 Container Remote 插件的学校各类实验环境配置指南 + 工作流正在计划中。
