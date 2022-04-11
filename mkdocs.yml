@@ -27,6 +27,9 @@ extra:
 nav:
   - 主页: index.md
   - 关于我们: about.md
+  - Customized Debian:
+      - 基本说明与变更日志: customized-debian/principle-and-changelogs.md
+      - 快速上手: customized-debian/quick-start.md
   - Linux 使用技巧:
       - 另类好用的 Linux 命令行工具: linux-tricks/handy-cli-apps.md
   - 初学者指南:
