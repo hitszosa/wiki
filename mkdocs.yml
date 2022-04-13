@@ -39,6 +39,11 @@ nav:
       - VirtualBox + Ubuntu 安装教程: guide-for-beginner/vbox-ubuntu-guide.md
   - 科普:
       - 编译，静态链接，可执行文件的生成: popular-science/compile.md
+      - 程序的机器级表示:
+          - 前言: popular-science/process-in-machine/process-in-machine-0.md
+          - 指令集与存储体系: popular-science/process-in-machine/process-in-machine-1.md
+          - RISC-V的常见指令: popular-science/process-in-machine/process-in-machine-2.md
+          - 运行时栈与函数: popular-science/process-in-machine/process-in-machine-3.md
       - 域名与 HTTPS: popular-science/domain-and-https.md
   - 编译原理:
       - LLVM Kaleidoscope 教程翻译:
