@@ -34,11 +34,11 @@
 
 下面是一个返回值为 `2` 的简单的汇编程序：
 
-```arm
+```armasm
 /* -- first.s */
 /* 这是注释 */
-.global main   /* 一个程序的入口 (entry) 必须是全局的 (global) */
-.func main     /* 标记 label ’main’ 为一个函数  */
+.global main     /* 一个程序的入口 (entry) 必须是全局的 (global) */
+.func main       /* 标记 label ’main’ 为一个函数  */
 
 main:            /* 这是 label main */
     mov r0, #2   /* 将字面量 2 放入寄存器 r0 中 */
@@ -47,21 +47,21 @@ main:            /* 这是 label main */
 
 简单地将其编译，然后链接为可执行程序：
 
-```bash
+```sh
 $ as -g -mfpu=vfpv2 -o first.o first.s
 $ gcc -o first first.o
 ```
 
 执行它并查看其返回值：
 
-```bash
+```sh
 $ ./first ; echo $?
 2
 ```
 
 如果懒得每次都打命令，可以写一个简单的脚本：
 
-```bash
+```sh
 #!/bin/bash
 as -g -mfpu=vfpv2 -o $1.o $1.s
 gcc -o $1 $1.o
@@ -73,13 +73,13 @@ rm $1.o
 
 注释不可以嵌套。
 
-`.`开头的是给 GNU Assembler (简称 gas 或 as) 的指令 (directive), 不是 ARM 汇编. (类比 C 的宏)
+`.`开头的是给 GNU Assembler (简称 GAS) 的汇编器指令 (directive), 不是 ARM 汇编指令. (类比 C 的宏)
 
-`global` 跟 linkage 有关，是给链接器看的; 由 gcc 负责调用链接器，就不用我们手动指定库了。
+`global` 跟 linkage 有关，是给链接器看的; 由 GCC 负责调用链接器，就不用我们手动指定库了。
 
 每一行 ARM 汇编都长这样：
 
-```
+```armasm
     标号：指令 参数 注释
 ```
 
@@ -87,7 +87,7 @@ rm $1.o
 
 它们全都是可选的，不一定都会出现。特别地，只有单独标号的一行将标号绑定到下一行，这样子就可以将多个标号绑定到同一行上：
 
-```arm
+```armasm
 A:  mov r0, #1 /* 标号 A 绑定到这条指令 */
 B: 
     mov r0, #2 /* 标号 B 绑定到这条指令 */
@@ -121,7 +121,7 @@ TODO
 
 下面的例子展示了寄存器的基本用法：
 
-```arm
+```armasm
 /* -- sum01.s */
 .global main
 
@@ -135,11 +135,11 @@ main:
 
 ## 内存
 
-对 ARM，所有指令的参数必须是立即数或者是寄存器，而不是像 x86 一样还可以直接塞内存地址。用来将内存特定位置的值读入寄存器的指令是 `ldr` (load register), 用来写回去的是 `str` (store register).
+对 ARM（更广义的说，对于大多数 RISC 指令集），所有指令的参数必须是立即数或者是寄存器，而不是像 x86 一样可以直接塞内存地址。用来将内存特定位置的值读入寄存器的指令是 `ldr` (load register), 用来写回去的是 `str` (store register).
 
 ### 地址
 
-地址是内存里特定位置的名字。在 ARMv7，地址是一个 32 位长的整数，标识内存中每一个字节。对汇编程序而言，内存是扁平的。
+地址是内存里特定位置的名字。在 ARMv7，地址是一个 32 位长的整数（即 1 word），标识内存中每一个字节。对汇编程序而言，内存是扁平的。
 
 当从内存读/存数据时，地址的计算方式 (即取址模式，addressing mode) 有很多种，本章只介绍一种：通过寄存器取址。
 
@@ -147,19 +147,19 @@ main:
 
 我们可以使用汇编器指令来申请大块内存：
 
-```arm
+```armasm
 .balign 4       @ 对齐到 4 字节，Byte ALIGN
 myvar1:         @ 标号，接下来就可以通过该标号获得数据的地址
     .word 3     @ 留出 1 个 "word" 的空白 (32bit) 并将其设为补码 3
 ```
 
-程序的数据一般会跟代码分开放在内存的不同区域 (节，section). 使用 `.data` 让汇编器把下面的东西放在数据节 (data section) 里，使用 `.text` 让汇编器把下面的东西放在代码节 (text section) 里。
+程序的数据一般会跟代码分开放在内存的不同区域 (节，section). 使用 `.data` 让汇编器把下面的东西放在数据节 (data section) 里，使用 `.text` 让汇编器把下面的东西放在代码节 (text section) 里。（在某些情况下，并不需要区分代码节和数据节）
 
 ### Load
 
 下面的程序定义两个内存中的变量 `myvar1` 和 `myvar2`, 分别赋予其初始值 3 和 4，然后取其值，相加，返回作为错误码。
 
-```arm
+```armasm
 /* -- load01.s */
 
 /* -- Data section */
@@ -204,7 +204,7 @@ addr_of_myvar2 : .word myvar2
 
 上面的 "地址" 打了引号：因为重定位 (relocation) 的缘故，它并不是一个真的地址，而是一个待填的 "坑"; 这个坑将会在链接时被链接器补上。
 
-要把寄存器里的值当做地址传给 ldr，我们只要用中括号把它括起来就可以了。
+要把寄存器里的值当做地址传给 `ldr` 指令，我们只要用中括号把它括起来就可以了。（中括号即为 “取地址” 操作）
 
 但是这样子很烦人，所以汇编器可以帮我们自动处理不同节的重定位：我们不需要像上面一样补上最后两行然后跳两次 -- 我们可以直接使用 `=<标号>` 的形式来得到不同节里的标号值。具体使用可见下节
 
@@ -232,12 +232,12 @@ myvar2:
 .balign 4
 .global main
 main:
-+    ldr r1, =myvar1        /* r1 ← &myvar1 */
++   ldr r1, =myvar1        /* r1 ← &myvar1 */
     mov r3, #3             /* r3 ← 3 */
-+    str r3, [r1]           /* *r1 ← r3 */
-+    ldr r2, =myvar2        /* r2 ← &myvar2 */
++   str r3, [r1]           /* *r1 ← r3 */
++   ldr r2, =myvar2        /* r2 ← &myvar2 */
     mov r3, #4             /* r3 ← 4 */
-+    str r3, [r2]           /*  *r2 ← r3 */ 
++   str r3, [r2]           /*  *r2 ← r3 */ 
 
     /* 跟之前一样 */
     ldr r1, =myvar2        /* r1 ← &myvar1 */
@@ -252,7 +252,7 @@ main:
 
 ## GDB
 
-> If you develop C/C++ in Linux and never used gdb, shame on you.
+> If you develop C/C++ in GNU/Linux and never used gdb, shame on you.
 
 本章介绍如何使用 GDB 方便地调试汇编程序。
 
@@ -275,7 +275,7 @@ Reading symbols from /home/roger/asm/chapter03/store01...(no debugging symbols f
 
 现在我们进入了 GDB 的交互模式。
 
-退出 GDB: 
+退出 GDB（缩写命令为 `q`）: 
 
 ```
 (gdb) quit
@@ -313,7 +313,7 @@ Dump of assembler code for function main:
 End of assembler dump.
 ```
 
-查看寄存器：
+查看寄存器（缩写命令为 `i r`）：
 
 ```
 (gdb) info registers r0 r1 r2 r3
@@ -344,7 +344,7 @@ r3             0x8390	33680
 $2 = 2
 ```
 
-执行下一条指令：
+执行下一条指令（缩写命令为 `si`）：
 
 > stepi 表示 step instruction
 
@@ -365,7 +365,7 @@ $3 = ( *) 0x10564
 $4 = 0
 ```
 
-执行到下一个标号：
+执行到下一个标号（缩写命令为 `c`）：
 
 ```
 (gdb) continue
@@ -379,13 +379,13 @@ Continuing.
 
 ARMv7 指令集定长，32bit. 
 
-改变 pc 的值的过程称为分支 (Branching). 中文一般也叫跳转，虽然跳转对应的英文应该是 jump.  
+改变 `pc` 的值的过程称为分支 (Branching). 中文一般也叫跳转，虽然跳转对应的英文应该是 jump.（事实上，分支和跳转背后的设计思想有别）
 
 ### 无条件跳转
 
 单独使用 `b <label>` 指令来进行无条件跳转。
 
-```arm
+```armasm
 /* -- branch01.s */
 .text
 .global main
@@ -434,7 +434,7 @@ end:
 
 上面的这些缩写可以拿来跟 `b` 指令组合变成 `bXX` 指令，例如下面这个程序：
 
-```arm
+```armasm
 /* -- compare01.s */
 .text
 .global main
@@ -460,7 +460,7 @@ end:
 
 ### if/then/else
 
-```arm
+```armasm
 if_eval: 
     /* 求值条件，并根据条件生成 cmp */
 bXX else /* 合适的 bXX 用于跳转 */
@@ -476,7 +476,7 @@ end_of_if:
 
 ### while
 
-```arm
+```armasm
 while_condition: 
     /* 生成条件 E */
     bXX end_of_loop  /* 如果 E 是假的，跳转 */
@@ -522,7 +522,7 @@ step:
 
 指令的语法可以总结如下：
 
-```
+```armasm
 instruction Rdest, Rsource1, source2
 ```
 
@@ -541,7 +541,7 @@ instruction Rdest, Rsource1, source2
 
 举几个例子：
 
-```arm
+```armasm
 mov r1, r2, LSL #1      @ r1 <- (r2*2)
 mov r1, r2, LSL #2      @ r1 <- (r2*4)
 mov r1, r3, ASR #3      @ r1 <- (r3/8)
@@ -551,7 +551,7 @@ mov r1, r2, LSL r3      @ r1 <- (r2*16)
 
 更复杂的乘法：
 
-```arm
+```armasm
 add r1, r2, r2, LSL #1      @ r1 <- r2 + (r2*2) equivalent to r1 <- r1*3
 add r1, r2, r2, LSL #2      @ r1 <- r2 + (r2*4) equivalent to r1 <- r1*5
 sub r1, r2, r2, LSL #3      /* r1 <- r2 - (r2*8) equivalent to r1 <- r2*(-7) */
@@ -577,7 +577,7 @@ struct my_struct {
 char s[] = "This is a string";
 ```
 
-```arm
+```armasm
 /* -- array01.s */
 .data
 a:
@@ -601,7 +601,7 @@ S:
 
 例子：
 
-```arm
+```armasm
 str r2, [r1, #+12]          @ *(r1 + 12) <- r2
 str r2, [r1, +r3]           @ *(r1 + r3) <- r2
 str r2, [r1, +r2, LSL #2]   @ *(r1 + r2*4) <- r2
@@ -619,7 +619,7 @@ for (int i = 0; i < n; i++) {
 
 如果正常地按照字面意思来翻译的话，我们会翻译成这样：
 
-```arm
+```armasm
 /* 假设 r0 存了 a 的首地址，r1 存了 n 的值 */
 /* 用 r2 来当 i */
 
@@ -637,7 +637,7 @@ loop_end:
 
 但是仔细想想，我们并不需要每一次访问元素都算一次地址，我们可能可以这样实现：
 
-```arm
+```armasm
 /* 假设 r0 一开始存了 a 的首地址，r1 存了 n 的值 */
 
 mov r2, #0
@@ -718,7 +718,7 @@ loop_end:
 
 ### 实例: Hello World (调用 C 标准库函数)
 
-```arm
+```armasm
 /* -- hello01.s */
 .data
 
@@ -763,7 +763,7 @@ address_of_return: .word return
 
 入栈/出栈理论上的操作如下：
 
-```arm
+```armasm
 sub sp, sp, #8  /* sp ← sp - 8. 扩大当前栈帧 8 byte */
 str lr, [sp]    /* *sp ← lr */
 ... // 函数的其他代码 ...
@@ -775,7 +775,7 @@ bx lr
 
 使用索引模式，代码简化如下：
 
-```arm
+```armasm
 str lr, [sp, #-8]!  /* preindex: sp ← sp - 8; *sp ← lr */
 ... // Code of the function
 ldr lr, [sp], #+8   /* postindex; lr ← *sp; sp ← sp + 8 */
@@ -786,7 +786,7 @@ bx lr
 
 下面的程序实现了阶乘：
 
-```arm
+```armasm
 /* -- factorial01.s */
 .data
 
@@ -867,7 +867,7 @@ GNU as 给我们提供了两个助记符：`push {r4, lr}` 与 `pop {r4, lr}`
 
 对大部分指令，在它后面加条件后缀 (`eq`, `ne`, ...) 即可：
 
-```arm
+```armasm
 mp r2, #0                   @ Compare r2 and 0
 moveq r1, r1, ASR #1        @ if r2 == 0, r1 <- r1 >> 1. [r1 <- r1/2]
 addne r1, r1, r1, LSL #1    @ if r2 != 0, r1<-r1+(r1<<1). [r1 <- 3*r1]
@@ -876,7 +876,7 @@ addne r1, r1, #1            @ if r2 != 0, r1 <- r1 + 1
 
 需要注意的是，一般的指令并不会改变 cpsr 的状态，只有 `cmp` 跟加了后缀 `s` 的指令会改变 cpsr. 
 
-```arm
+```armasm
 /* for (int i = 100 ; i >= 0; i--) */
 mov r1, #100
 loop:
@@ -967,7 +967,7 @@ arm-linux-gnueabihf-objdump -drwCS arm_stackframe.armv7.O0.o > arm_stackframe.ar
 
 > 参数解释参见: https://stackoverflow.com/a/1289907
 
-```arm
+```armasm
 
 arm_stackframe.armv7.O0.o:     file format elf32-littlearm
 
@@ -1019,7 +1019,7 @@ Disassembly of section .text:
 
 顺带一提 `O1` 优化的版本如下：
 
-```arm
+```armasm
 
 arm_stackframe.armv7.O1.o:     file format elf32-littlearm
 
