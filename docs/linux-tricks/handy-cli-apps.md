@@ -41,6 +41,21 @@ Too long; didn't read. ~~即 “太长不看”~~ 废话不多说，就是这款
 - 快速入门：同样地，使用 `brew install fasd` 命令即可安装。安装后可能需要配置 rc 文件（如 zsh 为 `.zshrc`），详细配置参考官方文档。
 - 相关中文教程：[https://www.howtoing.com/fasd-quick-access-to-linux-files-and-directories](https://www.howtoing.com/fasd-quick-access-to-linux-files-and-directories)
 
+## sfk [![sfk homebrew version](https://img.shields.io/homebrew/v/sfk?style=flat-square)
+
+### 简介
+
+!!! warning
+这不是一个自由软件，详情参见：[FOSS](https://itsfoss.com/what-is-foss/)。
+
+违背 UNIX 哲学的 “瑞士军刀”，堪比 “要你命 3000”，但是确实好用。它可以批量转换文件换行符，集成并改进了大多数 GNU/Linux 的工具，快速启动一个简易的服务器，还可以转换 Word 文档……同时，还配套了很贴心的教程与资料——“只有想不到，没有做不到”。
+
+软件有点 Old School，不喜勿喷。
+
+### 资源
+
+- 官方网站：[http://stahlworks.com/dev/swiss-file-knife.html](http://stahlworks.com/dev/swiss-file-knife.html)
+
 ## 附录
 
 暂时就想到这么多，到时候再添加吧。
