@@ -65,7 +65,7 @@ RISC-V 中的运算指令包括算术运算，逻辑运算，移位运算。运�
 
 前面讲到，想要对主存中的数据进行运算，需要先将其取至寄存器，数据传输指令实现了这个目的。
 
-现代计算机以 **字节** (byte，1byte=8bits) 为基本单位，而内存本身可被视作由 byte 组成的一维数组，地址从 0 开始。**字** (word) 则是存取数据的另一个单位，在 RISC-V 中 1word=4Bytes=32bits，在其他体系结构中可能会发生变化。
+现代计算机以 **字节** (byte，1 byte=8 bit) 为基本单位，而内存本身可被视作由 byte 组成的一维数组，地址从 0 开始。**字** (word) 则是存取数据的另一个单位，在 RISC-V 中 1 word=4 byte=32 bit，在其他体系结构中可能会发生变化。
 
 + `lb rd,offset(rs1)`：从地址为寄存器 rs1 的值加 offset 的主存中读一个字节，符号扩展后存入 rd
 + `lh rd,offset(rs1)`：从地址为寄存器 rs1 的值加 offset 的主存中读半个字，符号扩展后存入 rd
@@ -91,7 +91,7 @@ A[10] = A[3] + a;
 假设数组 A 首地址在寄存器 x3，a 在 x2：
 
 ```
-ld x10,24(x3)       # long long 占 64bits=8bytes，A[3] 的地址为 A[0]+3*8
+ld x10,24(x3)       # long long 占 64 bit =8 byte，A[3] 的地址为 A[0]+3*8
 add x10,x2,x10
 sd x10,80(x3)
 ```
@@ -99,21 +99,23 @@ sd x10,80(x3)
 # 比较指令
 
 有符号数：
+
 + `slt rd,rs1,rs2`：若 rs1 的值小于 rs2 的值，rd 置为 1，否则置为 0
 + `slti rd,rs1,imm`：若 rs1 的值小于立即数 imm ，rd 置为 1，否则置为 0
 
 无符号数：
+
 + `sltu rd,rs1,rs2`：若 rs1 的值小于 rs2 的值，rd 置为 1，否则置为 0
 + `sltiu rd,rs1,imm`：若 rs1 的值小于立即数 imm ，rd 置为 1，否则置为 0
 
 # 条件分支指令
 
-这部分用来实现控制流，即 if 语句，循环等。汇编中没有 C 等高级语言中的`{}`语句块，而是用`Lable:`的形式，下面会举例说明。
+这部分用来实现控制流，即 if 语句，循环等。汇编中没有 C 等高级语言中的`{}`语句块，而是用`Label:`的形式，下面会举例说明。
 
-+ `beq rs1,rs2,lable`：若 rs1 的值等于 rs2 的值，程序跳转到 lable 处继续执行
-+ `bne rs1,rs2,lable`：若 rs1 的值不等于 rs2 的值，程序跳转到 lable 处继续执行
-+ `blt rs1,rs2,lable`：若 rs1 的值小于 rs2 的值，程序跳转到 lable 处继续执行
-+ `bge rs1,rs2,lable`：若 rs1 的值大于等于 rs2 的值，程序跳转到 lable 处继续执行
++ `beq rs1,rs2,label`：若 rs1 的值等于 rs2 的值，程序跳转到 label 处继续执行
++ `bne rs1,rs2,label`：若 rs1 的值不等于 rs2 的值，程序跳转到 label 处继续执行
++ `blt rs1,rs2,label`：若 rs1 的值小于 rs2 的值，程序跳转到 label 处继续执行
++ `bge rs1,rs2,label`：若 rs1 的值大于等于 rs2 的值，程序跳转到 label 处继续执行
 
 `blt`和`bge`也有无符号版本`bltu`，`bgeu`。举例：
 
@@ -134,7 +136,7 @@ Loop:
 
 # 无条件跳转指令
 
-+ `j label`：程序直接跳转到 lable 处继续执行
++ `j label`：程序直接跳转到 label 处继续执行
 + `jal rd,label`：用于调用函数，把下一条指令的地址保存在 rd 中（通常用 x1），然后跳转到 label 处继续执行
 + `jalr rd,offset(rs)`：可用于函数返回，把下一条指令的地址存到 rd 中，然后跳转到 rs+offset 地址处的指令继续执行。若 rd=x0 就是单纯的跳转（x0 不能被修改）
 
