@@ -135,11 +135,11 @@ main:
 
 ## 内存
 
-对 ARM（更广义的说，对于大多数 RISC 指令集），所有指令的参数必须是立即数或者是寄存器，而不是像 x86 一样还可以直接塞内存地址。用来将内存特定位置的值读入寄存器的指令是 `ldr` (load register), 用来写回去的是 `str` (store register).
+对 ARM（更广义的说，对于大多数 RISC 指令集），所有指令的参数必须是立即数或者是寄存器，而不是像 x86 一样可以直接塞内存地址。用来将内存特定位置的值读入寄存器的指令是 `ldr` (load register), 用来写回去的是 `str` (store register).
 
 ### 地址
 
-地址是内存里特定位置的名字。在 ARMv7，地址是一个 32 位长的整数，标识内存中每一个字节。对汇编程序而言，内存是扁平的。
+地址是内存里特定位置的名字。在 ARMv7，地址是一个 32 位长的整数（即 1 word），标识内存中每一个字节。对汇编程序而言，内存是扁平的。
 
 当从内存读/存数据时，地址的计算方式 (即取址模式，addressing mode) 有很多种，本章只介绍一种：通过寄存器取址。
 
@@ -153,7 +153,7 @@ myvar1:         @ 标号，接下来就可以通过该标号获得数据的地�
     .word 3     @ 留出 1 个 "word" 的空白 (32bit) 并将其设为补码 3
 ```
 
-程序的数据一般会跟代码分开放在内存的不同区域 (节，section). 使用 `.data` 让汇编器把下面的东西放在数据节 (data section) 里，使用 `.text` 让汇编器把下面的东西放在代码节 (text section) 里。
+程序的数据一般会跟代码分开放在内存的不同区域 (节，section). 使用 `.data` 让汇编器把下面的东西放在数据节 (data section) 里，使用 `.text` 让汇编器把下面的东西放在代码节 (text section) 里。（在某些情况下，并不需要区分代码节和数据节）
 
 ### Load
 
@@ -204,7 +204,7 @@ addr_of_myvar2 : .word myvar2
 
 上面的 "地址" 打了引号：因为重定位 (relocation) 的缘故，它并不是一个真的地址，而是一个待填的 "坑"; 这个坑将会在链接时被链接器补上。
 
-要把寄存器里的值当做地址传给 ldr，我们只要用中括号把它括起来就可以了。
+要把寄存器里的值当做地址传给 `ldr` 指令，我们只要用中括号把它括起来就可以了。（中括号即为 “取地址” 操作）
 
 但是这样子很烦人，所以汇编器可以帮我们自动处理不同节的重定位：我们不需要像上面一样补上最后两行然后跳两次 -- 我们可以直接使用 `=<标号>` 的形式来得到不同节里的标号值。具体使用可见下节
 
@@ -232,12 +232,12 @@ myvar2:
 .balign 4
 .global main
 main:
-+    ldr r1, =myvar1        /* r1 ← &myvar1 */
++   ldr r1, =myvar1        /* r1 ← &myvar1 */
     mov r3, #3             /* r3 ← 3 */
-+    str r3, [r1]           /* *r1 ← r3 */
-+    ldr r2, =myvar2        /* r2 ← &myvar2 */
++   str r3, [r1]           /* *r1 ← r3 */
++   ldr r2, =myvar2        /* r2 ← &myvar2 */
     mov r3, #4             /* r3 ← 4 */
-+    str r3, [r2]           /*  *r2 ← r3 */ 
++   str r3, [r2]           /*  *r2 ← r3 */ 
 
     /* 跟之前一样 */
     ldr r1, =myvar2        /* r1 ← &myvar1 */
@@ -252,7 +252,7 @@ main:
 
 ## GDB
 
-> If you develop C/C++ in Linux and never used gdb, shame on you.
+> If you develop C/C++ in GNU/Linux and never used gdb, shame on you.
 
 本章介绍如何使用 GDB 方便地调试汇编程序。
 
@@ -275,7 +275,7 @@ Reading symbols from /home/roger/asm/chapter03/store01...(no debugging symbols f
 
 现在我们进入了 GDB 的交互模式。
 
-退出 GDB: 
+退出 GDB（缩写命令为 `q`）: 
 
 ```
 (gdb) quit
@@ -313,7 +313,7 @@ Dump of assembler code for function main:
 End of assembler dump.
 ```
 
-查看寄存器：
+查看寄存器（缩写命令为 `i r`）：
 
 ```
 (gdb) info registers r0 r1 r2 r3
@@ -344,7 +344,7 @@ r3             0x8390	33680
 $2 = 2
 ```
 
-执行下一条指令：
+执行下一条指令（缩写命令为 `si`）：
 
 > stepi 表示 step instruction
 
@@ -365,7 +365,7 @@ $3 = ( *) 0x10564
 $4 = 0
 ```
 
-执行到下一个标号：
+执行到下一个标号（缩写命令为 `c`）：
 
 ```
 (gdb) continue
@@ -379,7 +379,7 @@ Continuing.
 
 ARMv7 指令集定长，32bit. 
 
-改变 pc 的值的过程称为分支 (Branching). 中文一般也叫跳转，虽然跳转对应的英文应该是 jump.  
+改变 `pc` 的值的过程称为分支 (Branching). 中文一般也叫跳转，虽然跳转对应的英文应该是 jump.（事实上，分支和跳转背后的设计思想有别）
 
 ### 无条件跳转
 
@@ -522,7 +522,7 @@ step:
 
 指令的语法可以总结如下：
 
-```
+```assembly
 instruction Rdest, Rsource1, source2
 ```
 
