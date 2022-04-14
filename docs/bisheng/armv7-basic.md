@@ -34,7 +34,7 @@
 
 下面是一个返回值为 `2` 的简单的汇编程序：
 
-```assembly
+```armasm
 /* -- first.s */
 /* 这是注释 */
 .global main     /* 一个程序的入口 (entry) 必须是全局的 (global) */
@@ -79,7 +79,7 @@ rm $1.o
 
 每一行 ARM 汇编都长这样：
 
-```assembly
+```armasm
     标号：指令 参数 注释
 ```
 
@@ -87,7 +87,7 @@ rm $1.o
 
 它们全都是可选的，不一定都会出现。特别地，只有单独标号的一行将标号绑定到下一行，这样子就可以将多个标号绑定到同一行上：
 
-```assembly
+```armasm
 A:  mov r0, #1 /* 标号 A 绑定到这条指令 */
 B: 
     mov r0, #2 /* 标号 B 绑定到这条指令 */
@@ -121,7 +121,7 @@ TODO
 
 下面的例子展示了寄存器的基本用法：
 
-```assembly
+```armasm
 /* -- sum01.s */
 .global main
 
@@ -147,7 +147,7 @@ main:
 
 我们可以使用汇编器指令来申请大块内存：
 
-```assembly
+```armasm
 .balign 4       @ 对齐到 4 字节，Byte ALIGN
 myvar1:         @ 标号，接下来就可以通过该标号获得数据的地址
     .word 3     @ 留出 1 个 "word" 的空白 (32bit) 并将其设为补码 3
@@ -159,7 +159,7 @@ myvar1:         @ 标号，接下来就可以通过该标号获得数据的地�
 
 下面的程序定义两个内存中的变量 `myvar1` 和 `myvar2`, 分别赋予其初始值 3 和 4，然后取其值，相加，返回作为错误码。
 
-```assembly
+```armasm
 /* -- load01.s */
 
 /* -- Data section */
@@ -385,7 +385,7 @@ ARMv7 指令集定长，32bit.
 
 单独使用 `b <label>` 指令来进行无条件跳转。
 
-```assembly
+```armasm
 /* -- branch01.s */
 .text
 .global main
@@ -434,7 +434,7 @@ end:
 
 上面的这些缩写可以拿来跟 `b` 指令组合变成 `bXX` 指令，例如下面这个程序：
 
-```assembly
+```armasm
 /* -- compare01.s */
 .text
 .global main
@@ -460,7 +460,7 @@ end:
 
 ### if/then/else
 
-```assembly
+```armasm
 if_eval: 
     /* 求值条件，并根据条件生成 cmp */
 bXX else /* 合适的 bXX 用于跳转 */
@@ -476,7 +476,7 @@ end_of_if:
 
 ### while
 
-```assembly
+```armasm
 while_condition: 
     /* 生成条件 E */
     bXX end_of_loop  /* 如果 E 是假的，跳转 */
@@ -522,7 +522,7 @@ step:
 
 指令的语法可以总结如下：
 
-```assembly
+```armasm
 instruction Rdest, Rsource1, source2
 ```
 
@@ -541,7 +541,7 @@ instruction Rdest, Rsource1, source2
 
 举几个例子：
 
-```assembly
+```armasm
 mov r1, r2, LSL #1      @ r1 <- (r2*2)
 mov r1, r2, LSL #2      @ r1 <- (r2*4)
 mov r1, r3, ASR #3      @ r1 <- (r3/8)
@@ -551,7 +551,7 @@ mov r1, r2, LSL r3      @ r1 <- (r2*16)
 
 更复杂的乘法：
 
-```assembly
+```armasm
 add r1, r2, r2, LSL #1      @ r1 <- r2 + (r2*2) equivalent to r1 <- r1*3
 add r1, r2, r2, LSL #2      @ r1 <- r2 + (r2*4) equivalent to r1 <- r1*5
 sub r1, r2, r2, LSL #3      /* r1 <- r2 - (r2*8) equivalent to r1 <- r2*(-7) */
@@ -577,7 +577,7 @@ struct my_struct {
 char s[] = "This is a string";
 ```
 
-```assembly
+```armasm
 /* -- array01.s */
 .data
 a:
@@ -601,7 +601,7 @@ S:
 
 例子：
 
-```assembly
+```armasm
 str r2, [r1, #+12]          @ *(r1 + 12) <- r2
 str r2, [r1, +r3]           @ *(r1 + r3) <- r2
 str r2, [r1, +r2, LSL #2]   @ *(r1 + r2*4) <- r2
@@ -619,7 +619,7 @@ for (int i = 0; i < n; i++) {
 
 如果正常地按照字面意思来翻译的话，我们会翻译成这样：
 
-```assembly
+```armasm
 /* 假设 r0 存了 a 的首地址，r1 存了 n 的值 */
 /* 用 r2 来当 i */
 
@@ -637,7 +637,7 @@ loop_end:
 
 但是仔细想想，我们并不需要每一次访问元素都算一次地址，我们可能可以这样实现：
 
-```assembly
+```armasm
 /* 假设 r0 一开始存了 a 的首地址，r1 存了 n 的值 */
 
 mov r2, #0
@@ -718,7 +718,7 @@ loop_end:
 
 ### 实例: Hello World (调用 C 标准库函数)
 
-```assembly
+```armasm
 /* -- hello01.s */
 .data
 
@@ -763,7 +763,7 @@ address_of_return: .word return
 
 入栈/出栈理论上的操作如下：
 
-```assembly
+```armasm
 sub sp, sp, #8  /* sp ← sp - 8. 扩大当前栈帧 8 byte */
 str lr, [sp]    /* *sp ← lr */
 ... // 函数的其他代码 ...
@@ -775,7 +775,7 @@ bx lr
 
 使用索引模式，代码简化如下：
 
-```assembly
+```armasm
 str lr, [sp, #-8]!  /* preindex: sp ← sp - 8; *sp ← lr */
 ... // Code of the function
 ldr lr, [sp], #+8   /* postindex; lr ← *sp; sp ← sp + 8 */
@@ -786,7 +786,7 @@ bx lr
 
 下面的程序实现了阶乘：
 
-```assembly
+```armasm
 /* -- factorial01.s */
 .data
 
@@ -867,7 +867,7 @@ GNU as 给我们提供了两个助记符：`push {r4, lr}` 与 `pop {r4, lr}`
 
 对大部分指令，在它后面加条件后缀 (`eq`, `ne`, ...) 即可：
 
-```assembly
+```armasm
 mp r2, #0                   @ Compare r2 and 0
 moveq r1, r1, ASR #1        @ if r2 == 0, r1 <- r1 >> 1. [r1 <- r1/2]
 addne r1, r1, r1, LSL #1    @ if r2 != 0, r1<-r1+(r1<<1). [r1 <- 3*r1]
@@ -876,7 +876,7 @@ addne r1, r1, #1            @ if r2 != 0, r1 <- r1 + 1
 
 需要注意的是，一般的指令并不会改变 cpsr 的状态，只有 `cmp` 跟加了后缀 `s` 的指令会改变 cpsr. 
 
-```assembly
+```armasm
 /* for (int i = 100 ; i >= 0; i--) */
 mov r1, #100
 loop:
@@ -967,7 +967,7 @@ arm-linux-gnueabihf-objdump -drwCS arm_stackframe.armv7.O0.o > arm_stackframe.ar
 
 > 参数解释参见: https://stackoverflow.com/a/1289907
 
-```assembly
+```armasm
 
 arm_stackframe.armv7.O0.o:     file format elf32-littlearm
 
@@ -1019,7 +1019,7 @@ Disassembly of section .text:
 
 顺带一提 `O1` 优化的版本如下：
 
-```assembly
+```armasm
 
 arm_stackframe.armv7.O1.o:     file format elf32-littlearm
 
