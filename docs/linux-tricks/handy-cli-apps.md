@@ -56,7 +56,7 @@ Too long; didn't read. ~~即 “太长不看”~~ 废话不多说，就是这款
 
 ### 简介
 
-觉得 `curl` 太麻烦？想要在 CLI 快速收发数据包来测试 API？那就用**更现代**的 httpie 吧！httpie 有 GUI 版本（像 Postman 一样），也有 CLI 版本，命令用法非常丝滑。举个例子：`http -a USERNAME POST https://api.github.com/repos/httpie/httpie/issues/83/comments body="HTTPie is awesome! :heart:"`。
+觉得 `curl` 太麻烦？想要在 CLI 快速收发数据包来测试 API？那就用 **更现代** 的 httpie 吧！httpie 有 GUI 版本（像 Postman 一样），也有 CLI 版本，命令用法非常丝滑。举个例子：`http -a USERNAME POST https://api.github.com/repos/httpie/httpie/issues/83/comments body="HTTPie is awesome! :heart:"`。
 
 ~~curl sucks!!~~
 
