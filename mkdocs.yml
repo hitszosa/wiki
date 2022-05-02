@@ -43,6 +43,9 @@ nav:
   - 关于我们: about.md
   - 参与指引:
     - Markdown 规范: contribute-guide/markdown.md
+  - Customized Debian:
+      - 基本说明与变更日志: customized-debian/principle-and-changelogs.md
+      - 快速上手: customized-debian/quick-start.md
   - Linux 使用技巧:
       - 另类好用的 Linux 命令行工具: linux-tricks/handy-cli-apps.md
   - 初学者指南:
@@ -53,6 +56,11 @@ nav:
       - Linux 包管理系统入门指北: guide-for-beginner/linux-pms-guide.md
   - 科普:
       - 编译，静态链接，可执行文件的生成: popular-science/compile.md
+      - 程序的机器级表示:
+          - 前言: popular-science/process-in-machine/process-in-machine-0.md
+          - 指令集与存储体系: popular-science/process-in-machine/process-in-machine-1.md
+          - RISC-V的常见指令: popular-science/process-in-machine/process-in-machine-2.md
+          - 运行时栈与函数: popular-science/process-in-machine/process-in-machine-3.md
       - 域名与 HTTPS: popular-science/domain-and-https.md
   - 编译原理:
       - LLVM Kaleidoscope 教程翻译:
@@ -75,6 +83,9 @@ nav:
       - 使用 vscode-remote: hpc-doc/vscode-remote.md
       - Anaconda3 & Jupyter 环境配置: hpc-doc/anaconda.md
       - PyTorch on SLURM: hpc-doc/pytorch.md
+  - 非官方实验环境指南:
+    - 计算机组成原理lab1: unofficial-lab-env/comp-organ-lab1.md
+  
 
 plugins:
   - search:
