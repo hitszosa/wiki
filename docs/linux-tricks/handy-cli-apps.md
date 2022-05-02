@@ -7,7 +7,7 @@ date: 2021-10-31
 
 ### 简介
 
-Homebrew 是一款起源于服务 macOS 的包管理器，特色是在用户态进行包管理和安装，做法非常整齐优雅，并且有非常大的社区支持。虽说 Linux 下各发行版也有用很多包管理器，但是总是会缺少一些好用的小软件，这时 Homebrew 就有用武之地了。强烈推荐先安装 Homebrew，因为可能会更方便地安装下面介绍的软件。
+Homebrew 是一款起源于服务 macOS 的包管理器，特色是在用户态进行包管理和安装，做法非常整齐优雅，并且有非常大的社区支持。虽说 Linux 下各发行版也有用很多包管理器，但是总是会缺少一些好用的小软件，这时 Homebrew 就有用武之地了。强烈推荐先安装 Homebrew，因为可能会更方便地安装下面介绍的软件 ~~指下面的软件全部都能用 `brew install` 安装~~。
 
 ### 资源
 
@@ -23,7 +23,7 @@ Too long; didn't read. ~~即 “太长不看”~~ 废话不多说，就是这款
 ### 资源
 
 - 官方网站：<https://tldr.sh>
-- 快速入门：安装 Homebrew 后运行 `brew install tldr` 安装。用法与 `man` 类似，在想要查询的命令前加上 `tldr`，比如查询 `tar` 的用法就运行 `tldr tar`。
+- 快速入门：用法与 `man` 类似，在想要查询的命令前加上 `tldr`，比如查询 `tar` 的用法就运行 `tldr tar`。
 - 其他实现：~~因为使用 NodeJS 实现，~~ 官方的实现很慢。可以使用 Rust 实现 tealdeer 来代替。 [![tealdeer status](https://repology.org/badge/tiny-repos/tealdeer.svg)](https://repology.org/project/tealdeer/versions)
 - 相关中文教程：<https://learnku.com/articles/23834>
 
@@ -36,10 +36,10 @@ Too long; didn't read. ~~即 “太长不看”~~ 废话不多说，就是这款
 ### 资源
 
 - 官方 GitHub：<https://github.com/clvv/fasd>
-- 快速入门：同样地，使用 `brew install fasd` 命令即可安装。安装后可能需要配置 rc 文件（如 zsh 为 `.zshrc`），详细配置参考官方文档。
+- 快速入门：安装后可能需要配置 rc 文件（如 zsh 为 `.zshrc`），详细配置参考官方文档。注意，只有正确配置之后它才能记录目录历史（也就是说，只会记录安装后的历史）。
 - 相关中文教程：<https://www.howtoing.com/fasd-quick-access-to-linux-files-and-directories>
 
-## sfk [![sfk status](https://repology.org/badge/tiny-repos/sfk.svg)](https://repology.org/project/sfk/versions)
+## sfk (swissfileknife) [![swissfileknife status](https://repology.org/badge/tiny-repos/swissfileknife.svg)](https://repology.org/project/swissfileknife/versions)
 
 ### 简介
 
@@ -50,7 +50,7 @@ Too long; didn't read. ~~即 “太长不看”~~ 废话不多说，就是这款
 ### 资源
 
 - 官方网站：<http://stahlworks.com/dev/swiss-file-knife.html>
-- 快速入门：可使用 Homebrew 安装。输入 `sfk` 查看帮助，即可快速上手。
+- 快速入门：输入 `sfk` 查看帮助。
 
 ## httpie [![httpie status](https://repology.org/badge/tiny-repos/httpie.svg)](https://repology.org/project/httpie/versions)
 
@@ -63,9 +63,5 @@ Too long; didn't read. ~~即 “太长不看”~~ 废话不多说，就是这款
 ### 资源
 
 - 官方网站：<https://httpie.io/cli>
-- 快速入门：可使用 Homebrew 安装。输入 `tldr http` 或 `tldr https` 查看帮助，即可快速上手。
-- 相关中文教程：[https://linux.cn/article-10765-1.html](https://linux.cn/article-10765-1.html)
-
-## 附录
-
-暂时就想到这么多，到时候再添加吧。
+- 快速入门：`http net.lolicon.app/detail` 会以 HTTP 为协议，`GET` 为方法请求这个 URL，`https` 同理。这个程序的 tldr 页面相当实用，建议执行 `tldr http` 与 `tldr httpie` 查看。
+- 相关中文教程：<https://linux.cn/article-10765-1.html>
