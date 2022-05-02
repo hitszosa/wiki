@@ -12,9 +12,18 @@ del {
   text-decoration: none;
 }
 
+del * {
+  opacity: 0;
+}
+
 del:hover {
   transition: color 0.13s linear;
   color: var(--md-default-bg-color);
+}
+
+del:hover * {
+  transition: opacity 0.13s linear;
+  opacity: inherit;
 }
 
 /* del::after {
