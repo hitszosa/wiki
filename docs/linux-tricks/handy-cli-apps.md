@@ -14,7 +14,7 @@ Homebrew 是一款起源于服务 macOS 的包管理器，特色是在用户态�
 - 官方网站、快速入门：<https://brew.sh>
 - Homebrew TUNA 镜像源配置教程：<https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/>
 
-## tldr [![tldr homebrew version](https://img.shields.io/homebrew/v/tldr?style=flat-square)](https://formulae.brew.sh/formula/tldr)
+## tldr [![tldr status](https://repology.org/badge/tiny-repos/tldr.svg)](https://repology.org/project/tldr/versions)
 
 ### 简介
 
@@ -24,10 +24,10 @@ Too long; didn't read. ~~即 “太长不看”~~ 废话不多说，就是这款
 
 - 官方网站：<https://tldr.sh>
 - 快速入门：安装 Homebrew 后运行 `brew install tldr` 安装。用法与 `man` 类似，在想要查询的命令前加上 `tldr`，比如查询 `tar` 的用法就运行 `tldr tar`。
-- 其他实现：~~因为是使用 NodeJS 实现~~，官方的实现很慢。可以使用 Rust 实现 tealdeer 来代替。 [![tealdeer homebrew version](https://img.shields.io/homebrew/v/tealdeer?style=flat-square)](https://formulae.brew.sh/formula/tealdeer)
+- 其他实现：~~因为使用 NodeJS 实现，~~ 官方的实现很慢。可以使用 Rust 实现 tealdeer 来代替。 [![tealdeer status](https://repology.org/badge/tiny-repos/tealdeer.svg)](https://repology.org/project/tealdeer/versions)
 - 相关中文教程：<https://learnku.com/articles/23834>
 
-## fasd [![fasd homebrew version](https://img.shields.io/homebrew/v/fasd?style=flat-square)](https://formulae.brew.sh/formula/fasd)
+## fasd [![fasd status](https://repology.org/badge/tiny-repos/fasd.svg)](https://repology.org/project/fasd/versions)
 
 ### 简介
 
@@ -39,7 +39,7 @@ Too long; didn't read. ~~即 “太长不看”~~ 废话不多说，就是这款
 - 快速入门：同样地，使用 `brew install fasd` 命令即可安装。安装后可能需要配置 rc 文件（如 zsh 为 `.zshrc`），详细配置参考官方文档。
 - 相关中文教程：<https://www.howtoing.com/fasd-quick-access-to-linux-files-and-directories>
 
-## sfk [![sfk homebrew version](https://img.shields.io/homebrew/v/sfk?style=flat-square)](https://formulae.brew.sh/formula/sfk)
+## sfk [![sfk status](https://repology.org/badge/tiny-repos/sfk.svg)](https://repology.org/project/sfk/versions)
 
 ### 简介
 
@@ -52,7 +52,7 @@ Too long; didn't read. ~~即 “太长不看”~~ 废话不多说，就是这款
 - 官方网站：<http://stahlworks.com/dev/swiss-file-knife.html>
 - 快速入门：可使用 Homebrew 安装。输入 `sfk` 查看帮助，即可快速上手。
 
-## httpie [![httpie homebrew version](https://img.shields.io/homebrew/v/httpie?style=flat-square)](https://formulae.brew.sh/formula/httpie)
+## httpie [![httpie status](https://repology.org/badge/tiny-repos/httpie.svg)](https://repology.org/project/httpie/versions)
 
 ### 简介
 
