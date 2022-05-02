@@ -1,3 +1,31 @@
-img {
-    vertical-align: middle;
+.md-typeset img, .md-typeset svg {
+  vertical-align: middle;
+  /* vertical-align: sub; */
 }
+
+del {
+  background-position: 0;
+  background-color: var(--md-typeset-color);
+  color: transparent;
+  padding: 0.1em 0;
+  position: relative;
+  text-decoration: none;
+}
+
+del:hover {
+  transition: color 0.13s linear;
+  color: var(--md-default-bg-color);
+}
+
+/* del::after {
+  content: "你知道的太多了";
+  position: absolute;
+  top: 1.1em;
+  left: 1em;
+  min-width: 200px;
+  border: 1px #808080 solid;
+  padding: 8px;
+  color: black;
+  background-color: #cfc;
+  z-index: 1;
+} */
