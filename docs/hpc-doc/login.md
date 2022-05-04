@@ -13,10 +13,12 @@ Docker 是一种容器，容器是一个标准的软件单元，它打包代码�
 Docker 容器镜像是一个轻量级的、独立的、可执行的软件包，包括运行应用程序所需的一切。容器将软件与其环境隔离开来，并确保尽管开发和暂存之间存在差异，但它仍能统一工作。
 
 传统 vm 虚拟化环境运行应用，每个虚拟机存在一个 Linux 系统，会有很大一部分程序重复运行，浪费资源。
+
 <center>
 <img src="https://gitee.com/villard/wiki-images/raw/master/login/vm.webp" width ="350px">
 <img src="https://gitee.com/villard/wiki-images/raw/master/login/container.webp" width="350px">
 </center>
+
 ### 下载 Docker
 
 打开终端，输入以下命令安装 Docker
@@ -26,7 +28,7 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 ```
 
-安装完毕后运行以下命令开启 docker
+安装完毕后运行以下命令开启 Docker
 
 ```shell
 sudo systemctl start docker
@@ -42,7 +44,7 @@ sudo docker run hello-world
 
 ## 2. EasyConnect
 
-我们使用的 EasyConnect docker 版来自这里
+我们使用的 EasyConnect Docker 版来自这里
 
 ```url
 https://github.com/Hagb/docker-easyconnect
@@ -54,19 +56,19 @@ https://github.com/Hagb/docker-easyconnect
 sudo docker pull hagb/docker-easyconnect:cli
 ```
 
-完成后输入以下命令运行  EasyConnect
+完成后输入以下命令运行 EasyConnect
 
-在使用 vpn 时请务必保持终端不要关闭
+在使用 VPN 时请务必保持终端不要关闭
 
 ```shell
 sudo docker run --device /dev/net/tun --cap-add NET_ADMIN -ti -p 127.0.0.1:1080:1080 -p 127.0.0.1:8888:8888 -e EC_VER=7.6.3 -e CLI_OPTS="-d vpn.hitsz.edu.cn" hagb/docker-easyconnect:cli
 ```
 
 > - 其中 `-e EC_VER=7.6.3` 表示使用 7.6.3 版本的 EasyConnect，请根据实际情况修改版本号。
-> - vpn 服务器已指定
-> - 浏览器（或其他支持的应用）可配置 socks5 代理（可以通过插件配置），地址 127.0.0.1，端口 1080；也可以使用 http 代理，地址 127.0.0.1，端口 8888。
+> - VPN 服务器已指定
+> - 浏览器（或其他支持的应用）可配置 SOCKS5 代理（可以通过插件配置），地址 127.0.0.1，端口 1080；也可以使用 http 代理，地址 127.0.0.1，端口 8888。
 
-上述命令输入后会要求输入账号密码， `username` 为学号 ， `passwoord`  为密码
+上述命令输入后会要求输入账号密码，`username` 为学号，`passwoord` 为密码
 
 ## 3. 设置浏览器代理
 
@@ -74,7 +76,7 @@ sudo docker run --device /dev/net/tun --cap-add NET_ADMIN -ti -p 127.0.0.1:1080:
 
 ### a. Firefox 和 Chrome 均可使用 SwitchyOmega 进行管理
 
-Firefox 打开下面链接安装  SwitchyOmega 插件
+Firefox 打开下面链接安装 SwitchyOmega 插件
 
 ```url
 https://addons.mozilla.org/zh-CN/firefox/addon/switchyomega/
@@ -134,7 +136,7 @@ http://hpc.hitsz.edu.cn
 
 ## 5. ssh
 
-前面已经拿到了内网 ip，端口和 ssh 账号，下面介绍如何通过 sock5 代理进行 ssh
+前面已经拿到了内网 IP，端口和 ssh 账号，下面介绍如何通过 SOCKS5 代理进行 ssh
 
 先安装一个叫 `netcat` 的包，以 ubuntu 为例
 
@@ -144,14 +146,14 @@ sudo apt install netcat
 
 因为貌似有几个命令都叫 netcat ，所以尝试 netcat 命令，看看是不是安装了正确的 netcat
 
-```shell
-$netcat
+```console
+$ netcat
 usage: nc [-46cDdFhklNnrStUuvz] [-C certfile] [-e name] [-H hash] [-I length]
-   [-i interval] [-K keyfile] [-M ttl] [-m minttl] [-O length]
-   [-o staplefile] [-P proxy_username] [-p source_port] [-R CAfile]
-   [-s sourceaddr] [-T keyword] [-V rtable] [-W recvlimit] [-w timeout]
-   [-X proxy_protocol] [-x proxy_address[:port]] [-Z peercertfile]
-   [destination] [port]
+	  [-i interval] [-K keyfile] [-M ttl] [-m minttl] [-O length]
+	  [-o staplefile] [-P proxy_username] [-p source_port] [-R CAfile]
+	  [-s sourceaddr] [-T keyword] [-V rtable] [-W recvlimit] [-w timeout]
+	  [-X proxy_protocol] [-x proxy_address[:port]] [-Z peercertfile]
+	  [destination] [port]
 
 ```
 
@@ -163,7 +165,7 @@ usage: nc [-46cDdFhklNnrStUuvz] [-C certfile] [-e name] [-H hash] [-I length]
 ssh -o "ProxyCommand=netcat -X5 -x 127.0.0.1:1080 %h %p" username@hostname -p peer
 ```
 
-> - `127.0.0.1:1080` 为使用之前 easyconnect docker 的 socks5 端口
+> - `127.0.0.1:1080` 为使用之前 EasyConnect Docker 的 SOCKS5 端口
 > - username 为前面在 hpc 集群网站获得的 u 开头的用户名
 > - hostname 为网站获得的集群 ip
 > - peer 为端口

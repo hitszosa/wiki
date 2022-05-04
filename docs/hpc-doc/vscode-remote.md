@@ -33,7 +33,7 @@ ssh username@hostname -p peer
 成功后会要求输入密码，密码为 **hpc 平台账号登录密码**
 
 !!! question "不在学校？"
-    若需使用 easyconnect 代理，请参考 [**公共集群的基本使用方法**](../login/) 教程中的 ssh 代理方式
+    若需使用 EasyConnect 代理，请参考 [**公共集群的基本使用方法**](../login/) 教程中的 ssh 代理方式
 
 ## 3. 添加文件夹
 

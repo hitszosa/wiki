@@ -19,7 +19,7 @@
 集群上已有安装的 Anaconda，推荐直接使用。集群上的 Anaconda 位于`/opt/app/anaconda3`，使用以下的命令将 Anaconda 加入自己的环境中
 
 ```shell
-export PATH=$PATH:/opt/app/anaconda/bin
+export PATH=$PATH:/opt/app/anaconda3/bin
 conda init
 ```
 
@@ -55,7 +55,7 @@ conda activate <name>
 
 复制链接，打开 Anaconda 官网 <https://www.anaconda.com/products/individual#Downloads> 获得 Linux 版下载链接
 
-在 VSCode 下方的 remote bash 中输入下载链接
+在 VS Code 下方的 remote bash 中输入下载链接
 
 例如：
 
@@ -79,7 +79,7 @@ chmod +x ./Anaconda3-2021.11-Linux-x86_64.sh
 
 ## 3. Jupyter Notebook 环境
 
-在 VSCode 中，安装 Python 插件
+在 VS Code 中，安装 Python 插件
 
 ![python](https://gitee.com/villard/wiki-images/raw/master/anaconda3/python.webp)
 
@@ -96,7 +96,7 @@ mkdir dev
 cd dev
 ```
 
-在 VSCode 中打开 dev 文件夹
+在 VS Code 中打开 dev 文件夹
 
 创建 `.ipynb` 文件
 
