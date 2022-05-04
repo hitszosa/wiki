@@ -34,11 +34,11 @@
 
 下面是一个返回值为 `2` 的简单的汇编程序：
 
-```armasm
+```asm
 /* -- first.s */
 /* 这是注释 */
-.global main     /* 一个程序的入口 (entry) 必须是全局的 (global) */
-.func main       /* 标记 label ’main’ 为一个函数  */
+.global main   /* 一个程序的入口 (entry) 必须是全局的 (global) */
+.func main     /* 标记 label ’main’ 为一个函数  */
 
 main:            /* 这是 label main */
     mov r0, #2   /* 将字面量 2 放入寄存器 r0 中 */
@@ -47,14 +47,14 @@ main:            /* 这是 label main */
 
 简单地将其编译，然后链接为可执行程序：
 
-```sh
+```console
 $ as -g -mfpu=vfpv2 -o first.o first.s
 $ gcc -o first first.o
 ```
 
 执行它并查看其返回值：
 
-```sh
+```console
 $ ./first ; echo $?
 2
 ```
@@ -79,7 +79,7 @@ rm $1.o
 
 每一行 ARM 汇编都长这样：
 
-```armasm
+```asm
     标号：指令 参数 注释
 ```
 
@@ -87,7 +87,7 @@ rm $1.o
 
 它们全都是可选的，不一定都会出现。特别地，只有单独标号的一行将标号绑定到下一行，这样子就可以将多个标号绑定到同一行上：
 
-```armasm
+```asm
 A:  mov r0, #1 /* 标号 A 绑定到这条指令 */
 B: 
     mov r0, #2 /* 标号 B 绑定到这条指令 */
@@ -121,7 +121,7 @@ TODO
 
 下面的例子展示了寄存器的基本用法：
 
-```armasm
+```asm
 /* -- sum01.s */
 .global main
 
@@ -146,7 +146,7 @@ main:
 
 我们可以使用汇编器指令来申请大块内存：
 
-```armasm
+```asm
 .balign 4       @ 对齐到 4 字节，Byte ALIGN
 myvar1:         @ 标号，接下来就可以通过该标号获得数据的地址
     .word 3     @ 留出 1 个 "word" 的空白 (32bit) 并将其设为补码 3
@@ -158,7 +158,7 @@ myvar1:         @ 标号，接下来就可以通过该标号获得数据的地�
 
 下面的程序定义两个内存中的变量 `myvar1` 和 `myvar2`, 分别赋予其初始值 3 和 4，然后取其值，相加，返回作为错误码。
 
-```armasm
+```asm
 /* -- load01.s */
 
 /* -- Data section */
@@ -231,12 +231,12 @@ myvar2:
 .balign 4
 .global main
 main:
-+   ldr r1, =myvar1        /* r1 ← &myvar1 */
++    ldr r1, =myvar1        /* r1 ← &myvar1 */
     mov r3, #3             /* r3 ← 3 */
-+   str r3, [r1]           /* *r1 ← r3 */
-+   ldr r2, =myvar2        /* r2 ← &myvar2 */
++    str r3, [r1]           /* *r1 ← r3 */
++    ldr r2, =myvar2        /* r2 ← &myvar2 */
     mov r3, #4             /* r3 ← 4 */
-+   str r3, [r2]           /*  *r2 ← r3 */ 
++    str r3, [r2]           /*  *r2 ← r3 */ 
 
     /* 跟之前一样 */
     ldr r1, =myvar2        /* r1 ← &myvar1 */
@@ -257,7 +257,7 @@ main:
 
 启动 GDB:
 
-```
+```console
 $ gdb --args ./store01
 GNU gdb (GDB) 7.4.1-debian
 Copyright (C) 2012 Free Software Foundation, Inc.
@@ -297,18 +297,18 @@ Temporary breakpoint 1, 0x00008390 in main ()
 ```
 (gdb) disassemble
 Dump of assembler code for function main:
-=> 0x00008390 : ldr r1, [pc, #40] ; 0x83c0 箭头指向**将要**被执行的指令
-   0x00008394 : mov r3, #3
-   0x00008398 : str r3, [r1]
-   0x0000839c : ldr r2, [pc, #32] ; 0x83c4 
-   0x000083a0 : mov r3, #4
-   0x000083a4 : str r3, [r2]
-   0x000083a8 : ldr r1, [pc, #16] ; 0x83c0 
-   0x000083ac : ldr r1, [r1]
-   0x000083b0 : ldr r2, [pc, #12] ; 0x83c4 
-   0x000083b4 : ldr r2, [r2]
-   0x000083b8 : add r0, r1, r2
-   0x000083bc : bx lr
+=> 0x00008390 :	ldr	r1, [pc, #40]	; 0x83c0 箭头指向**将要**被执行的指令
+   0x00008394 :	mov	r3, #3
+   0x00008398 :	str	r3, [r1]
+   0x0000839c :	ldr	r2, [pc, #32]	; 0x83c4 
+   0x000083a0 :	mov	r3, #4
+   0x000083a4 :	str	r3, [r2]
+   0x000083a8 :	ldr	r1, [pc, #16]	; 0x83c0 
+   0x000083ac :	ldr	r1, [r1]
+   0x000083b0 :	ldr	r2, [pc, #12]	; 0x83c4 
+   0x000083b4 :	ldr	r2, [r2]
+   0x000083b8 :	add	r0, r1, r2
+   0x000083bc :	bx	lr
 End of assembler dump.
 ```
 
@@ -316,10 +316,10 @@ End of assembler dump.
 
 ```
 (gdb) info registers r0 r1 r2 r3
-r0             0x1 1
-r1             0xbefff744 3204446020
-r2             0xbefff74c 3204446028
-r3             0x8390 33680
+r0             0x1	1
+r1             0xbefff744	3204446020
+r2             0xbefff74c	3204446028
+r3             0x8390	33680
 ```
 
 修改寄存器的值：
@@ -330,10 +330,10 @@ r3             0x8390 33680
 (gdb) p $r0 = 2
 $1 = 2                   $1表示执行 p 时求值求出的第一个结果
 (gdb) info registers r0 r1 r2 r3
-r0             0x2 2
-r1             0xbefff744 3204446020
-r2             0xbefff74c 3204446028
-r3             0x8390 33680
+r0             0x2	2
+r1             0xbefff744	3204446020
+r2             0xbefff74c	3204446028
+r3             0x8390	33680
 ```
 
 引用之前输入的值：
@@ -384,7 +384,7 @@ ARMv7 指令集定长，32bit.
 
 单独使用 `b <label>` 指令来进行无条件跳转。
 
-```armasm
+```asm
 /* -- branch01.s */
 .text
 .global main
@@ -419,7 +419,7 @@ end:
 | EQ    | equal                    | `Z == 1`           |
 | NE    | not equal                | `Z == 0`           |
 | GE    | greater or equal than    | `N == V`           |
-| LT    | lower than               | `N != V`          |
+| LT    | lower than               | `N != V`           |
 | GT    | greather than            | `N == V && Z == 0` |
 | LE    | lower or equal than      | `N != V || Z == 1` |
 | MI    | minus/negative           | `N == 1`           |
@@ -433,7 +433,7 @@ end:
 
 上面的这些缩写可以拿来跟 `b` 指令组合变成 `bXX` 指令，例如下面这个程序：
 
-```armasm
+```asm
 /* -- compare01.s */
 .text
 .global main
@@ -459,7 +459,7 @@ end:
 
 ### if/then/else
 
-```armasm
+```asm
 if_eval: 
     /* 求值条件，并根据条件生成 cmp */
 bXX else /* 合适的 bXX 用于跳转 */
@@ -475,7 +475,7 @@ end_of_if:
 
 ### while
 
-```armasm
+```asm
 while_condition: 
     /* 生成条件 E */
     bXX end_of_loop  /* 如果 E 是假的，跳转 */
@@ -521,7 +521,7 @@ step:
 
 指令的语法可以总结如下：
 
-```armasm
+```asm
 instruction Rdest, Rsource1, source2
 ```
 
@@ -540,7 +540,7 @@ instruction Rdest, Rsource1, source2
 
 举几个例子：
 
-```armasm
+```asm
 mov r1, r2, LSL #1      @ r1 <- (r2*2)
 mov r1, r2, LSL #2      @ r1 <- (r2*4)
 mov r1, r3, ASR #3      @ r1 <- (r3/8)
@@ -550,7 +550,7 @@ mov r1, r2, LSL r3      @ r1 <- (r2*16)
 
 更复杂的乘法：
 
-```armasm
+```asm
 add r1, r2, r2, LSL #1      @ r1 <- r2 + (r2*2) equivalent to r1 <- r1*3
 add r1, r2, r2, LSL #2      @ r1 <- r2 + (r2*4) equivalent to r1 <- r1*5
 sub r1, r2, r2, LSL #3      /* r1 <- r2 - (r2*8) equivalent to r1 <- r2*(-7) */
@@ -576,7 +576,7 @@ struct my_struct {
 char s[] = "This is a string";
 ```
 
-```armasm
+```asm
 /* -- array01.s */
 .data
 a:
@@ -600,7 +600,7 @@ S:
 
 例子：
 
-```armasm
+```asm
 str r2, [r1, #+12]          @ *(r1 + 12) <- r2
 str r2, [r1, +r3]           @ *(r1 + r3) <- r2
 str r2, [r1, +r2, LSL #2]   @ *(r1 + r2*4) <- r2
@@ -618,7 +618,7 @@ for (int i = 0; i < n; i++) {
 
 如果正常地按照字面意思来翻译的话，我们会翻译成这样：
 
-```armasm
+```asm
 /* 假设 r0 存了 a 的首地址，r1 存了 n 的值 */
 /* 用 r2 来当 i */
 
@@ -636,7 +636,7 @@ loop_end:
 
 但是仔细想想，我们并不需要每一次访问元素都算一次地址，我们可能可以这样实现：
 
-```armasm
+```asm
 /* 假设 r0 一开始存了 a 的首地址，r1 存了 n 的值 */
 
 mov r2, #0
@@ -716,7 +716,7 @@ loop_end:
 
 ### 实例: Hello World (调用 C 标准库函数)
 
-```armasm
+```asm
 /* -- hello01.s */
 .data
 
@@ -761,7 +761,7 @@ address_of_return: .word return
 
 入栈/出栈理论上的操作如下：
 
-```armasm
+```asm
 sub sp, sp, #8  /* sp ← sp - 8. 扩大当前栈帧 8 byte */
 str lr, [sp]    /* *sp ← lr */
 ... // 函数的其他代码 ...
@@ -773,7 +773,7 @@ bx lr
 
 使用索引模式，代码简化如下：
 
-```armasm
+```asm
 str lr, [sp, #-8]!  /* preindex: sp ← sp - 8; *sp ← lr */
 ... // Code of the function
 ldr lr, [sp], #+8   /* postindex; lr ← *sp; sp ← sp + 8 */
@@ -784,7 +784,7 @@ bx lr
 
 下面的程序实现了阶乘：
 
-```armasm
+```asm
 /* -- factorial01.s */
 .data
 
@@ -864,7 +864,7 @@ GNU as 给我们提供了两个助记符：`push {r4, lr}` 与 `pop {r4, lr}`
 
 对大部分指令，在它后面加条件后缀 (`eq`, `ne`, ...) 即可：
 
-```armasm
+```asm
 mp r2, #0                   @ Compare r2 and 0
 moveq r1, r1, ASR #1        @ if r2 == 0, r1 <- r1 >> 1. [r1 <- r1/2]
 addne r1, r1, r1, LSL #1    @ if r2 != 0, r1<-r1+(r1<<1). [r1 <- 3*r1]
@@ -873,7 +873,7 @@ addne r1, r1, #1            @ if r2 != 0, r1 <- r1 + 1
 
 需要注意的是，一般的指令并不会改变 cpsr 的状态，只有 `cmp` 跟加了后缀 `s` 的指令会改变 cpsr.
 
-```armasm
+```asm
 /* for (int i = 100 ; i >= 0; i--) */
 mov r1, #100
 loop:
@@ -957,14 +957,14 @@ int fib(int x) {
 
 使用下面的命令反汇编: (我知道 gcc 可以直接出汇编，但貌似 objdump 出来的格式好看点)(输出经过了美化，可能你的原始输出会不太一样)
 
-```
+```sh
 arm-linux-gnueabihf-gcc -march=armv7-a -O0 -static -g -c arm_stackframe.c -o arm_stackframe.O0.armv7.o
 arm-linux-gnueabihf-objdump -drwCS arm_stackframe.armv7.O0.o > arm_stackframe.armv7.O0.s
 ```
 
 > 参数解释参见: <https://stackoverflow.com/a/1289907>
 
-```armasm
+```asm
 
 arm_stackframe.armv7.O0.o:     file format elf32-littlearm
 
@@ -974,49 +974,49 @@ Disassembly of section .text:
 00000000 <fib>:
 @int fib(int x) {
     /* ==================== 进入函数的处理 ====================== */
-   0: e92d4810  push {r4, fp, lr}            @ 存 r4，因为后面会用
-   4: e28db008  add fp, sp, #8                  @ 让 fp 指向栈里存着的 fp
-   8: e24dd00c  sub sp, sp, #12                 @ 栈空间保留 3 * i32
+   0:	e92d4810 	push	{r4, fp, lr}            @ 存 r4，因为后面会用
+   4:	e28db008 	add	fp, sp, #8                  @ 让 fp 指向栈里存着的 fp
+   8:	e24dd00c 	sub	sp, sp, #12                 @ 栈空间保留 3 * i32
     /* *************************************** 上面的示意图就是现在的状态 *************************************** */   
 
-   c: e50b0010  str r0, [fp, #-16]              @ 根据 AAPCS, r0 里是第一个参数，这里把输入参数放到栈上 (可能是因为开了 O0，默认假设参数都在栈上方便 codegen)
+   c:	e50b0010 	str	r0, [fp, #-16]              @ 根据 AAPCS, r0 里是第一个参数，这里把输入参数放到栈上 (可能是因为开了 O0，默认假设参数都在栈上方便 codegen)
 @    if (x == 1 || x == 2) {
-  10: e51b3010  ldr r3, [fp, #-16]              @ 读取输入参数
-  14: e3530001  cmp r3, #1                      @ 短路比较
-  18: 0a000002  beq 28 <fib+0x28>
-  1c: e51b3010  ldr r3, [fp, #-16]
-  20: e3530002  cmp r3, #2
-  24: 1a000001  bne 30 <fib+0x30>
+  10:	e51b3010 	ldr	r3, [fp, #-16]              @ 读取输入参数
+  14:	e3530001 	cmp	r3, #1                      @ 短路比较
+  18:	0a000002 	beq	28 <fib+0x28>
+  1c:	e51b3010 	ldr	r3, [fp, #-16]
+  20:	e3530002 	cmp	r3, #2
+  24:	1a000001 	bne	30 <fib+0x30>
 @        return 1;
-  28: e3a03001  mov r3, #1                     @ 返回值存 r3 里，跳转到返回
-  2c: ea00000a  b 5c <fib+0x5c>
+  28:	e3a03001 	mov	r3, #1                     @ 返回值存 r3 里，跳转到返回
+  2c:	ea00000a 	b	5c <fib+0x5c>
 @    } else {
 @        return fib(x - 1) + fib(x - 2);
-  30: e51b3010  ldr r3, [fp, #-16]             @ r3 读取第一个，输入参数
-  34: e2433001  sub r3, r3, #1                 @ 减一
-  38: e1a00003  mov r0, r3                     @ 设好参数
-  3c: ebfffffe  bl 0 <fib> 3c: R_ARM_CALL fib @ 调函数
-  40: e1a04000  mov r4, r0                     @ r4 存返回值
+  30:	e51b3010 	ldr	r3, [fp, #-16]             @ r3 读取第一个，输入参数
+  34:	e2433001 	sub	r3, r3, #1                 @ 减一
+  38:	e1a00003 	mov	r0, r3                     @ 设好参数
+  3c:	ebfffffe 	bl	0 <fib>	3c: R_ARM_CALL	fib @ 调函数
+  40:	e1a04000 	mov	r4, r0                     @ r4 存返回值
 
-  44: e51b3010  ldr r3, [fp, #-16]
-  48: e2433002  sub r3, r3, #2
-  4c: e1a00003  mov r0, r3
-  50: ebfffffe  bl 0 <fib> 50: R_ARM_CALL fib
-  54: e1a03000  mov r3, r0                     @ r3 存返回值
+  44:	e51b3010 	ldr	r3, [fp, #-16]
+  48:	e2433002 	sub	r3, r3, #2
+  4c:	e1a00003 	mov	r0, r3
+  50:	ebfffffe 	bl	0 <fib>	50: R_ARM_CALL	fib
+  54:	e1a03000 	mov	r3, r0                     @ r3 存返回值
   
-  58: e0843003  add r3, r4, r3                 @ r3 = r3 + r4
+  58:	e0843003 	add	r3, r4, r3                 @ r3 = r3 + r4
 @    }
 
     /* ==================== 返回的处理 ====================== */
-  5c: e1a00003  mov r0, r3
-  60: e24bd008  sub sp, fp, #8                 @ 局部变量退栈
-  64: e8bd8810  pop {r4, fp, pc}               @ 直接把存着 lr 的内存格子给 pc (相当于 bx lr)
+  5c:	e1a00003 	mov	r0, r3
+  60:	e24bd008 	sub	sp, fp, #8                 @ 局部变量退栈
+  64:	e8bd8810 	pop	{r4, fp, pc}               @ 直接把存着 lr 的内存格子给 pc (相当于 bx lr)
 
 ```
 
 顺带一提 `O1` 优化的版本如下：
 
-```armasm
+```asm
 
 arm_stackframe.armv7.O1.o:     file format elf32-littlearm
 
@@ -1026,25 +1026,25 @@ Disassembly of section .text:
 00000000 <fib>:
 int fib(int x) {
     if (x == 1 || x == 2) {                    @ 对基本情况直接原地返回，不操作栈
-   0: e2403001  sub r3, r0, #1
-   4: e3530001  cmp r3, #1
-   8: 8a000001  bhi 14 <fib+0x14>
+   0:	e2403001 	sub	r3, r0, #1
+   4:	e3530001 	cmp	r3, #1
+   8:	8a000001 	bhi	14 <fib+0x14>
         return 1;
-   c: e3a00001  mov r0, #1
+   c:	e3a00001 	mov	r0, #1
     } else {
         return fib(x - 1) + fib(x - 2);
     }
-  10: e12fff1e  bx lr
+  10:	e12fff1e 	bx	lr
 int fib(int x) {
-  14: e92d4070  push {r4, r5, r6, lr}
-  18: e1a04000  mov r4, r0                        @ 这下没干存栈里再读回来的蠢事了
+  14:	e92d4070 	push	{r4, r5, r6, lr}
+  18:	e1a04000 	mov	r4, r0                        @ 这下没干存栈里再读回来的蠢事了
         return fib(x - 1) + fib(x - 2);
-  1c: e1a00003  mov r0, r3
-  20: ebfffffe  bl 0 <fib> 20: R_ARM_CALL fib
-  24: e1a05000  mov r5, r0
-  28: e2440002  sub r0, r4, #2
-  2c: ebfffffe  bl 0 <fib> 2c: R_ARM_CALL fib
-  30: e0850000  add r0, r5, r0
-  34: e8bd8070  pop {r4, r5, r6, pc}
+  1c:	e1a00003 	mov	r0, r3
+  20:	ebfffffe 	bl	0 <fib>	20: R_ARM_CALL	fib
+  24:	e1a05000 	mov	r5, r0
+  28:	e2440002 	sub	r0, r4, #2
+  2c:	ebfffffe 	bl	0 <fib>	2c: R_ARM_CALL	fib
+  30:	e0850000 	add	r0, r5, r0
+  34:	e8bd8070 	pop	{r4, r5, r6, pc}
 
 ```
