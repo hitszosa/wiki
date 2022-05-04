@@ -45,13 +45,15 @@ GitHub 是一个英文社区，所以我们需要规范英文拼写。（这句�
 >
 > 我们的客户有 gitHub、fourSquare、microSoft Corporation、google、faceBook, Inc.。
 
-LUG 和下属项目的规范拼写如下：
+<!-- LUG 和下属项目的规范拼写如下：
 
 - HITsz LUG
 - Wiki
-- Weekly
+- Weekly -->
 
-有一些特殊情况可以不规范拼写，如大标题。
+LUG 和下属项目的规范拼写仍在讨论中。
+
+有一些特殊情况可以不规范拼写，如大标题（但更常见的做法是使用 CSS 属性来将规范拼写的标题显示为全大写）。
 
 ## Markdown 的规范
 
@@ -133,6 +135,6 @@ MkDocs 使用 Pygments 进行语法分割，支持的语言见 [Pygments 文档]
 
 参考：<https://squidfunk.github.io/mkdocs-material/reference/admonitions/>
 
-### Weekly
+<!-- ### Weekly
 
-Weekly 的标题采用的字体接近繁体字形，建议在标题使用直角引号「」。
+Weekly 的标题采用的字体接近繁体字形，建议在标题使用直角引号「」。 -->
