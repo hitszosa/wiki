@@ -66,5 +66,5 @@ Too long; didn't read. ~~即 “太长不看”~~ 废话不多说，就是这款
 ### 资源
 
 - 官方网站：<https://httpie.io/cli>
-- 快速入门：`http net.lolicon.app/detail` 会以 HTTP 为协议，`GET` 为方法请求这个 URL，`https` 同理。这个程序的 tldr 页面相当实用，建议执行 `tldr http` 与 `tldr httpie` 查看。
+- 快速入门：`http net.lolicon.app/detail` 会以 HTTP 为协议，`GET` 为方法请求这个 URL，`https` 同理。另外，这个程序的 tldr 页面相当实用，建议执行 `tldr http` 查看。
 - 相关中文教程：<https://linux.cn/article-10765-1.html>
