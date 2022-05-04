@@ -169,8 +169,12 @@ Copyleft 2001 by D.H.Grand(nOBODY/Ginux), 2010 by Gasolin, 2015 by Ryan Wu
 
 （欢迎对本指南提出改进意见。你可以 email 你的建议至 [esr@thyrsus.com](mailto:esr@thyrsus.com) 或 [respond-auto@linuxmafia.com](mailto:respond-auto@linuxmafia.com)。然而请注意，本文并非[网络礼节](http://www.ietf.org/rfc/rfc1855.txt)的通用指南，而我们通常会拒绝无助于在技术论坛得到有用答案的建议）。
 
-> O4: 如果你对我
+> O4: 如果你对我加进去的注释或者上面一章有任何改进意见，欢迎联系: Origami404 at foxmail.com
 >
+> 为了防止垃圾邮件，你会经常见到别人把邮箱的格式改来改去的，所以找邮箱的时候注意！
+
+## 在提问之前
+
 在你准备要通过电子邮件、新闻群组或者聊天室提出技术问题前，请先做到以下事情：
 
 1. 尝试在你准备提问的论坛的旧文章中搜索答案。
