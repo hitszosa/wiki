@@ -1,6 +1,5 @@
 .md-typeset img, .md-typeset svg {
   vertical-align: middle;
-  /* vertical-align: sub; */
 }
 
 del {
@@ -25,16 +24,3 @@ del:hover * {
   transition: opacity 0.13s linear;
   opacity: inherit;
 }
-
-/* del::after {
-  content: "你知道的太多了";
-  position: absolute;
-  top: 1.1em;
-  left: 1em;
-  min-width: 200px;
-  border: 1px #808080 solid;
-  padding: 8px;
-  color: black;
-  background-color: #cfc;
-  z-index: 1;
-} */
