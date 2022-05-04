@@ -53,7 +53,6 @@ nav:
       - 提问的智慧（改）: guide-for-beginner/how-to-ask-questions-the-smart-way.md
       - WSL 安装教程: guide-for-beginner/wsl-install-guide.md
       - VirtualBox + Ubuntu 安装教程: guide-for-beginner/vbox-ubuntu-guide.md
-      - Linux 包管理系统入门指北: guide-for-beginner/linux-pms-guide.md
   - 科普:
       - 编译，静态链接，可执行文件的生成: popular-science/compile.md
       - 程序的机器级表示:
