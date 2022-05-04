@@ -83,7 +83,7 @@ GitHub issue 里的网址甚至可以不用加 `<>`。
 推荐以下两个 linter：
 
 - [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2)：顾名思义，它是一个 Markdown 文件的 linter，可以检查诸如错误使用 `**` 的问题。但是默认的规则有点苛刻了，建议关闭这些规则：MD024（禁止多处相同的标题）、MD026（禁止标题以西文标点结束）。此外，也有 [VS Code 插件版](https://marketplace.visualstudio.com/items?itemName=DavidAnson.markdownlint-vs-code)。
-- [autocorrect](https://github.com/huacnlee/autocorrect)：专门用于规范中英文混写的文案，可惜不检测规范拼写。同样有 [VS Code 插件版](https://marketplace.visualstudio.com/items?itemName=huacnlee.auto-correct)。
+- [autocorrect](https://github.com/huacnlee/autocorrect)：专门用于规范中英文混写的文案，可惜不检测规范拼写。
 
 插件版本有一个比较烦人的缺点，就是修复提示很可能会打断你写文的思路。如果不希望被这种问题所困，建议改成仅保存时自动修复。
 
