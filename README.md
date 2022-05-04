@@ -1,4 +1,4 @@
-# HITSZ LUG Wiki
+# HITsz LUG Wiki
 
 ## 参与建设
 
@@ -9,6 +9,8 @@
 ``` shell
 autocorrect --fix ./
 ```
+
+Wiki 上有 [更详细的 Markdown 约定](https://wiki.hitsz.org/about/contribute-guide/markdown/)。
 
 ## 依赖
 
