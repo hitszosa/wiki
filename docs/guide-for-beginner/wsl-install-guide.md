@@ -16,7 +16,7 @@ WSL，全称 Windows Subsystem for Linux（适用于 Linux 的 Windows 子系统
 
 相较于直接安装 Linux 系统，WSL 在安装上更为简便（堪称傻瓜式安装），且不会占用太多稀缺的硬盘空间（硬盘无论多大，硬盘空间都是稀缺资源）。WSL 提供了一种 “无痛” 的途径让初学者体验到几乎原汁原味的 Linux 系统。
 
-当然，作为一个<s>正经的</s>lug，我们也会教你使用真正的 Linux 系统，其中包括实机安装 Linux（包括双系统的使用），云服务器的使用、Linux 虚拟机、树莓派（包括其他单片机电脑）上 linux 的使用，这些教程正在紧急编写中。
+当然，作为一个 ~~正经的~~ lug，我们也会教你使用真正的 Linux 系统，其中包括实机安装 Linux（包括双系统的使用），云服务器的使用、Linux 虚拟机、树莓派（包括其他单片机电脑）上 linux 的使用，这些教程正在紧急编写中。
 
 ### WSL 能做什么？
 
@@ -51,7 +51,7 @@ WSL，全称 Windows Subsystem for Linux（适用于 Linux 的 Windows 子系统
 
 ## WSL 的安装
 
-> <s>说了半天，这人终于是回到正题了</s>
+> ~~说了半天，这人终于是回到正题了~~
 
 ### 1.确认 windows 版本
 
@@ -130,7 +130,7 @@ wsl -l -v
 
 ![wsl-l-v](https://gitee.com/SoraShu/image/raw/master/image_0/wsl-l-v.png)
 
-<s>请自行忽略背景</s>
+~~请自行忽略背景~~
 
 ## 结语
 

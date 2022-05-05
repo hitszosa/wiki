@@ -1,4 +1,4 @@
-site_name: HITSZ LUG Wiki
+site_name: HITsz LUG Wiki
 repo_name: hitszlug/wiki
 site_url: https://wiki.hitsz.org/
 repo_url: https://github.com/hitszlug/wiki
@@ -10,6 +10,20 @@ theme:
   logo: assets/lug-wiki-outline.svg
   favicon: assets/favicon.png
   language: zh
+  features:
+    - search.suggest
+    - search.highlight
+  palette:
+    - media: "(prefers-color-scheme: light)" 
+      scheme: default
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)" 
+      scheme: slate
+      toggle:
+        icon: material/lightbulb
+        name: Switch to light mode
 
 extra:
   social:
@@ -27,6 +41,8 @@ extra:
 nav:
   - 主页: index.md
   - 关于我们: about.md
+  - 参与指引:
+    - Markdown 规范: contribute-guide/markdown.md
   - Customized Debian:
       - 基本说明与变更日志: customized-debian/principle-and-changelogs.md
       - 快速上手: customized-debian/quick-start.md

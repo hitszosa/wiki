@@ -1,11 +1,8 @@
-# HITSZ LUG Wiki
+# HITsz LUG Wiki
 
-!!! info ""
-    Welcome to HITSZ LUG Wiki
+!!! info "Welcome to HITsz LUG Wiki 欢迎来到 哈工大（深圳）Linux 用户协会维基"
 
-    欢迎来到 哈工大（深圳）Linux 用户协会维基
-
-这里是由 [HITSZ LUG](./about.md) 成员共同编写并维护的文档集，~~可视为社刊~~。无论是 Linux 入门还是 CS 各领域介绍，你（也许）都可以在这里找到。这里也许还会有各种校内其他文档的搬运与连接。
+这里是由 [HITsz LUG](./about.md) 成员共同编写并维护的文档集，~~可视为社刊~~。无论是 Linux 入门还是 CS 各领域介绍，你（也许）都可以在这里找到。这里也许还会有各种校内其他文档的搬运与链接。
 
 如无特殊声明，本 Wiki 所有文档均以 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 发布到公共领域。
 

@@ -3,18 +3,21 @@ title: 另类好用的 Linux 命令行工具
 date: 2021-10-31
 ---
 
+!!! tips "软件名字旁边的 Badge 是什么？"
+    这个 badge 显示了这个软件在多少个 **软件仓库**（与发行版并非一一对应，如 Ubuntu 每个版本拥有独立的软件仓库）中可用。直接点击它可以打开详情信息，了解这个软件在不同软件仓库中的版本。
+
 ## Homebrew
 
 ### 简介
 
-Homebrew 是一款起源于服务 macOS 的包管理器，特色是在用户态进行包管理和安装，做法非常整齐优雅，并且有非常大的社区支持。虽说 Linux 下各发行版也有用很多包管理器，但是总是会缺少一些好用的小软件，这时 Homebrew 就有用武之地了。强烈推荐先安装 Homebrew，因为可能会更方便地安装下面介绍的软件。
+Homebrew 是一款起源于服务 macOS 的包管理器，特色是在用户态进行包管理和安装，做法非常整齐优雅，并且有非常大的社区支持。虽说 Linux 下各发行版也有用很多包管理器，但是总是会缺少一些好用的小软件，这时 Homebrew 就有用武之地了。强烈推荐先安装 Homebrew，因为可能会更方便地安装下面介绍的软件 ~~指下面的软件全部都能用 `brew install` 安装~~。
 
 ### 资源
 
-- 官方网站、快速入门：[https://brew.sh](https://brew.sh)
-- Homebrew TUNA 镜像源配置教程：[https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/](https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/)
+- 官方网站、快速入门：<https://brew.sh>
+- Homebrew TUNA 镜像源配置教程：<https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/>
 
-## tldr [![tldr homebrew version](https://img.shields.io/homebrew/v/tldr?style=flat-square)](https://formulae.brew.sh/formula/tldr)
+## tldr [![tldr status](https://repology.org/badge/tiny-repos/tldr.svg)](https://repology.org/project/tldr/versions)
 
 ### 简介
 
@@ -22,12 +25,12 @@ Too long; didn't read. ~~即 “太长不看”~~ 废话不多说，就是这款
 
 ### 资源
 
-- 官方网站：[https://tldr.sh](https://tldr.sh)
-- 快速入门：安装 Homebrew 后运行 `brew install tldr` 安装。用法与 `man` 类似，在想要查询的命令前加上 `tldr`，比如查询 `tar` 的用法就运行 `tldr tar`。
-- 其他实现：~~因为是使用 NodeJS 实现~~，官方的实现很慢。可以使用 Rust 实现 tealdeer 来代替。 [![tealdeer homebrew version](https://img.shields.io/homebrew/v/tealdeer?style=flat-square)](https://formulae.brew.sh/formula/tealdeer)
-- 相关中文教程：[https://learnku.com/articles/23834](https://learnku.com/articles/23834)
+- 官方网站：<https://tldr.sh>
+- 快速入门：用法与 `man` 类似，在想要查询的命令前加上 `tldr`，比如查询 `tar` 的用法就运行 `tldr tar`。
+- 其他实现：~~因为使用 NodeJS 实现，~~ 官方的实现很慢。可以使用 Rust 实现 tealdeer 来代替。 [![tealdeer status](https://repology.org/badge/tiny-repos/tealdeer.svg)](https://repology.org/project/tealdeer/versions)
+- 相关中文教程：<https://learnku.com/articles/23834>
 
-## fasd [![fasd homebrew version](https://img.shields.io/homebrew/v/fasd?style=flat-square)](https://formulae.brew.sh/formula/fasd)
+## fasd [![fasd status](https://repology.org/badge/tiny-repos/fasd.svg)](https://repology.org/project/fasd/versions)
 
 ### 简介
 
@@ -35,11 +38,11 @@ Too long; didn't read. ~~即 “太长不看”~~ 废话不多说，就是这款
 
 ### 资源
 
-- 官方 GitHub：[https://github.com/clvv/fasd](https://github.com/clvv/fasd)
-- 快速入门：可使用 Homebrew 安装。安装后可能需要配置 rc 文件（如 zsh 为 `.zshrc`），详细配置参考官方文档。
-- 相关中文教程：[https://www.howtoing.com/fasd-quick-access-to-linux-files-and-directories](https://www.howtoing.com/fasd-quick-access-to-linux-files-and-directories)
+- 官方 GitHub：<https://github.com/clvv/fasd>
+- 快速入门：安装后可能需要配置 rc 文件（如 zsh 为 `.zshrc`），详细配置参考官方文档。注意，只有正确配置之后它才能记录目录历史（也就是说，只会记录安装后的历史）。
+- 相关中文教程：<https://www.howtoing.com/fasd-quick-access-to-linux-files-and-directories>
 
-## sfk [![sfk homebrew version](https://img.shields.io/homebrew/v/sfk?style=flat-square)](https://formulae.brew.sh/formula/sfk)
+## sfk (swissfileknife) [![swissfileknife status](https://repology.org/badge/tiny-repos/swissfileknife.svg)](https://repology.org/project/swissfileknife/versions)
 
 ### 简介
 
@@ -49,10 +52,10 @@ Too long; didn't read. ~~即 “太长不看”~~ 废话不多说，就是这款
 
 ### 资源
 
-- 官方网站：[http://stahlworks.com/dev/swiss-file-knife.html](http://stahlworks.com/dev/swiss-file-knife.html)
-- 快速入门：可使用 Homebrew 安装。输入 `sfk` 查看帮助，即可快速上手。
+- 官方网站：<http://stahlworks.com/dev/swiss-file-knife.html>
+- 快速入门：输入 `sfk` 查看帮助。
 
-## httpie [![httpie homebrew version](https://img.shields.io/homebrew/v/httpie?style=flat-square)](https://formulae.brew.sh/formula/httpie)
+## httpie [![httpie status](https://repology.org/badge/tiny-repos/httpie.svg)](https://repology.org/project/httpie/versions)
 
 ### 简介
 
@@ -62,10 +65,6 @@ Too long; didn't read. ~~即 “太长不看”~~ 废话不多说，就是这款
 
 ### 资源
 
-- 官方网站：[https://httpie.io/cli](https://httpie.io/cli)
-- 快速入门：可使用 Homebrew 安装。输入 `tldr http` 或 `tldr https` 查看帮助，即可快速上手。
-- 相关中文教程：[https://linux.cn/article-10765-1.html](https://linux.cn/article-10765-1.html)
-
-## 附录
-
-暂时就想到这么多，到时候再添加吧。
+- 官方网站：<https://httpie.io/cli>
+- 快速入门：`http net.lolicon.app/detail` 会以 HTTP 为协议，`GET` 为方法请求这个 URL，`https` 同理。另外，这个程序的 tldr 页面相当实用，建议执行 `tldr http` 查看。
+- 相关中文教程：<https://linux.cn/article-10765-1.html>

@@ -10,8 +10,6 @@
 
 ![plugin](https://gitee.com/villard/wiki-images/raw/master/vscode-remote/vscodeplugin.webp)
 
-
-
 ## 2. 添加 Remote Server
 
 左侧会多出一个 **远程资源管理器** 的图标
@@ -22,13 +20,9 @@
 
 ![addserver](https://gitee.com/villard/wiki-images/raw/master/vscode-remote/ssh_add_host.webp)
 
-
-
 在其中输入之前成功登录的 ssh 命令
 
 ![](https://gitee.com/villard/wiki-images/raw/master/vscode-remote/entersshcommand.webp)
-
-
 
 例如
 
@@ -36,9 +30,10 @@
 ssh username@hostname -p peer
 ```
 
-> 成功后会要求输入密码，密码为<b> hpc 平台账号登录密码</b>  
-> <b>不在学校 ？</b>  
-> 若需使用 easyconnect 代理，请参考<b> 公共集群的基本使用方法 </b>教程中的 ssh 代理方式
+成功后会要求输入密码，密码为 **hpc 平台账号登录密码**
+
+!!! question "不在学校？"
+    若需使用 EasyConnect 代理，请参考 [**公共集群的基本使用方法**](../login/) 教程中的 ssh 代理方式
 
 ## 3. 添加文件夹
 
@@ -50,10 +45,8 @@ ssh username@hostname -p peer
 
 ![addfolder](https://gitee.com/villard/wiki-images/raw/master/vscode-remote/addfolder.webp)
 
-
-
 ## 4. 终端
 
-按键盘 <kbd>Ctrl</kbd> + <kbd>`</kbd> 呼出终端，这样就可以使用 remote bash 了
+按键盘 ++ctrl+grave++ 呼出终端，这样就可以使用 remote bash 了
 
-> <kbd>`</kbd> 键在 <kbd>1</kbd> 的左边 ，<kbd>tab</kbd> 的上面
+++grave++ 键在 ++1++ 的左边，++tab++ 的上面
