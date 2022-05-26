@@ -48,6 +48,7 @@ nav:
       - 快速上手: customized-debian/quick-start.md
   - Linux 使用技巧:
       - 另类好用的 Linux 命令行工具: linux-tricks/handy-cli-apps.md
+      - 检查网络的小技巧: linux-tricks/network-tricks.md
   - 初学者指南:
       - 自学计算机科学（改）: guide-for-beginner/teach-yourself-cs.md
       - 提问的智慧（改）: guide-for-beginner/how-to-ask-questions-the-smart-way.md
