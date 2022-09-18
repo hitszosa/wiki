@@ -101,12 +101,12 @@ sd x10,80(x3)
 有符号数：
 
 + `slt rd,rs1,rs2`：若 rs1 的值小于 rs2 的值，rd 置为 1，否则置为 0
-+ `slti rd,rs1,imm`：若 rs1 的值小于立即数 imm ，rd 置为 1，否则置为 0
++ `slti rd,rs1,imm`：若 rs1 的值小于立即数 imm，rd 置为 1，否则置为 0
 
 无符号数：
 
 + `sltu rd,rs1,rs2`：若 rs1 的值小于 rs2 的值，rd 置为 1，否则置为 0
-+ `sltiu rd,rs1,imm`：若 rs1 的值小于立即数 imm ，rd 置为 1，否则置为 0
++ `sltiu rd,rs1,imm`：若 rs1 的值小于立即数 imm，rd 置为 1，否则置为 0
 
 # 条件分支指令
 

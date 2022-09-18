@@ -147,7 +147,7 @@
 
 [![算法设计手册](https://user-images.githubusercontent.com/20233656/66759121-361e2980-eed2-11e9-913c-8fc48c67122a.jpg)](https://book.douban.com/subject/4048566/) [![怎样解题](https://user-images.githubusercontent.com/20233656/66759282-8e552b80-eed2-11e9-89de-16b1f8d82e78.jpg)](https://book.douban.com/subject/2124114/)
 
-> 我可以广泛推荐的方法只有一个： 写之前先思考。
+> 我可以广泛推荐的方法只有一个：写之前先思考。
 >
 > — Richard Hamming
 
@@ -156,7 +156,7 @@
 我作为一名 OIer，其实算法方面基本上是散装学的，也没系统看过什么书。唯一有点印象的是算法导论了 (主要看了网络流跟 FFT)。但是如果你想做题，你可以试试以下网站：
 
 - [洛谷](https://www.luogu.com.cn/): 洛谷是最近几年兴起的集做题，题解，社交 (?) 与一体的偏向于 OI 的练习网站。
-- [CodeForce](https://codeforces.com/): 大名鼎鼎的 CF，经常举行在线比赛，适合追求刺激，同时也有很多优质题目. (全英警告)
+- [CodeForce](https://codeforces.com/): 大名鼎鼎的 CF，经常举行在线比赛，适合追求刺激，同时也有很多优质题目。(全英警告)
 - [OI-Wiki](https://oi-wiki.org/): 致力于收集常见算法教程。如果你觉得磨磨唧唧的数学证明不适合你，你可以来这里看看朴实无华，力大砖飞的算法与解释
 
 ### 数学知识
@@ -191,7 +191,7 @@
 
 [《操作系统导论》（_Operating Systems: Three Easy Pieces_）](https://book.douban.com/subject/33463930/) 是一个不错的替代品，并且 [可在网上免费获得（英文版）](http://pages.cs.wisc.edu/~remzi/OSTEP/)。我们格外喜欢这本书的结构，并且认为这本书的习题很值得一做。
 
-在读完《操作系统导论》后，我们鼓励你探索特定操作系统的设计。可以借助「{OS name} Internals」风格的书籍，比如 [_Lion's commentary on Unix_](https://www.amazon.com/Lions-Commentary-Unix-John/dp/1573980137/)， [_The Design and Implementation of the FreeBSD Operating System_](https://www.amazon.com/Design-Implementation-FreeBSD-Operating-System/dp/0321968972/)，以及 [_Mac OS X Internals_](https://www.amazon.com/Mac-OS-Internals-Systems-Approach/dp/0321278542/)。对于 Linux ，我们推荐 Robert Love 的 [《Linux 内核设计与实现》](https://book.douban.com/subject/6097773/)。
+在读完《操作系统导论》后，我们鼓励你探索特定操作系统的设计。可以借助「{OS name} Internals」风格的书籍，比如 [_Lion's commentary on Unix_](https://www.amazon.com/Lions-Commentary-Unix-John/dp/1573980137/)， [_The Design and Implementation of the FreeBSD Operating System_](https://www.amazon.com/Design-Implementation-FreeBSD-Operating-System/dp/0321968972/)，以及 [_Mac OS X Internals_](https://www.amazon.com/Mac-OS-Internals-Systems-Approach/dp/0321278542/)。对于 Linux，我们推荐 Robert Love 的 [《Linux 内核设计与实现》](https://book.douban.com/subject/6097773/)。
 
 为了巩固对操作系统的理解，阅读小型系统内核的代码并且为其增加特性是一个很不错的方法。比如，[xv6](https://pdos.csail.mit.edu/6.828/2016/xv6.html)，由 MIT 的一门课程所维护的从 Unix V6 到 ANSI C 和 x86 的移植，就是一个很棒的选择。《操作系统导论》有一个附录，记载了一些可能的 [xv6 实验项目](http://pages.cs.wisc.edu/~remzi/OSTEP/lab-projects-xv6.pdf)，其中充满了关于潜在项目的很棒想法。
 

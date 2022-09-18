@@ -2,7 +2,7 @@
 
 ## 总览
 
-> 主要参考文章: <https://thinkingeek.com/arm-assembler-raspberry-pi/>
+> 主要参考文章：<https://thinkingeek.com/arm-assembler-raspberry-pi/>
 >
 > **绝大部分示例代码都是从此文章抄来的**
 >
@@ -73,7 +73,7 @@ rm $1.o
 
 注释不可以嵌套。
 
-`.`开头的是给 GNU Assembler (简称 GAS) 的汇编器指令 (directive), 不是 ARM 汇编指令. (类比 C 的宏)
+`.`开头的是给 GNU Assembler (简称 GAS) 的汇编器指令 (directive), 不是 ARM 汇编指令。(类比 C 的宏)
 
 `global` 跟 linkage 有关，是给链接器看的; 由 GCC 负责调用链接器，就不用我们手动指定库了。
 
@@ -203,7 +203,7 @@ addr_of_myvar2 : .word myvar2
 
 上面的 "地址" 打了引号：因为重定位 (relocation) 的缘故，它并不是一个真的地址，而是一个待填的 "坑"; 这个坑将会在链接时被链接器补上。
 
-要把寄存器里的值当做地址传给 `ldr` 指令，我们只要用中括号把它括起来就可以了。（中括号即为 “取地址” 操作）
+要把寄存器里的值当做地址传给 `ldr` 指令，我们只要用中括号把它括起来就可以了。（中括号即为“取地址”操作）
 
 但是这样子很烦人，所以汇编器可以帮我们自动处理不同节的重定位：我们不需要像上面一样补上最后两行然后跳两次 -- 我们可以直接使用 `=<标号>` 的形式来得到不同节里的标号值。具体使用可见下节
 
@@ -557,7 +557,7 @@ sub r1, r2, r2, LSL #3      /* r1 <- r2 - (r2*8) equivalent to r1 <- r2*(-7) */
 rsb r1, r2, r2, LSL #3      /* r1 <- (r2*8) - r2 equivalent to r1 <- r2*7 */
 ```
 
-注意 rsb (Reverse SuBstract) 指令，它就是被减数跟减数顺序反过来的 sub 指令。因为位移操作数只能在最后一个参数 (`source2`) 用，所以 ARM 提供了这个指令来让我们不用用正常的 sub 减完再取负. (适合于我们想要对被减数使用位移的时候)
+注意 rsb (Reverse SuBstract) 指令，它就是被减数跟减数顺序反过来的 sub 指令。因为位移操作数只能在最后一个参数 (`source2`) 用，所以 ARM 提供了这个指令来让我们不用用正常的 sub 减完再取负。(适合于我们想要对被减数使用位移的时候)
 
 这个主要用来做强度约减的。
 
@@ -596,7 +596,7 @@ S:
 2. `[R1, #±R2]`: 取地址 R1±R2
 3. `[R1, ±R2, shift_op #±n]`: shift_op 可以是上面提到过的任意位移操作，取地址 `R1 ± shift_op(R2, ±n)`
   
-其中 (1) 适合类似 `a[N]`, `N` 为常数的索引，也适合于结构体里取成员. (3) 适合于 `a[i]`, `i` 是变量的索引。假如 `a` 是 i32 类型的数组，那么只要 `[a, i, LSL #4]` 就可以了。
+其中 (1) 适合类似 `a[N]`, `N` 为常数的索引，也适合于结构体里取成员。(3) 适合于 `a[i]`, `i` 是变量的索引。假如 `a` 是 i32 类型的数组，那么只要 `[a, i, LSL #4]` 就可以了。
 
 例子：
 
@@ -652,7 +652,7 @@ loop:
 loop_end:
 ```
 
-而 ARM 为这种情况提供了一个快速的取址模式: "取址，然后更新". (*) 两行可被合并为 `str r2 [r0], #+4`
+而 ARM 为这种情况提供了一个快速的取址模式："取址，然后更新". (*) 两行可被合并为 `str r2 [r0], #+4`
 
 1. `[R1], #±n`: 取地址 R1，然后 R1 ±= n
 2. `[R1], #±R2`: 取地址 R1，然后 R1 ±= R2
@@ -714,7 +714,7 @@ loop_end:
 
 对于 32bit 的基础类型，比如 C 的 char, short, int, long，返回值存于 `r0`; 对于 64 位的基础类型，返回值存于 `r0` 与 `r1`; 对于其他任何长度大于 32 bit 的类型，返回值存于栈上。
 
-### 实例: Hello World (调用 C 标准库函数)
+### 实例：Hello World (调用 C 标准库函数)
 
 ```asm
 /* -- hello01.s */
@@ -852,7 +852,7 @@ address_of_message2: .word message2
 address_of_format: .word format
 ```
 
-### 快速保存各种寄存器: ldm & stm
+### 快速保存各种寄存器：ldm & stm
 
 TODO 详细介绍
 
@@ -955,14 +955,14 @@ int fib(int x) {
 }
 ```
 
-使用下面的命令反汇编: (我知道 gcc 可以直接出汇编，但貌似 objdump 出来的格式好看点)(输出经过了美化，可能你的原始输出会不太一样)
+使用下面的命令反汇编：(我知道 gcc 可以直接出汇编，但貌似 objdump 出来的格式好看点)(输出经过了美化，可能你的原始输出会不太一样)
 
 ```sh
 arm-linux-gnueabihf-gcc -march=armv7-a -O0 -static -g -c arm_stackframe.c -o arm_stackframe.O0.armv7.o
 arm-linux-gnueabihf-objdump -drwCS arm_stackframe.armv7.O0.o > arm_stackframe.armv7.O0.s
 ```
 
-> 参数解释参见: <https://stackoverflow.com/a/1289907>
+> 参数解释参见：<https://stackoverflow.com/a/1289907>
 
 ```asm
 

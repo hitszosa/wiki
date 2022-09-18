@@ -14,7 +14,7 @@ WSL，全称 Windows Subsystem for Linux（适用于 Linux 的 Windows 子系统
 
 如果你是一个完全的初学者（absolute beginner），在电脑上安装 Linux 系统并进行双系统的使用会较于硬核，而我们的教程也会涉及到一些初学者非常陌生的词汇，比如引导、Legacy 和 UEFI、MBR 和 GPT、文件系统、系统时间与硬件时间等等。
 
-相较于直接安装 Linux 系统，WSL 在安装上更为简便（堪称傻瓜式安装），且不会占用太多稀缺的硬盘空间（硬盘无论多大，硬盘空间都是稀缺资源）。WSL 提供了一种 “无痛” 的途径让初学者体验到几乎原汁原味的 Linux 系统。
+相较于直接安装 Linux 系统，WSL 在安装上更为简便（堪称傻瓜式安装），且不会占用太多稀缺的硬盘空间（硬盘无论多大，硬盘空间都是稀缺资源）。WSL 提供了一种“无痛”的途径让初学者体验到几乎原汁原味的 Linux 系统。
 
 当然，作为一个 ~~正经的~~ lug，我们也会教你使用真正的 Linux 系统，其中包括实机安装 Linux（包括双系统的使用），云服务器的使用、Linux 虚拟机、树莓派（包括其他单片机电脑）上 linux 的使用，这些教程正在紧急编写中。
 
@@ -45,7 +45,7 @@ WSL，全称 Windows Subsystem for Linux（适用于 Linux 的 Windows 子系统
 
 摘自[微软官方文档](https://docs.microsoft.com/zh-cn/windows/wsl/compare-versions#comparing-features)
 
-其中” 可以与当前版本的 VMware 和 VirtualBox 一起运行 “纯粹扯淡。有使用虚拟机需求的同学谨慎安装 WSL。其中包括安卓模拟器。
+其中”可以与当前版本的 VMware 和 VirtualBox 一起运行“纯粹扯淡。有使用虚拟机需求的同学谨慎安装 WSL。其中包括安卓模拟器。
 
 可以看出除了跨操作系统文件系统的性能外，WSL 2 体系结构在多个方面都比 WSL 1 更具优势。若无具体说明，以下 WSL 专指 WSL 2。
 

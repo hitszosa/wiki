@@ -144,7 +144,7 @@ http://hpc.hitsz.edu.cn
 sudo apt install netcat
 ```
 
-因为貌似有几个命令都叫 netcat ，所以尝试 netcat 命令，看看是不是安装了正确的 netcat
+因为貌似有几个命令都叫 netcat，所以尝试 netcat 命令，看看是不是安装了正确的 netcat
 
 ```console
 $ netcat

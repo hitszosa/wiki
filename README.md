@@ -7,7 +7,7 @@
 请安装 [AutoCorrect](https://github.com/huacnlee/autocorrect) 并提交前执行以下命令：
 
 ``` shell
-autocorrect --fix ./
+autocorrect --fix ./docs
 ```
 
 Wiki 上有 [更详细的 Markdown 约定](https://wiki.hitsz.org/about/contribute-guide/markdown/)。
@@ -21,6 +21,13 @@ Wiki 上有 [更详细的 Markdown 约定](https://wiki.hitsz.org/about/contribu
 
 ``` shell
 pip install -r requirements.txt
+```
+
+或者如果按照了 conda 的话，推荐使用以下命令安装并激活环境：
+
+``` shell
+conda env create --name lug-wiki -f environment.yml
+conda activate lug-wiki
 ```
 
 ## 本地预览
