@@ -7,7 +7,7 @@
 请安装 [AutoCorrect](https://github.com/huacnlee/autocorrect) 并提交前执行以下命令：
 
 ``` shell
-autocorrect --fix ./
+autocorrect --fix ./docs
 ```
 
 Wiki 上有 [更详细的 Markdown 约定](https://wiki.hitsz.org/about/contribute-guide/markdown/)。

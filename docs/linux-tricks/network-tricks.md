@@ -29,7 +29,7 @@ traceroute <ip地址/域名>
 # windows 下是 tracert
 ```
 
-> 高级版 ping+traceroute: `mtr`, 详见: <https://vitux.com/how-to-use-the-linux-mtr-command/>
+> 高级版 ping+traceroute: `mtr`, 详见：<https://vitux.com/how-to-use-the-linux-mtr-command/>
 > 
 > 不过一般发行版都没有自带
 
@@ -93,6 +93,6 @@ sudo arp -a
 # Windows 上也可以用
 ```
 
-> 高级版监听工具: `tcpdump`, 可以把网卡收到的所有包都收集起来，然后结果可以丢进 WireShark 分析
+> 高级版监听工具：`tcpdump`, 可以把网卡收到的所有包都收集起来，然后结果可以丢进 WireShark 分析
 > 
-> 用法: `sudo tcpdump -i <interface 名字> -w <保存的文件名>`, 然后把生成的文件拖进 WireShark 就可以随心所欲地分析了。
+> 用法：`sudo tcpdump -i <interface 名字> -w <保存的文件名>`, 然后把生成的文件拖进 WireShark 就可以随心所欲地分析了。

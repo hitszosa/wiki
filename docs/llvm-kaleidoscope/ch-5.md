@@ -175,7 +175,7 @@ ifcont:     ; preds = %else, %then
 
 当 `then`/`else` 块执行完毕之后，它们都跳转回 `ifcont` 块来执行 if/then/else 表达式之后的指令。在这个例子中这个指令就是从函数中返回。随后问题出现了：代码怎么知道哪一个表达式的值将要被返回？
 
-这引出了一个重要的 SSA 运算：[phi 运算](http://en.wikipedia.org/wiki/Static_single_assignment_form). 如果你对 SSA 不太熟悉，这里有一篇很好的介绍：[维基百科: SSA form](http://en.wikipedia.org/wiki/Static_single_assignment_form). 简而言之，phi 运算能 "记住" 控制流从哪个块流过来。Phi 运算接受控制流可能经过的上一个块的变量，然后返回控制流真正经过的那个块里的变量。在本例子中，如果控制流从 `then` 块中流入，那么它的值就会是 `calltmp` 的值; 否则如果控制流从 `else` 块流入，那么它的值就会是 `calltmp1` 的值。
+这引出了一个重要的 SSA 运算：[phi 运算](http://en.wikipedia.org/wiki/Static_single_assignment_form). 如果你对 SSA 不太熟悉，这里有一篇很好的介绍：[维基百科：SSA form](http://en.wikipedia.org/wiki/Static_single_assignment_form). 简而言之，phi 运算能 "记住" 控制流从哪个块流过来。Phi 运算接受控制流可能经过的上一个块的变量，然后返回控制流真正经过的那个块里的变量。在本例子中，如果控制流从 `then` 块中流入，那么它的值就会是 `calltmp` 的值; 否则如果控制流从 `else` 块流入，那么它的值就会是 `calltmp1` 的值。
 
 "天哪！", 你也许会想，"难道我那可怜的小小前端要开始生成 SSA Form 来使用 LLVM 了吗？!" 幸运的是，它并不需要，并且我们强烈建议你不要让前端生成 SSA form，除非你有非常非常充足的理由。实践上，对于一般的命令式编程语言而言，会产生 phi 运算的代码只有两类：
 
@@ -485,7 +485,7 @@ BasicBlock *LoopBB =
 Builder.CreateBr(LoopBB);
 ```
 
-这些代码类似于我们为 if/then/else 所写的代码。因为我们需要创建 phi 节点，我们必须记得那个 fall through 进入循环体的基本块。 一旦有了那个块，我们就可以创建真正的循环头部，并且插入一个无条件跳转以进入循环体。
+这些代码类似于我们为 if/then/else 所写的代码。因为我们需要创建 phi 节点，我们必须记得那个 fall through 进入循环体的基本块。一旦有了那个块，我们就可以创建真正的循环头部，并且插入一个无条件跳转以进入循环体。
 
 > 译者注：其实就是把每一次的循环变量用 phi 定义出来。循环变量的值可能来源于两处：初始值与上一次的值，后一种情况 phi 节点的参数将会包含一个在之后定义的变量。在这里我们保存开头的块是为了在 phi 里加入初始值所在的块。
 

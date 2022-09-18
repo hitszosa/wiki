@@ -341,7 +341,7 @@ Function *FunctionAST::codegen() {
     return nullptr;
 ``` 
 
-为了实现它，我们首先加入一个新的全局变量 `FunctionProtos`, 它保存着每一个函数最后一次定义的原型。我们还加入了一个便利的函数 `getFunction` 来代替对 `TheModule->getFunction()` 的直接调用。我们的便利函数查找 `TheModule` 尝试获取本模块可能存在的该函数的原型中间代码，如果没有就尝试从原型表中查找原型并生成对应的中间代码。 在 `CallExprAST::codegen()` 中我们直接将 `TheModule->getFunction()` 替换为 `getFunction()` 即可。在 `FunctionAST::codegen()` 中，我们首先更新全局的函数原型表 `FunctionProtos`, 然后再调用 `getFunction()` 来获取它。做完这些以后，我们就可以在当前模块中获取任何之前声明过的函数了 (即使它们可能并不在同一模块). 
+为了实现它，我们首先加入一个新的全局变量 `FunctionProtos`, 它保存着每一个函数最后一次定义的原型。我们还加入了一个便利的函数 `getFunction` 来代替对 `TheModule->getFunction()` 的直接调用。我们的便利函数查找 `TheModule` 尝试获取本模块可能存在的该函数的原型中间代码，如果没有就尝试从原型表中查找原型并生成对应的中间代码。在 `CallExprAST::codegen()` 中我们直接将 `TheModule->getFunction()` 替换为 `getFunction()` 即可。在 `FunctionAST::codegen()` 中，我们首先更新全局的函数原型表 `FunctionProtos`, 然后再调用 `getFunction()` 来获取它。做完这些以后，我们就可以在当前模块中获取任何之前声明过的函数了 (即使它们可能并不在同一模块). 
 
 我们还需要更新 `HandleDefinition` 与 `HandleExtern`: 
 
@@ -378,7 +378,7 @@ static void HandleExtern() {
 
 在 `HandleDefinition` 中，我们增加两行来将新定义的函数放入 JIT 中并打开一个新的全局模块。在 `HandleExtern`, 我们只需要增加一行来将函数的原型放入全局原型表中 `FunctionProtos`. 
 
-改完后，让我们再次来试试我们的 REPL 吧: (匿名函数的输出被省略了)
+改完后，让我们再次来试试我们的 REPL 吧：(匿名函数的输出被省略了)
 
 ```py
 ready> def foo(x) x + 1;

@@ -12,7 +12,7 @@
 
 > 译者注：每章的最后有直到本章为止的全部代码，可以直接去复制一下然后跳到下一章
 
-- [第一章: Kaleidoscope 与 lexer (未翻译)](ch-1.md): 本章介绍了我们要实现的语言 Kaleidoscope 的基础功能。构建 lexer 是构建一门语言的 parser 的第一步，我们将手写一个简单易懂的 C++ lexer.
+- [第一章：Kaleidoscope 与 lexer (未翻译)](ch-1.md): 本章介绍了我们要实现的语言 Kaleidoscope 的基础功能。构建 lexer 是构建一门语言的 parser 的第一步，我们将手写一个简单易懂的 C++ lexer.
 - [第二章：实现 Parser 与 AST (未翻译)](ch-2.md): 有了 lexer，我们就可以着手于解析技术与简单的 AST 构建了。本章描述了递归下降解析法与运算符优先级解析法 (operator-precedence parsing).
 - [第三章：生成 LLVM IR (未翻译)](ch-3.md): 一旦有了 AST，生成 LLVM IR 就不在话下了。在本章我们将会讨论从 AST 生成 IR 的方法，与此同时你也能学习到将 LLVM 集成进你的项目里的一个简单方法。
 - [第四章：增加 JIT 与优化](ch-4.md): LLVM 的一个优势在于它支持 JIT 编译，所以我们稍微深入地去介绍一下这项技术。有了 LLVM，仅需 3 行代码就能使你的语言具有 JIT 功能！在后续章节中我们将会介绍如何生成目标文件。

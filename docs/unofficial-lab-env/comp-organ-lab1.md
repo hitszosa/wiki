@@ -30,7 +30,7 @@ sudo apt install build-essential git device-tree-compiler
 sudo pacman -Sy base-devel git dtc
 ```
 
-如果配置环境过程中出现 “command not found.” 可能是有依赖的工具没装，此时可以利用搜索引擎。
+如果配置环境过程中出现“command not found.”可能是有依赖的工具没装，此时可以利用搜索引擎。
 
 ## 安装 riscv64 GCC
 
