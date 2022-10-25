@@ -2,7 +2,7 @@
 
 > 目前版本：20221025
 
-本文期望读者具有基本的 Bash 使用基础. 如在阅读中遇到困难, 可参阅[我社 Linux 101 第六讲]()内容.
+本文期望读者具有基本的 Bash 使用基础。如在阅读中遇到困难，可参阅[我社 Linux 101 第六讲]()内容。
 
 ## Bash 大致语法 Overview
 
@@ -48,7 +48,7 @@ func_def: name '(' ')' compound_cmd redirect?
 - `[n]<&nn-`, 将 `nn` "移动" 到 `n(=0)` (也就是复制到，再关闭)
 - `[n]>&nn-`, 将 `n(=1)` "移动" 到 `nn`
 
-`noclobber` 可以通过如下方法启用:
+`noclobber` 可以通过如下方法启用：
 
 ```bash
 set -o noclobber
@@ -58,7 +58,7 @@ echo Hello >| file # fail
 
 一些特殊的文件：
 
-- `/dev/null`: 空文件, 可以 "吞噬" 任何输入, 一般用于丢弃输出
+- `/dev/null`: 空文件，可以 "吞噬" 任何输入，一般用于丢弃输出
 - `/dev/random`: 输出随机值的文件
 - `/dev/fd/n`: 文件描述符 `n` 代表的文件
 - `/dev/stdin`, `/dev/stdout`, `/dev/stderr`
@@ -93,7 +93,7 @@ ade ace abe
 
 大括号内还可以写数字/字符+增长, 比如 `{x..y[..incr]}`
 
-大括号展开是严格 "词法" 的，它不会对任何特殊字符作出 "反应", 包括大括号自己:
+大括号展开是严格 "词法" 的，它不会对任何特殊字符作出 "反应", 包括大括号自己：
 
 ```bash
 chown root /usr/{ucb/{ex,edit},lib/{ex?.?*,how_ex}}
