@@ -62,6 +62,7 @@ nav:
           - RISC-V的常见指令: popular-science/process-in-machine/process-in-machine-2.md
           - 运行时栈与函数: popular-science/process-in-machine/process-in-machine-3.md
       - 域名与 HTTPS: popular-science/domain-and-https.md
+      - Bash 语法补充包: popular-science/bash-dlc.md
   - 编译原理:
       - LLVM Kaleidoscope 教程翻译:
           - 翻译者的话: llvm-kaleidoscope/ch--1.md
