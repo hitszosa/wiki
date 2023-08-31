@@ -34,8 +34,6 @@ extra:
       link: https://qm.qq.com/cgi-bin/qm/qr?k=EmOyWeZrOaOeSoVrVLoozyKYdvjOia_t
     - icon: fontawesome/brands/bilibili
       link: https://space.bilibili.com/1124374292
-    - icon: fontawesome/brands/telegram
-      link: https://t.me/hitszlug
     - icon: material/airplane-landing
       link: https://osa.moe
 
