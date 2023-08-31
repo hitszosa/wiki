@@ -1,6 +1,6 @@
-# HITsz Linux User Group
+# HITSZ 开源技术协会
 
-我们是 HITsz Linux User Group（a.k.a. LUG），哈尔滨工业大学深圳校区里的一个兴趣结社 ~~地下组织~~，旨在联合本校的 GNU/Linux 使用者，推广 GNU/Linux 的使用，提高大众对 GNU/Linux 的了解，宣传自由软件的价值并推广其使用，提升自由软件社区文化氛围。
+我们是 HITSZ 开源技术协会（a.k.a. OSA），哈尔滨工业大学深圳校区里的一个兴趣结社 ~~地下组织~~，旨在联合本校的 GNU/Linux 使用者，推广 GNU/Linux 的使用，提高大众对 GNU/Linux 的了解，宣传自由软件的价值并推广其使用，提升自由软件社区文化氛围。
 
 在这里，你可以讨论跟 Linux 有关的一切，传各种 Geek 神教（Arch/Gentoo/Haskell/Lisp/C/Rust 等），交流 Linux 使用过程中的喜怒哀乐等等等等。
 
