@@ -6,6 +6,6 @@
 
 如无特殊声明，本 Wiki 所有文档均以 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 发布到公共领域。
 
-目前文档托管于 [GitHub](https://github.com/hitszlug/wiki), 采用 Cloudflare Bot 自动构建页面。不论是有想了解的内容或者对内容有疑问，都欢迎去 repo 里开 issue 询问。我们也欢迎新文章投稿，欢迎 fork & PR！![GitHub contributors](https://img.shields.io/github/contributors/hitszlug/wiki?logo=github&style=flat-square)
+目前文档托管于 [GitHub](https://github.com/hitszosa/wiki), 采用 Cloudflare Bot 自动构建页面。不论是有想了解的内容或者对内容有疑问，都欢迎去 repo 里开 issue 询问。我们也欢迎新文章投稿，欢迎 fork & PR！![GitHub contributors](https://img.shields.io/github/contributors/hitszosa/wiki?logo=github&style=flat-square)
 
 除了 GitHub，你还可以在 [关于我们](./about.md) 里找到我们更多联系方式。
