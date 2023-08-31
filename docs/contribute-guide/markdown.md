@@ -45,13 +45,11 @@ GitHub 是一个英文社区，所以我们需要规范英文拼写。（这句�
 >
 > 我们的客户有 gitHub、fourSquare、microSoft Corporation、google、faceBook, Inc.。
 
-<!-- LUG 和下属项目的规范拼写如下：
+OSA 和下属项目的规范拼写如下：
 
-- HITsz LUG
-- Wiki
-- Weekly -->
+- HITSZ OSA
 
-LUG 和下属项目的规范拼写仍在讨论中。
+其余下属项目的规范拼写仍在讨论中。
 
 有一些特殊情况可以不规范拼写，如大标题（但更常见的做法是使用 CSS 属性来将规范拼写的标题显示为全大写）。
 

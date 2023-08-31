@@ -1,4 +1,4 @@
-# HITsz LUG Customized Debian 设计原则与变更日志
+# HITSZ OSA Customized Debian 设计原则与变更日志
 
 这是一个经过修改的基于 Xfce4 的 Debian 11 系统。
 

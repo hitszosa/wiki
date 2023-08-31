@@ -1,4 +1,4 @@
-# HITsz LUG Wiki
+# HITSZ 开源技术协会 Wiki
 
 ## 参与建设
 

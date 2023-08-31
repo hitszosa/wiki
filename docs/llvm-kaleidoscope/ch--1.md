@@ -11,7 +11,7 @@
 
 鄙人最近又开始了学习编译技术的学习，在学习之余，也想为社区做一份贡献。于是我斗胆尝试翻译一下本篇教程，重点在之前译者没有翻译的章节上，尽量保证在今年 4 月前翻译完成整个教程。
 
-因本人水平有限，如有错误，请多多指正、包涵。如有勘误，欢迎提出 issue/pr 于此 [仓库](https://github.com/hitszlug/wiki). 也可以直接联系本人 Origami404 at foxmail.com 
+因本人水平有限，如有错误，请多多指正、包涵。如有勘误，欢迎提出 issue/pr 于此 [仓库](https://github.com/hitszosa/wiki). 也可以直接联系本人 Origami404 at foxmail.com 
 
 本翻译同时也发布在 [我的博客](https://origami404.github.io/%E7%BC%96%E8%AF%91%E4%B8%8E%E7%B1%BB%E5%9E%8B/llvm-kaleidoscope/ch--1/) 上。
 
