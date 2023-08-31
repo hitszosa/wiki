@@ -1,6 +1,6 @@
 # 提问的智慧（改）
 
-> O4: 这是《提问的智慧》HITSZ Linux User Group 修改版。任何以 "O4:" 开头的都是本协会自行添加的注释
+> O4: 这是《提问的智慧》HITSZ OSA 修改版。任何以 "O4:" 开头的都是本协会自行添加的注释
 
 > O4: 中文原文地址：https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md
 
@@ -63,7 +63,7 @@ Copyleft 2001 by D.H.Grand(nOBODY/Ginux), 2010 by Gasolin, 2015 by Ryan Wu
 
 回答者需要迅速判断解决你的问题需要多少时间，一个需要坐下来打开电脑才能好好解决的问题不可能在上课摸鱼的时候给你解答。因此你需要给出问题的全貌，以便回答者安排他的时间
 
-#### 尽可能地在 自救群/LUG 群/公开的论坛 内提问而不是私聊
+#### 尽可能地在 自救群/OSA 交流群/公开的论坛 内提问而不是私聊
 
 公开的提问能吸引更多的回答者，并且有可能其他回答者可以指出更多的问题，包括问题中的与回答中的问题
 
@@ -259,7 +259,7 @@ Stack Exchange 已经成长到[超过一百个网站](http://stackexchange.com/s
 
 > O4:
 >
-> 本地的用户群组：比如我们 HITsz LUG
+> 本地的用户群组：比如我们 HITSZ OSA
 >
 > IRC 频道：你可以粗略地认为是早期的聊天工具并将其等价地视为 QQ 群之类的
 >
