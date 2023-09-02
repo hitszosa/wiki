@@ -27,13 +27,6 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-For conda user:
-
-``` shell
-conda env create --name osa-wiki -f environment.yml
-conda activate osa-wiki
-```
-
 ## 本地预览
 
 ``` shell
