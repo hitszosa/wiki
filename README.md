@@ -20,14 +20,11 @@ Wiki 上有 [更详细的 Markdown 约定](https://wiki.hitsz.org/about/contribu
 可用以下命令安装：
 
 ``` shell
+# According to PEP 668, you should not use pip directly.
+python -m venv venv
+# Activate the venv, bash for example
+source venv/bin/activate
 pip install -r requirements.txt
-```
-
-或者如果按照了 conda 的话，推荐使用以下命令安装并激活环境：
-
-``` shell
-conda env create --name lug-wiki -f environment.yml
-conda activate lug-wiki
 ```
 
 ## 本地预览
@@ -35,5 +32,5 @@ conda activate lug-wiki
 ``` shell
 mkdocs serve
 
-# 或 mkdocs serve -a <ip:port>
+# or mkdocs serve -a <ip:port>
 ```
