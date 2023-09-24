@@ -2,14 +2,14 @@
 
 ## 写在前面
 
-HITsz 的各种 C/C++ 实验都使用 GNU GCC Toolchain 进行编译（C 语言实验，数据结构/算法实验，计网实验，数据库实验等等），学校提供的方案是使用 CodeBlock 进行开发，实际上体验很差，所以很多人会选择 vscode 来开发，但是不少人对 vscode 在 Windows 上的 C/C++ 环境配置感到头疼。
+HITsz 的各种 C/C++ 实验都使用 GNU GCC Toolchain 进行编译（C 语言实验，数据结构/算法实验，计网实验，数据库实验等等），学校提供的方案是使用 CodeBlock 进行开发，实际上体验很差，所以很多人会选择 VS Code 来开发，但是不少人对 VS Code 在 Windows 上的 C/C++ 环境配置感到头疼。
 
 ```txt
 “是因为你们选择了离 C 最远的 OS，所以 C 也抛弃了你们”
 ———— 某 OSA 成员
 ```
 
-GNU GCC 顾名思义就是运行在 GNU/Linux 上的编译器套件，其实 vscode 在 Linux 上的 C/C++ 开发体验是即开即用的，并不需要 Windows 上这么繁琐的配置。
+GNU GCC 顾名思义就是运行在 GNU/Linux 上的编译器套件，其实 VS Code 在 Linux 上的 C/C++ 开发体验是即开即用的，并不需要 Windows 上这么繁琐的配置。
 
 然而 GCC 并不是本来就支持在 Windows 上运行的，而是经过了一系列改造才能在 Windows 上正常执行编译出 Windows 可运行的执行程序二进制，这种改造来源于项目 MinGW（维护更新较慢，最初并不支持 x64），目前这个项目的最出名的继承者是 [MinGW-w64](https://www.mingw-w64.org/)，本篇将使用 MSYS2 进行 MinGW-w64 环境的配置
 
@@ -99,7 +99,7 @@ pacman -S mingw-w64-ucrt-x86_64-make mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x8
     请务必注意命令返回里有 `Built by MSYS2 project`
     若不是如此，可能存在mingw gcc在环境变量里，请务必检查环境变量并且删除不必要的gcc
 
-## vscode 相关配置
+## VS Code 相关配置
 
 ### 安装 C/C++ 插件
 
@@ -107,9 +107,9 @@ pacman -S mingw-w64-ucrt-x86_64-make mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x8
 
 ![cplugin](https://gitee.com/villard/wiki-images/raw/master/vscode-mingw/cplugin.webp)
 
-### 配置 vscode
+### 配置 VS Code
 
-1. 用 vscode 打开一个新的空文件夹
+1. 用 VS Code 打开一个新的空文件夹
 
 2. 新建一个 test.c 文件
 
@@ -117,7 +117,7 @@ pacman -S mingw-w64-ucrt-x86_64-make mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x8
 
 4. 点击右上角的调试运行（或使用快捷键 ++f5++）
 
-5. 根据下图指示选择 GCC，然后你的 vscode 就配置好了
+5. 根据下图指示选择 GCC，然后你的 VS Code 就配置好了
 
 6. 打个断点，调试运行你的程序
 
@@ -130,7 +130,7 @@ pacman -S mingw-w64-ucrt-x86_64-make mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x8
 
 ## 使用 Clangd 带来更美妙的 C/C++ 开发体验
 
-vscode 自带的微软 C/C++ 开发组件并非十分好用，他的错误提示不是很明确而且会有时延，对工程的难以进行 IntelliSence 等一系列问题，在此不详细列举
+VS Code 自带的微软 C/C++ 开发组件并非十分好用，他的错误提示不是很明确而且会有时延，对工程的难以进行 IntelliSence 等一系列问题，在此不详细列举
 
 想要拥有更好的体验，在这里我们安利使用 Clangd 作为 C/C++ 的 Language Server 代替 C/C++ 插件对代码进行更好的补全和感知
 
