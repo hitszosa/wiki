@@ -111,7 +111,7 @@ pacman -S mingw-w64-ucrt-x86_64-make mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x8
 
 1. 用 VS Code 打开一个新的空文件夹
 
-2. 新建一个 test.c 文件
+2. 新建一个 `test.c` 文件
 
 3. 写一个 hello world
 
