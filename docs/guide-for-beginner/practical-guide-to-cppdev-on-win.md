@@ -2,7 +2,7 @@
 
 ## 写在前面
 
-HITsz 的各种 C/C++ 实验都使用 GNU GCC Toolchain 进行编译（C 语言实验，数据结构/算法实验，计网实验，数据库实验等等），学校提供的方案是使用 CodeBlock 进行开发，实际上体验很差，所以很多人会选择 VS Code 来开发，但是不少人对 VS Code 在 Windows 上的 C/C++ 环境配置感到头疼。
+HITSZ 的各种 C/C++ 实验都使用 GNU GCC Toolchain 进行编译（C 语言实验，数据结构/算法实验，计网实验，数据库实验等等），学校提供的方案是使用 CodeBlock 进行开发，实际上体验很差，所以很多人会选择 VS Code 来开发，但是不少人对 VS Code 在 Windows 上的 C/C++ 环境配置感到头疼。
 
 ```txt
 “是因为你们选择了离 C 最远的 OS，所以 C 也抛弃了你们”
@@ -49,7 +49,7 @@ https://msys2.org/
 
 该文档详细解释了不同环境的区别和使用的C 标准库有什么区别
 
-本教程将使用 ucrt64 环境，能在编译期和运行期提供与 MSVC 编译出的二进制更好的兼容性
+本教程将使用 UCRT64 环境，能在编译期和运行期提供与 MSVC 编译出的二进制更好的兼容性
 
 ## 添加 MSYS2 到环境变量
 
@@ -73,7 +73,7 @@ SETX /M Path "$Env:Path;C:\msys64\usr\bin;C:\msys64\ucrt64\bin"
         export https_proxy=http://127.0.0.1:7890
     ```
 
-1. 在开始/所有程序中找到 UCRT64 环境的 msys2 , 如下图所示
+1. 在开始/所有程序中找到 UCRT64 环境的 MSYS2 , 如下图所示
 
 ![ucrt64](https://gitee.com/villard/wiki-images/raw/master/vscode-mingw/msys2ucrt64.webp)
 
@@ -97,7 +97,7 @@ pacman -S mingw-w64-ucrt-x86_64-make mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x8
 
 !!! warning "注意"
     请务必注意命令返回里有 `Built by MSYS2 project`
-    若不是如此，可能存在mingw gcc在环境变量里，请务必检查环境变量并且删除不必要的gcc
+    若不是如此，可能存在 MinGW GCC 在环境变量里，请务必检查环境变量并且删除不必要的环境变量项目
 
 ## VS Code 相关配置
 
