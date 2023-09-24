@@ -13,7 +13,7 @@ GNU GCC 顾名思义就是运行在 GNU/Linux 上的编译器套件，其实 vsc
 
 然而 GCC 并不是本来就支持在 Windows 上运行的，而是经过了一系列改造才能在 Windows 上正常执行编译出 Windows 可运行的执行程序二进制，这种改造来源于项目 MinGW（维护更新较慢，最初并不支持 x64），目前这个项目的最出名的继承者是 [MinGW-w64](https://www.mingw-w64.org/)，本篇将使用 MSYS2 进行 MinGW-w64 环境的配置
 
-## 什么 MSYS2
+## 什么是 MSYS2
 
 以及和 MinGW-w64 有何区别
 
