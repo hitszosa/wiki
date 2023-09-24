@@ -47,7 +47,7 @@ https://msys2.org/
 
 此章有兴趣的同学可以阅读 [MSYS2 Environment](https://www.msys2.org/docs/environments/)
 
-该文档详细解释了不同环境的编译二进制 ABI 和使用的 C Lib 有什么区别
+该文档详细解释了不同环境的区别和使用的 C Lib 有什么区别
 
 本教程将使用 ucrt64 环境，能在 buildtime 和 runtime 提供和 MSVC 编译出的二进制更好的兼容性
 
