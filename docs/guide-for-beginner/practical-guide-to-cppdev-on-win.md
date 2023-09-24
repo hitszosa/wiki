@@ -130,7 +130,7 @@ pacman -S mingw-w64-ucrt-x86_64-make mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x8
 
 ## 使用 Clangd 带来更美妙的 C/C++ 开发体验
 
-VS Code 自带的微软 C/C++ 开发组件并非十分好用，他的错误提示不是很明确而且会有时延，对工程的难以进行 IntelliSence 等一系列问题，在此不详细列举
+VS Code 自带的微软 C/C++ 开发组件并非十分好用，他的错误提示不是很明确而且会有时延，对工程的难以进行 IntelliSense 等一系列问题，在此不详细列举
 
 想要拥有更好的体验，在这里我们安利使用 Clangd 作为 C/C++ 的 Language Server 代替 C/C++ 插件对代码进行更好的补全和感知
 
