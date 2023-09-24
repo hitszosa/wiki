@@ -3,3 +3,8 @@
 
 # Mkdocs site
 site/
+
+# autocorrect need node involved on Windows
+node_modules
+yarn.lock
+package.json
