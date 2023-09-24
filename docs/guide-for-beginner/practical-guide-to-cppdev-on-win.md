@@ -147,7 +147,7 @@ vscode 自带的微软 C/C++ 开发组件并非十分好用，他的错误提示
     ```
 
     !!! warning "注意"
-        开始右键，输入`clangd --version`确认此时 Clangd 在你的环境变量中
+        右键开始打开终端，输入`clangd --version`确认此时 Clangd 在你的环境变量中
 
 3. 安装 Clangd 插件
 
