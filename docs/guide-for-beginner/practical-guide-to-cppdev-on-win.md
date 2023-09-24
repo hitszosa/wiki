@@ -134,7 +134,7 @@ VS Code 自带的微软 C/C++ 开发组件并非十分好用，他的错误提�
 
 想要拥有更好的体验，在这里我们安利使用 Clangd 作为 C/C++ 的 language server 代替 C/C++ 插件对代码进行更好的补全和感知
 
-1. 首先先关闭 C/C++ 插件的 IntelliSence
+1. 首先先关闭 C/C++ 插件的 IntelliSense
 
     ![intellisense](https://gitee.com/villard/wiki-images/raw/master/vscode-mingw/intellisense.webp)
 
