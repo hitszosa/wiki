@@ -19,7 +19,7 @@ GNU GCC 顾名思义就是运行在 GNU/Linux 上的编译器套件，其实 VS 
 
 ### MinGW-w64 
 
- - 旨在支持 Windows 系统上的 GCC 编译器
+ - 旨在支持 Windows 系统上的 GCC
  - 将 Linux 上 GCC 提供系统 API 转化，提供兼容 Windows 系统 API 的实现
  - 提供在 Windows 上链接和运行代码所需的一切
 
@@ -27,7 +27,7 @@ GNU GCC 顾名思义就是运行在 GNU/Linux 上的编译器套件，其实 VS 
 
 MSYS2 提供了 GCC、mingw-w64、CPython、CMake、Meson、OpenSSL、FFmpeg、Rust、Ruby 等的最新版本的开发工具和环境，使用 `pacman` 包管理器来进行快速环境安装和配置
 
-提供非常类 *nix 的开发体验
+提供非常类 Unix 的开发体验
 
 ## 安装 MSYS2
 
@@ -47,18 +47,18 @@ https://msys2.org/
 
 此章有兴趣的同学可以阅读 [MSYS2 Environment](https://www.msys2.org/docs/environments/)
 
-该文档详细解释了不同环境的区别和使用的 C Lib 有什么区别
+该文档详细解释了不同环境的区别和使用的C 标准库有什么区别
 
-本教程将使用 ucrt64 环境，能在 buildtime 和 runtime 提供和 MSVC 编译出的二进制更好的兼容性
+本教程将使用 ucrt64 环境，能在编译期和运行期提供与 MSVC 编译出的二进制更好的兼容性
 
 ## 添加 MSYS2 到环境变量
 
-++"鼠标右键"++ 点击你的开始菜单，打开一个管理员权限的 PowerShell，输入以下命令将 msys2 加入环境变量
+++"鼠标右键"++ 点击你的开始菜单，打开一个管理员权限的 PowerShell，输入以下命令将 MSYS2 加入环境变量
 
 
 !!! warning "注意"
-    一定要使用 PowerShell ，而且是管理员权限，使用 cmd 会出现环境变量拿不到的问题，因为这两个东西语法有区别
-    前面自定义路径的同学务必修改下面的命令，如果有其它mingw在环境变量里，请务必删掉
+    一定要使用 PowerShell ，而且是管理员权限，使用命令提示符会出现环境变量拿不到的问题，因为这两个东西语法有区别
+    前面自定义路径的同学务必修改下面的命令，如果有其它 MinGW GCC 在环境变量里，请务必删掉
 
 ```powershell
 SETX /M Path "$Env:Path;C:\msys64\usr\bin;C:\msys64\ucrt64\bin"
