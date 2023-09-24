@@ -47,7 +47,7 @@ https://msys2.org/
 
 此章有兴趣的同学可以阅读 [MSYS2 Environment](https://www.msys2.org/docs/environments/)
 
-该文档详细解释了不同环境的区别和使用的C 标准库有什么区别
+该文档详细解释了不同环境的区别和使用的 C 标准库有什么区别
 
 本教程将使用 UCRT64 环境，能在编译期和运行期提供与 MSVC 编译出的二进制更好的兼容性
 
@@ -67,7 +67,7 @@ SETX /M Path "$Env:Path;C:\msys64\usr\bin;C:\msys64\ucrt64\bin"
 ## 安装 GCC 等开发工具
 
 !!! info
-    这部分可能需要使用魔法上网的同学，可以参考下列命令在 msys2 bash 中设置代理
+    这部分可能需要使用魔法上网的同学，可以参考下列命令在 MSYS2 bash 中设置代理
     ```
         export http_proxy=http://127.0.0.1:7890
         export https_proxy=http://127.0.0.1:7890
@@ -77,7 +77,7 @@ SETX /M Path "$Env:Path;C:\msys64\usr\bin;C:\msys64\ucrt64\bin"
 
 ![ucrt64](https://gitee.com/villard/wiki-images/raw/master/vscode-mingw/msys2ucrt64.webp)
 
-2. 打开后输入下面命令更新 msys2 sourcelist，可能会需要重启 msys2
+2. 打开后输入下面命令更新 MSYS2 sourcelist，可能会需要重启 MSYS2
 
 ```bash
 pacman -Syyu
