@@ -2,7 +2,7 @@
 
 ## 写在前面
 
-HITSZ 的各种 C/C++ 实验都使用 GNU GCC Toolchain 进行编译（C 语言实验，数据结构/算法实验，计网实验，数据库实验等等），学校提供的方案是使用 CodeBlock 进行开发，实际上体验很差，所以很多人会选择 VS Code 来开发，但是不少人对 VS Code 在 Windows 上的 C/C++ 环境配置感到头疼。
+HITSZ 的各种 C/C++ 实验都使用 GNU GCC Toolchain 进行编译（C 语言实验、数据结构和算法实验、计网实验、数据库实验等等），学校提供的方案是使用 Code::Blocks 进行开发，实际上体验很差；所以很多人会选择 VS Code 来开发，但是不少人对 VS Code 在 Windows 上的 C/C++ 环境配置感到头疼。
 
 ```txt
 “是因为你们选择了离 C 最远的 OS，所以 C 也抛弃了你们”
