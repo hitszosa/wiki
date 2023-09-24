@@ -13,7 +13,7 @@ GNU GCC 顾名思义就是运行在 GNU/Linux 上的编译器套件，其实 vsc
 
 然而 GCC 并不是本来就支持在 Windows 上运行的，而是经过了一系列改造才能在 Windows 上正常执行编译出 Windows 可运行的执行程序二进制，这种改造来源于项目 MinGW（维护更新较慢，最初并不支持 x64），目前这个项目的最出名的继承者是 [MinGW-w64](https://www.mingw-w64.org/)，本篇将使用 MSYS2 进行 MinGW-w64 环境的配置
 
-## 什么MSYS2
+## 什么 MSYS2
 
 以及和 MinGW-w64 有何区别
 
@@ -67,7 +67,7 @@ SETX /M Path "$Env:Path;C:\msys64\usr\bin;C:\msys64\ucrt64\bin"
 ## 安装 GCC 等开发工具
 
 !!! info
-    这部分可能需要使用魔法上网的同学，可以参考下列命令在msys2 bash中设置代理
+    这部分可能需要使用魔法上网的同学，可以参考下列命令在 msys2 bash 中设置代理
     ```
         export http_proxy=http://127.0.0.1:7890
         export https_proxy=http://127.0.0.1:7890
@@ -77,7 +77,7 @@ SETX /M Path "$Env:Path;C:\msys64\usr\bin;C:\msys64\ucrt64\bin"
 
 ![ucrt64](https://gitee.com/villard/wiki-images/raw/master/vscode-mingw/msys2ucrt64.webp)
 
-2. 打开后输入下面命令更新 msys2 sourcelist，可能会需要重启msys2
+2. 打开后输入下面命令更新 msys2 sourcelist，可能会需要重启 msys2
 
 ```bash
 pacman -Syyu
@@ -103,7 +103,7 @@ pacman -S mingw-w64-ucrt-x86_64-make mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x8
 
 ### 安装 C/C++ 插件
 
-如图，插件中搜索C，安装 C/C++ 插件
+如图，插件中搜索 C，安装 C/C++ 插件
 
 ![cplugin](https://gitee.com/villard/wiki-images/raw/master/vscode-mingw/cplugin.webp)
 
@@ -115,9 +115,9 @@ pacman -S mingw-w64-ucrt-x86_64-make mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x8
 
 3. 写一个 hello world
 
-4. 点击右上角的调试运行 （或使用快捷键 ++f5++）
+4. 点击右上角的调试运行（或使用快捷键 ++f5++）
 
-5. 根据下图指示选择 GCC ，然后你的 vscode 就配置好了
+5. 根据下图指示选择 GCC，然后你的 vscode 就配置好了
 
 6. 打个断点，调试运行你的程序
 
@@ -130,7 +130,7 @@ pacman -S mingw-w64-ucrt-x86_64-make mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x8
 
 ## 使用 Clangd 带来更美妙的 C/C++ 开发体验
 
-vscode 自带的微软 C/C++ 开发组件并非十分好用，他的错误提示不是很明确而且会有时延，对工程的难以进行IntelliSence等一系列问题，在此不详细列举
+vscode 自带的微软 C/C++ 开发组件并非十分好用，他的错误提示不是很明确而且会有时延，对工程的难以进行 IntelliSence 等一系列问题，在此不详细列举
 
 想要拥有更好的体验，在这里我们安利使用 Clangd 作为 C/C++ 的 Language Server 代替 C/C++ 插件对代码进行更好的补全和感知
 
