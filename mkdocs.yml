@@ -86,7 +86,9 @@ nav:
       - PyTorch on SLURM: hpc-doc/pytorch.md
   - 非官方实验环境指南:
     - 计算机组成原理lab1: unofficial-lab-env/comp-organ-lab1.md
-  
+  - 镜像站运维:
+    - 镜像站记载: mirrors-sysadmin/mirrors-notes.md
+    - 常见工作流程: mirrors-sysadmin/common-workflows.md
 
 plugins:
   - search:
