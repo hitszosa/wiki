@@ -35,5 +35,5 @@
 3. 打开 `reference/src/routes.json` 并找到想要添加到条目
 4. 将上一步找到的条目复制并粘贴到 `override/mirrorz-help/src/routes.json` 中的相应位置，最好按字典序放置，注意 JSON 格式规范（如列表末尾不能有多余的空格）
 5. 执行 `make prod`
-6. 使用 `rsync` 搬迁生成后的网站，生成后的网站位于 `mirrorz-help/out/`。形如：`rsync -r /path/to/osa-mirrorz-help/mirrorz-help/out/* yourname@10.249.8.102:/var/www/help`
+6. 使用 `rsync` 搬迁生成后的网站，生成后的网站位于 `mirrorz-help/out/`，命令形如：`rsync -r mirrorz-help/out/* <user>@10.249.8.102:/var/www/help`。其中 `<user>` 为您在服务器中的用户名
 7. 最后，确保网站正常后将修改推送到 GitHub
