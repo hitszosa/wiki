@@ -143,7 +143,7 @@ ssh -T git@gitee.com
 ```bash
 # 关联远程仓库 使用 SSH 协议
 git remote add origin git@gitee.com:userxxx/test-project.git
-git push -u origin "master"
+git push -u origin master
 ```
 
 这样就将本地仓库与远程仓库关联起来了。事实上，目前只是将本地仓库的 `master` 分支推送到了远程仓库的 `master` 分支上，并且 `-u` 选项表示将本地的 `master` 分支与远程的 `master` 分支关联起来，作为这个分支的默认远程分支。当后续对 `master` 分支进行修改后，可以直接使用 `git push` 命令将修改推送到远程仓库。同理可以将其他分支推送到远程仓库。
@@ -163,6 +163,50 @@ git checkout master
 git pull
 ```
 
+除了将本地仓库与远程仓库关联，还可以通过 `git clone` 命令将远程仓库克隆到本地：
 
+```bash
+git clone git@gitee.com:userxxx/test-project.git
+```
 
+## Git 协同开发工作流
+
+在你了解了 Git 的基本概念后，你可以开始使用 Git 进行协同开发了。在学习 Git 基础知识时，你已经了解到 Git 稍显繁杂的操作，但你真正入门 Git 协同开发只需要掌握几个基本操作。这里推荐一种简单的基于 Feature 分支的工作流。
+
+### 主分支只接受合并请求
+
+在这种工作流中，主分支（`master`）只接受来自其他分支的合并，不允许直接向主分支提交代码。这样可以保证主分支代码的稳定性。
+
+### 每个 Feature 都有一个独立的分支
+
+在这种工作流中，每个 Feature 都有一个独立的分支，这样可以保证不同 Feature 之间的代码不会相互影响。在给项目添加新功能时，从主分支新建一个 Feature 分支，然后在这个分支上进行开发。
+
+```bash
+# 切换到 master 分支
+git checkout master
+# 更新 确保 master 分支是最新的
+git pull
+# 新建一个 Feature 分支
+git checkout -b feature-a
+# 进行开发
+some-development
+```
+
+### 合并请求
+
+当 Feature 开发完成后，需要将 Feature 分支合并到主分支上。在协作开发中，这种合并在某个人的本地仓库中进行并不方便审阅，我们一般在远程仓库中进行合并请求（Pull Request）。
+
+在 Gitee 的仓库页面上点击 `Pull Request`，新建一个合并请求，源分支选择 Feature 分支，目标分支选择主分支，然后填写合并请求的标题与描述。这样就可以发起一个合并请求了。你们可以在这个合并请求中讨论代码的修改，审阅代码，最终在页面中点击合并按钮将 Feature 分支合并到主分支上。这种合并方式可以避免复杂的合并操作，并且当多个 feature 同时进行开发时也不容易产生合并冲突。在完成合并后，可以删除 Feature 分支。
+
+## Git 技巧
+
+这里列举几个不错的教程：
+
+- [git - 简明指南(中文翻译)](https://rogerdudler.github.io/git-guide/index.zh.html)
+- [Git 的奇技淫巧(中文翻译)](https://github.com/521xueweihan/git-tips)
+- [Git - Book](https://git-scm.com/book/zh/v2)
+
+同时推荐在熟悉 Git 的基本概念后使用 Git 的图形化工具，如 VsCode 的 Git 插件、JetBrains 的 Git 集成等。
+
+更多的 Git 使用技巧等待你在使用中发现。
 
