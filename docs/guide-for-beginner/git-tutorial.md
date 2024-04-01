@@ -202,8 +202,8 @@ some-development
 
 这里列举几个不错的教程：
 
-- [git - 简明指南(中文翻译)](https://rogerdudler.github.io/git-guide/index.zh.html)
-- [Git 的奇技淫巧(中文翻译)](https://github.com/521xueweihan/git-tips)
+- [git - 简明指南 (中文翻译)](https://rogerdudler.github.io/git-guide/index.zh.html)
+- [Git 的奇技淫巧 (中文翻译)](https://github.com/521xueweihan/git-tips)
 - [Git - Book](https://git-scm.com/book/zh/v2)
 
 同时推荐在熟悉 Git 的基本概念后使用 Git 的图形化工具，如 VsCode 的 Git 插件、JetBrains 的 Git 集成等。
