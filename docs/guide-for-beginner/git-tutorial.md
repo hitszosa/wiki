@@ -105,7 +105,7 @@ git checkout master
 git rebase feature-a
 ```
 
-Rebase 的好处是可以保持 Commit 的线性，这样的 Commit 更容易理解，但 Rebase 也有一个缺点，那就是 Rebase 会改变 Commit 的 SHA-1 值，如上述操作可以说 Rebase 是诸葛将修改应用到 master 分支上，这样会重写 master 分支的历史记录，于是当进行多人协作时，就会发现两个人的 master 分支不一致。所以在协作中多使用 Merge 合并。不过也有另一种操作，即先 Rebase 后 Merge，这样可以保持 Commit 的线性，又不会改变历史记录。
+Rebase 的好处是可以保持 Commit 的线性，这样的 Commit 更容易理解，但 Rebase 也有一个缺点，那就是 Rebase 会改变 Commit 的 SHA-1 值，如上述操作可以说 Rebase 是逐个将修改应用到 master 分支上，这样会重写 master 分支的历史记录，于是当进行多人协作时，就会发现两个人的 master 分支不一致。所以在协作中多使用 Merge 合并。不过也有另一种操作，即先 Rebase 后 Merge，这样可以保持 Commit 的线性，又不会改变历史记录。
 
 ```bash
 # 在 feature-a 分支上变基
@@ -122,7 +122,7 @@ git merge feature-a
 
 ### 远程仓库
 
-在多人协作中，通常会有一个远程仓库，这个远程仓库是所有人共享的。这里以 Gitee 为例，GitHub 是一个提供 Git 仓库托管服务的网站。远程仓库有三种协议：HTTP、SSH 和 Git，为了方便起见，我们这里使用 SSH 协议。
+在多人协作中，通常会有一个远程仓库，这个远程仓库是所有人共享的。这里以 Gitee 为例，Gitee 是一个提供 Git 仓库托管服务的网站。远程仓库有三种协议：HTTP、SSH 和 Git，为了方便起见，我们这里使用 SSH 协议。
 
 首先需要正确配置 SSH 密钥。可以通过 `ssh-keygen` 命令生成 SSH 密钥：
 
