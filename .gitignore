@@ -8,3 +8,6 @@ site/
 node_modules
 yarn.lock
 package.json
+
+# pyhon venv
+venv/

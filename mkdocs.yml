@@ -15,12 +15,12 @@ theme:
     - search.highlight
     - content.tabs.link
   palette:
-    - media: "(prefers-color-scheme: light)" 
+    - media: "(prefers-color-scheme: light)"
       scheme: default
       toggle:
         icon: material/lightbulb-outline
         name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)" 
+    - media: "(prefers-color-scheme: dark)"
       scheme: slate
       toggle:
         icon: material/lightbulb
@@ -41,7 +41,7 @@ nav:
   - 主页: index.md
   - 关于我们: about.md
   - 参与指引:
-    - Markdown 规范: contribute-guide/markdown.md
+      - Markdown 规范: contribute-guide/markdown.md
   - Customized Debian:
       - 基本说明与变更日志: customized-debian/principle-and-changelogs.md
       - 快速上手: customized-debian/quick-start.md
@@ -54,6 +54,7 @@ nav:
       - WSL 安装教程: guide-for-beginner/wsl-install-guide.md
       - VirtualBox + Ubuntu 安装教程: guide-for-beginner/vbox-ubuntu-guide.md
       - Windows C/C++ 开发环境配置实用指南: guide-for-beginner/practical-guide-to-cppdev-on-win.md
+      - Git 使用指南: guide-for-beginner/git-tutorial.md
   - 科普:
       - 编译，静态链接，可执行文件的生成: popular-science/compile.md
       - 程序的机器级表示:
@@ -85,12 +86,11 @@ nav:
       - Anaconda3 & Jupyter 环境配置: hpc-doc/anaconda.md
       - PyTorch on SLURM: hpc-doc/pytorch.md
   - 非官方实验环境指南:
-    - 计算机组成原理lab1: unofficial-lab-env/comp-organ-lab1.md
-  
+      - 计算机组成原理lab1: unofficial-lab-env/comp-organ-lab1.md
 
 plugins:
   - search:
-      lang: 
+      lang:
         - en
         # 选择日语来建立中文索引
         - ja
@@ -113,7 +113,7 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tabbed:
-      alternate_style: true 
+      alternate_style: true
   - pymdownx.tilde
   - admonition
   - toc:
