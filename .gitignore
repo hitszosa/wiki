@@ -9,5 +9,5 @@ node_modules
 yarn.lock
 package.json
 
-# pyyhon venv
+# pyhon venv
 venv/
