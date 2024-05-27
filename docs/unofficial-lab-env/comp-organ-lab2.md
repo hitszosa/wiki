@@ -67,13 +67,13 @@ brew install bison flex
 
 ```sh
 # Debian/Ubuntu
-sudo apt install Verilator
+sudo apt install verilator
 # fedora/CentOS
-sudo dnf install Verilator Verilator-devel
+sudo dnf install verilator verilator-devel
 # ArchLinux
-sudo pacman -Sy Verilator
+sudo pacman -Sy verilator
 # MacOS
-brew install Verilator
+brew install verilator
 ```
 
 但是有一些 Linux 的发行版，他会将包拆的比较奇怪，导致没法找到 `verilated.mk` 之类的情况发生。亦或者是版本比较老，则可以使用编译安装
@@ -86,7 +86,7 @@ autoconf # 生成 ./configure 文件
 ./configure --prefix=$HOME/app/verilator # 配置 makefile 和安装路径
 make -j `nproc` # 多核编译
 make install  # 这会安装到 $HOME/app/verilator 中
-echo 'export Verilator_ROOT=$HOME/app/verilator' >> .bashrc # 追加环境变量
+echo 'export verilator_ROOT=$HOME/app/verilator' >> .bashrc # 追加环境变量
 ```
 
 如果想要其他支持，请查阅 Verilator 的安装文档 https://verilator.org/guide/latest/install.html
