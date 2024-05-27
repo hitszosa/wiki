@@ -91,7 +91,7 @@ echo 'export Verilator_ROOT=$HOME/app/verilator' >> .bashrc # 追加环境变量
 
 如果想要其他支持，请查阅 Verilator 的安装文档 https://verilator.org/guide/latest/install.html
 
-Verilator 在编译过程中，需要用到 GNU 方言，因此推荐使用 linux。当然 MacOS 下的`brew install`就已经可以正常工作了。
+Verilator 在编译过程中，需要用到 GNU 方言，因此推荐使用 Linux。当然 MacOS 下的`brew install`就已经可以正常工作了。
 
 ## 安装 sdkman
 
@@ -151,11 +151,11 @@ sudo dnf install gtkwave
 sudo pacman -Sy gtkwave
 # OpenSUSE
 sudo zypper in gtkwave
-# windows
+# Windows
 winget install gtkwave
 ```
 
-如果 windows/MacOS 作为宿主系统，应该是在 windows/MacOS 中安装 GTKWave，然后在 windows/MacOS 打开 `.vcd` 文件。
+如果 Windows/MacOS 作为宿主系统，应该是在 Windows/MacOS 中安装 GTKWave，然后在 Windows/MacOS 打开 `.vcd` 文件。
 如果是 ssh 连接的 linux，可以使用 CyberDuck 或者是 MountainDuck（付费）或者是 sshfs 挂载目录，然后在 宿主机上 `gtkwave <.vcd>` 或者是双击打开。（笔者就是用的这种方式）
 
 ### MacOS 下安装 GTKWave
@@ -217,7 +217,7 @@ sudo port install gtkwave
 ## Chisel(Scala) IDE 的选择
 
 Chisel 只是 Scala 中的一个库。因此，只要 IDE 能支持 Scala，那么自然也是支持 Chisel 了。
-但是一些 IDE 如 VSCode/IDEA 会对 Chisel 语法有更加好的 highlight 支持。
+但是一些 IDE 如 VSCode/JetBrains IDEA 会对 Chisel 语法有更加好的 highlight 支持。
 
 经观察：对于稍微大一些的 Chisel 项目 (小学期级别), VSCode + Metals 会很卡，建议使用 JetBrain IDEA
 
