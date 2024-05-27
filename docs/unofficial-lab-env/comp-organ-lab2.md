@@ -41,7 +41,7 @@ sudo zypper in -t pattern devel_C_C++
 
 如果配置环境过程中出现“command not found.”可能是有依赖的工具没装，此时可以利用搜索引擎。
 
-mac 需要安装 homebrew 作为包管理器，请查阅: https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/
+mac 需要安装 homebrew 作为包管理器，请查阅：https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/
 
 ## 安装 bison 和 flex
 
@@ -95,8 +95,8 @@ verilator 在编译过程中，需要用到 gnu 方言，因此推荐使用 linu
 
 ## 安装 sdkman
 
-注意，并不一定要安装 sdkman 。sdkman 是一个用于管理 java 相关开发环境的软件。
-如果我们发行版的包管理器可以顺利安装 java, scala@2.12.13, sbt ，那么实际上也不需要 sdkman。
+注意，并不一定要安装 sdkman。sdkman 是一个用于管理 java 相关开发环境的软件。
+如果我们发行版的包管理器可以顺利安装 java, scala@2.12.13, sbt，那么实际上也不需要 sdkman。
 
 ```sh
 # arch
@@ -110,7 +110,7 @@ brew install sbt openjdk scala@2.12
 ```
 
 注意，笔者没有查到 ubuntu/debian/opensuse/centos 可以使用包管理安装 sbt 的方式。
-因此，推荐通过 sdkman 安装 sbt 。当然，scala 和 openjdk 是可以通过包管理器安装的。
+因此，推荐通过 sdkman 安装 sbt。当然，scala 和 openjdk 是可以通过包管理器安装的。
 
 可以通过下面这个命令安装
 
@@ -153,22 +153,73 @@ sudo pacman -Sy gtkwave
 sudo zypper in gtkwave
 # windows
 winget install gtkwave
-# mac
-brew install gtkwave
 ```
 
 如果 windows/mac 作为宿主系统，应该是在 windows/mac 中安装 gtkwave，然后在 windows/mac 打开 `.vcd` 文件。
-
-但是 mac 实际上使用 gtkwave 会有点兼容问题（无法双击打开）。但是可以在 shell 中 `gtkwave <.vcd>`打开。
-
 如果是 ssh 连接的 linux，可以使用 CyberDuck 或者是 MountainDuck（付费）或者是 sshfs 挂载目录，然后在 宿主机上 `gtkwave <.vcd>` 或者是双击打开。（笔者就是用的这种方式）
+
+### mac 下安装 gtkwave
+
+mac 下安装 gtkwave 是一件非常令人感到疑惑的事情。mac 有着地狱一般的向下兼容问题。
+
+通过`brew install`并不能直接安装 gtkwave,
+不过可以通过`brew tap randomplum/gtkwave && brew install --HEAD randomplum/gtkwave/gtkwave`这样安装（不推荐）
+
+因为`randomplum/gtkwave`这个 tap 提供的 gtkwave 并支持 tcl 脚本。
+
+但是我们可以使用 nix 或者 macport 安装 gtkwave(支持 tcl 脚本)
+
+下面两种方式选一种就行了
+
+#### nix
+
+nixos 是一个更加强大的操作系统（有兴趣可以看看）。nixos 上有一种环境管理的工具叫做 nix，
+但是 nix 作为环境管理工具现在已经支持了 linux(可以是不同于 nixos 的其他发行版) 和 mac。
+
+通过这行命令安装 nix 。安装过程中请注意看提示
+
+```sh
+sh <(curl -L https://nixos.org/nix/install)
+```
+
+下面是通过 nix 安装 gtkwave 。
+
+```sh
+# i 表示 install
+# A 表示 attr 这告诉 nix-env 通过它的属性名来选择软件包
+nix-env -iA nixpkgs.gtkwave
+```
+
+下面是卸载 nix 下的 gtkwave
+
+```sh
+nix-env -e gtkwave
+```
+
+当然 nix 的用法远不止于此，但是就先这样用啦。
+nix 可以用的很优雅，但是这超过了本文的范围了。
+
+想要卸载 nix ？ 请翻阅 nix 文档: https://nixos.org
+
+#### macport
+
+macport 是 mac 上老牌的包管理器了，现在 homebrew 比较流行。
+但是 homebrew 在安装 gtkwave 上表现的并不顺利（
+
+在[这里](https://www.macports.org/install.php)下载 macport 并安装（注意要选择当前系统的版本）
+
+```sh
+sudo port install gtkwave
+```
+
+想要卸载 macport ? 请翻阅 macport 文档: https://guide.macports.org/chunked/installing.macports.uninstalling.html
 
 ## chisel(scala) IDE 的选择
 
-chisel 只是 scala 中的一个库。因此，只要 IDE 能支持 scala ，那么自然也是支持 chisel 了。
+chisel 只是 scala 中的一个库。因此，只要 IDE 能支持 scala，那么自然也是支持 chisel 了。
 但是一些 IDE 如 vscode/IDEA 会对 chisel 语法有更加好的 highlight 支持。
 
-经观察：对于稍微大一些的 chisel 项目 (小学期级别), VSCode + Metals 会很卡, 建议使用 JetBrain IDEA
+经观察：对于稍微大一些的 chisel 项目 (小学期级别), VSCode + Metals 会很卡，建议使用 JetBrain IDEA
 
 ### vscode 对 chisel(scala) 的支持
 
@@ -199,7 +250,7 @@ git clone https://github.com/chipsalliance/chisel-template.git <my-chisel-projec
 
 ### 编写 chisel 代码
 
-chisel-template 项目下天然的提供了一个 GCD 硬件 module 。
+chisel-template 项目下天然的提供了一个 GCD 硬件 module。
 
 ```scala
 /// src/main/scala/gcd/GCD.scala
@@ -285,8 +336,8 @@ module GCD(
 endmodule
 ```
 
-- 这里是 scala 教程： https://docs.scala-lang.org/zh-cn/
-- 这里是 chisel 教程： https://www.chisel-lang.org/docs/cookbooks/cookbook
+- 这里是 scala 教程：https://docs.scala-lang.org/zh-cn/
+- 这里是 chisel 教程：https://www.chisel-lang.org/docs/cookbooks/cookbook
 
 ### 使用 verilator c++ 调试 chisel 生成的 verilog
 
@@ -382,14 +433,51 @@ verilator -Wall --cc --trace -Iobj_dir -Wno-UNUSEDSIGNAL GCD.sv --exe tb.cxx # �
 make -C obj_dir -f VGCD.mk
 ```
 
-这样我们就用 verilator 编译完成了 c++ 和 verilog 。我们可以在 obj_dir 文件夹下面找到 VGCD 可执行文件。
+这样我们就用 verilator 编译完成了 c++ 和 verilog。我们可以在 obj_dir 文件夹下面找到 VGCD 可执行文件。
 我们可以通过 `./VGCD` 执行可执行文件。执行完成以后，可以看到输出 `success` 字样并且在项目的根目录下生成了 `gcd.vcd` 文件。
-我们可以使用 vscode 的 wavetrace 插件（付费） 打开 `.vcd` 文件。
+我们可以使用 vscode 的 wavetrace 插件（付费）打开 `.vcd` 文件。
 
 这是 verilator 的使用教程：https://itsembedded.com/dhd_list/
 
 ## 使用 gtkwave 打开波形仿真文件
 
 ```sh
-gtkwave mul.vcd
+gtkwave gcd.vcd
+```
+
+### 使用 tcl 脚本
+
+每次我们使用 gtkwave 调试波形图的时候。每次打开需要一个步骤：选中信号，然后 append/insert 。
+这很不优雅。尤其是：当我们需要频繁的调试。打开 gtkwave -> 选中信号 -> a/i -> 看波形 -> 改代码 -> make run -> 打开 gtkwave ->
+选中信号 -> a/i -> 看波形 -> ...
+
+但是，实际上，选中信号 -> a/i 这个步骤我们可以实现的更加自动化一些 —— 编写 tcl 脚本!
+实现打开 gtkwave 的时候，就将所有的信号 append/insert 到屏幕上
+
+创建一个 load_all_waves.tcl 文件，写入以下内容，保存。
+
+```tcl
+# load_all_waves.tcl
+# Add all signals
+set nfacs [ gtkwave::getNumFacs ]
+set all_facs [list]
+for {set i 0} {$i < $nfacs } {incr i} {
+  set facname [ gtkwave::getFacName $i ]
+  lappend all_facs "$facname"
+}
+set num_added [ gtkwave::addSignalsFromList $all_facs ]
+puts "num signals added: $num_added"
+
+# Zoom full
+gtkwave::/Time/Zoom/Zoom_Full
+
+# Print
+# set dumpname [ gtkwave::getDumpFileName ]
+# gtkwave::/File/Print_To_File PDF {Letter (8.5" x 11")} Minimal $dumpname.pdf
+```
+
+然后我们可以通过下面这个命令打开`.tcl`和`.vcd`
+
+```sh
+gtkwave -S load_all_waves.tcl gcd.vcd
 ```
