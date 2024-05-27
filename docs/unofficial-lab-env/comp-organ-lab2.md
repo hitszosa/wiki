@@ -51,7 +51,7 @@ Bison 和 Flex 是 GNU 提供的两个语法解析工具。
 ```sh
 # Debian/Ubuntu
 sudo apt install bison flex
-# fedora/CentOS
+# Fedora/CentOS
 sudo dnf install bison flex
 # ArchLinux
 sudo pacman -Sy bison flex
@@ -68,7 +68,7 @@ brew install bison flex
 ```sh
 # Debian/Ubuntu
 sudo apt install verilator
-# fedora/CentOS
+# Fedora/CentOS
 sudo dnf install verilator verilator-devel
 # ArchLinux
 sudo pacman -Sy verilator
@@ -103,7 +103,7 @@ Verilator 在编译过程中，需要用到 GNU 方言，因此推荐使用 Linu
 paru sbt
 sudo pacman -Sy openjdk
 paru scala_2.12
-# fedora
+# Fedora
 sudo dnf install sbt openjdk scala-2.12
 # MacOS
 brew install sbt openjdk scala@2.12
@@ -145,7 +145,7 @@ sdk install sbt
 ```sh
 # Debian/Ubuntu
 sudo apt install gtkwave
-# fedora/CentOS
+# Fedora/CentOS
 sudo dnf install gtkwave
 # ArchLinux
 sudo pacman -Sy gtkwave
