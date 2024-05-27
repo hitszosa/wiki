@@ -162,9 +162,7 @@ winget install gtkwave
 MacOS 下安装 GTKWave 是一件非常令人感到疑惑的事情。MacOS 有着地狱一般的向下兼容问题。
 
 通过`brew install`并不能直接安装 GTKWave,
-不过可以通过`brew tap randomplum/gtkWave && brew install --HEAD randomplum/gtkwave/gtkwave`这样安装（不推荐）
-
-因为`randomplum/gtkwave`这个 tap 提供的 GTKWave 并支持 tcl 脚本。
+不过可以通过`brew tap randomplum/gtkWave && brew install --HEAD randomplum/gtkwave/gtkwave`这样安装。这种安装方式并不推荐，因为`randomplum/gtkwave`这个 tap 提供的 GTKWave 并不支持 tcl 脚本。
 
 但是我们可以使用 Nix 或者 MacPort 安装 GTKWave（支持 tcl 脚本）。
 
@@ -195,7 +193,7 @@ nix-env -iA nixpkgs.gtkwave
 nix-env -e gtkwave
 ```
 
-当然 Nix 的用法远不止于此，但是就先这样用啦。
+当然 Nix 的用法远不止于此，但是就先介绍到这里。
 Nix 可以用的很优雅，但是这超过了本文的范围了。
 
 想要卸载 Nix？请翻阅 [Nix 文档](https://nixos.org) 。
@@ -211,7 +209,7 @@ MacPort 是 MacOS 上老牌的包管理器了，现在 Homebrew 比较流行。
 sudo port install gtkwave
 ```
 
-想要卸载 MacPort？请翻阅 [MacPort 文档](https://guide.MacOSports.org/chunked/installing.MacOSports.uninstalling.html)。
+想要卸载 MacPort？请翻阅 [MacPort 文档](https://guide.MacOSports.org/chunked/installing.MacOSports.uninstalling.html) 。
 
 ## Chisel(Scala) IDE 的选择
 
@@ -237,7 +235,7 @@ Chisel 只是 Scala 中的一个库。因此，只要 IDE 能支持 Scala，那�
 
 ## example
 
-下面这个例子可以在：[这里](https://github.com/KINGFIOX/chisel-verilator-example) 找到。
+下面这个例子可以在 [这里](https://github.com/KINGFIOX/chisel-verilator-example) 找到。
 
 ### 创建 Chisel 项目
 
@@ -451,7 +449,7 @@ gtkwave gcd.vcd
 选中信号 -> a/i -> 看波形 -> ...
 
 但是，实际上，"选中信号 -> a/i" 这个步骤我们可以实现的更加自动化一些 —— 编写 tcl 脚本！
-实现打开 GTKWave 的时候，就将所有的信号 append/insert 到屏幕上
+实现打开 GTKWave 的时候，就将所有的信号 append/insert 到屏幕上。
 
 创建一个 `load_all_waves.tcl` 文件，写入以下内容，保存。
 
@@ -475,7 +473,7 @@ gtkwave::/Time/Zoom/Zoom_Full
 # gtkwave::/File/Print_To_File PDF {Letter (8.5" x 11")} Minimal $dumpname.pdf
 ```
 
-然后我们可以通过下面这个命令打开`.tcl`和`.vcd`
+然后我们可以通过下面这个命令打开`.tcl`和`.vcd`：
 
 ```sh
 # 可以通过 gtkwave -h 知道参数的含义：
