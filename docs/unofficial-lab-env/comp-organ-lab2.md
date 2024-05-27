@@ -99,9 +99,8 @@ Verilator 在编译过程中，需要用到 GNU 方言，因此推荐使用 Linu
 
 ```sh
 # ArchLinux
-paru sbt
-sudo pacman -Sy openjdk
-paru scala_2.12
+sudo pacman -S sbt openjdk
+paru -S scala_2.12 # 或者其他 AUR helper
 # Fedora
 sudo dnf install sbt openjdk scala-2.12
 # MacOS
