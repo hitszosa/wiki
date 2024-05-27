@@ -23,7 +23,7 @@
 - make
 - sbt
 - Scala
-- sdkman
+- SDKMAN
 - Verilator
 
 通过以下命令可以安装
@@ -93,10 +93,10 @@ echo 'export verilator_ROOT=$HOME/app/verilator' >> .bashrc # 追加环境变量
 
 Verilator 在编译过程中，需要用到 GNU 方言，因此推荐使用 Linux。当然 MacOS 下的`brew install`就已经可以正常工作了。
 
-## 安装 sdkman
+## 安装 SDKMAN
 
-注意，并不一定要安装 sdkman。sdkman 是一个用于管理 java 相关开发环境的软件。
-如果我们发行版的包管理器可以顺利安装 java, scala@2.12.13, sbt，那么实际上也不需要 sdkman。
+注意，并不一定要安装 SDKMAN。SDKMAN 是一个用于管理 java 相关开发环境的软件。
+如果我们发行版的包管理器可以顺利安装 java, scala@2.12.13, sbt，那么实际上也不需要 SDKMAN。
 
 ```sh
 # ArchLinux
@@ -110,7 +110,7 @@ brew install sbt openjdk scala@2.12
 ```
 
 注意，笔者没有查到 Ubuntu/Debian/OpenSUSE/CentOS 可以使用包管理安装 sbt 的方式。
-因此，推荐通过 sdkman 安装 sbt。当然，scala 和 openjdk 是可以通过包管理器安装的。
+因此，推荐通过 SDKMAN 安装 sbt。当然，scala 和 openjdk 是可以通过包管理器安装的。
 
 可以通过下面这个命令安装
 
@@ -120,19 +120,19 @@ curl -s "https://get.sdkman.io" | bash
 
 安装过程中，注意看提示，会要求在安装完成后配置环境变量。
 
-### 使用 sdkman 安装 java
+### 使用 SDKMAN 安装 java
 
 ```sh
 sdk install java
 ```
 
-### 使用 sdkman 安装 Scala 2.12.13
+### 使用 SDKMAN 安装 Scala 2.12.13
 
 ```sh
 sdk install scala 2.12.13
 ```
 
-### 使用 sdkman 安装 sbt
+### 使用 SDKMAN 安装 sbt
 
 sbt 是 Scala 项目的构建软件
 
