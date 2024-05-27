@@ -479,8 +479,8 @@ gtkwave::/Time/Zoom/Zoom_Full
 然后我们可以通过下面这个命令打开`.tcl`和`.vcd`
 
 ```sh
-# 可以通过 gtkwave -h 知道参数的含义
+# 可以通过 gtkwave -h 知道参数的含义：
 # -S, --script=FILE. specify Tcl command script file for execution
-#   -f, --dump=FILE. specify dumpfile name
+# -f, --dump=FILE. specify dumpfile name
 gtkwave -S load_all_waves.tcl -f gcd.vcd
 ```
