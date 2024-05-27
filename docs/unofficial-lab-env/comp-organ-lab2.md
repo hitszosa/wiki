@@ -19,7 +19,7 @@
 - gcc
 - git
 - g++
-- java
+- Java
 - make
 - sbt
 - Scala
@@ -95,7 +95,7 @@ Verilator 在编译过程中，需要用到 GNU 方言，因此推荐使用 Linu
 
 ## 安装 SDKMAN
 
-注意，并不一定要安装 SDKMAN。SDKMAN 是一个用于管理 java 相关开发环境的软件。
+注意，并不一定要安装 SDKMAN。SDKMAN 是一个用于管理 Java' 相关开发环境的软件。
 如果我们发行版的包管理器可以顺利安装 java, scala@2.12.13, sbt，那么实际上也不需要 SDKMAN。
 
 ```sh
@@ -120,7 +120,7 @@ curl -s "https://get.sdkman.io" | bash
 
 安装过程中，注意看提示，会要求在安装完成后配置环境变量。
 
-### 使用 SDKMAN 安装 java
+### 使用 SDKMAN 安装 Java
 
 ```sh
 sdk install java
