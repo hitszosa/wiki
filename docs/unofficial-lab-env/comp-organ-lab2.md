@@ -217,20 +217,20 @@ sudo port install gtkwave
 ## Chisel(Scala) IDE 的选择
 
 Chisel 只是 Scala 中的一个库。因此，只要 IDE 能支持 Scala，那么自然也是支持 Chisel 了。
-但是一些 IDE 如 vscode/IDEA 会对 Chisel 语法有更加好的 highlight 支持。
+但是一些 IDE 如 VSCode/IDEA 会对 Chisel 语法有更加好的 highlight 支持。
 
 经观察：对于稍微大一些的 Chisel 项目 (小学期级别), VSCode + Metals 会很卡，建议使用 JetBrain IDEA
 
-### vscode 对 Chisel(Scala) 的支持
+### VSCode 对 Chisel(Scala) 的支持
 
-下面是笔者使用的 vscode 插件
+下面是笔者使用的 VSCode 插件
 
 - Chisel Syntax
 - Scala (Metals)
 - Scala Snippets
 - Scala Syntax (official)
 
-### vscode 对 Chisel(Scala) 的支持
+### VSCode 对 Chisel(Scala) 的支持
 
 下面是笔者使用的 JetBrain IDEA 插件
 
@@ -435,7 +435,7 @@ make -C obj_dir -f VGCD.mk
 
 这样我们就用 Verilator 编译完成了 C++ 和 Verilog。我们可以在 obj_dir 文件夹下面找到 VGCD 可执行文件。
 我们可以通过 `./VGCD` 执行可执行文件。执行完成以后，可以看到输出 `success` 字样并且在项目的根目录下生成了 `gcd.vcd` 文件。
-我们可以使用 vscode 的 wavetrace 插件（付费）打开 `.vcd` 文件。
+我们可以使用 VSCode 的 wavetrace 插件（付费）打开 `.vcd` 文件。
 
 这是 Verilator 的使用教程：https://itsembedded.com/dhd_list/
 
