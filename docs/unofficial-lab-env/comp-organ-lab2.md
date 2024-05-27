@@ -238,7 +238,7 @@ Chisel 只是 Scala 中的一个库。因此，只要 IDE 能支持 Scala，那�
 
 ## example
 
-下面这个例子可以在：https://github.com/KINGFIOX/chisel-verilator-example 这里找到
+下面这个例子可以在：[这里](https://github.com/KINGFIOX/chisel-verilator-example)找到
 
 ### 创建 Chisel 项目
 
