@@ -176,13 +176,13 @@ mac 下安装 gtkwave 是一件非常令人感到疑惑的事情。mac 有着地
 nixos 是一个更加强大的操作系统（有兴趣可以看看）。nixos 上有一种环境管理的工具叫做 nix，
 但是 nix 作为环境管理工具现在已经支持了 linux(可以是不同于 nixos 的其他发行版) 和 mac。
 
-通过这行命令安装 nix 。安装过程中请注意看提示
+通过这行命令安装 nix。安装过程中请注意看提示
 
 ```sh
 sh <(curl -L https://nixos.org/nix/install)
 ```
 
-下面是通过 nix 安装 gtkwave 。
+下面是通过 nix 安装 gtkwave。
 
 ```sh
 # i 表示 install
@@ -199,7 +199,7 @@ nix-env -e gtkwave
 当然 nix 的用法远不止于此，但是就先这样用啦。
 nix 可以用的很优雅，但是这超过了本文的范围了。
 
-想要卸载 nix ？ 请翻阅 nix 文档: https://nixos.org
+想要卸载 nix？请翻阅 nix 文档：https://nixos.org
 
 #### macport
 
@@ -212,7 +212,7 @@ macport 是 mac 上老牌的包管理器了，现在 homebrew 比较流行。
 sudo port install gtkwave
 ```
 
-想要卸载 macport ? 请翻阅 macport 文档: https://guide.macports.org/chunked/installing.macports.uninstalling.html
+想要卸载 macport ? 请翻阅 macport 文档：https://guide.macports.org/chunked/installing.macports.uninstalling.html
 
 ## chisel(scala) IDE 的选择
 
@@ -447,11 +447,11 @@ gtkwave gcd.vcd
 
 ### 使用 tcl 脚本
 
-每次我们使用 gtkwave 调试波形图的时候。每次打开需要一个步骤：选中信号，然后 append/insert 。
+每次我们使用 gtkwave 调试波形图的时候。每次打开需要一个步骤：选中信号，然后 append/insert。
 这很不优雅。尤其是：当我们需要频繁的调试。打开 gtkwave -> 选中信号 -> a/i -> 看波形 -> 改代码 -> make run -> 打开 gtkwave ->
 选中信号 -> a/i -> 看波形 -> ...
 
-但是，实际上，选中信号 -> a/i 这个步骤我们可以实现的更加自动化一些 —— 编写 tcl 脚本!
+但是，实际上，选中信号 -> a/i 这个步骤我们可以实现的更加自动化一些 —— 编写 tcl 脚本！
 实现打开 gtkwave 的时候，就将所有的信号 append/insert 到屏幕上
 
 创建一个 load_all_waves.tcl 文件，写入以下内容，保存。
