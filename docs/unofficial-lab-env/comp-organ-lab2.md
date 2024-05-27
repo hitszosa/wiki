@@ -454,7 +454,7 @@ gtkwave gcd.vcd
 但是，实际上，"选中信号 -> a/i" 这个步骤我们可以实现的更加自动化一些 —— 编写 tcl 脚本！
 实现打开 GTKWave 的时候，就将所有的信号 append/insert 到屏幕上
 
-创建一个 load_all_waves.tcl 文件，写入以下内容，保存。
+创建一个 `load_all_waves.tcl` 文件，写入以下内容，保存。
 
 ```tcl
 # load_all_waves.tcl
