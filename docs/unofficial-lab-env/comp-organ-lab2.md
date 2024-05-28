@@ -14,8 +14,6 @@
 
 实验工具安装需要
 
-- Bison
-- Flex
 - gcc
 - git
 - g++
@@ -35,17 +33,6 @@ sudo dnf install build-essential git device-tree-compiler
 
 MacOS 需要安装 Homebrew 作为包管理器，请查阅 [Tuna Mirrors 的安装指南](https://mirrors.tuna.tsinghua.edu.cn/help/homebrew) 。
 
-### 安装 Bison 和 Flex
-
-Bison 和 Flex 是 GNU 提供的两个语法解析工具。Verilator 依赖这两个工具将 Verilog 代码编译成 C++ 的 class。
-
-```sh
-# Debian/Ubuntu
-sudo apt install bison flex
-# Fedora/CentOS
-sudo dnf install bison flex
-```
-
 ## 安装 Verilator
 
 使用包管理器安装：
@@ -55,9 +42,12 @@ sudo dnf install bison flex
 sudo apt install verilator
 # Fedora/CentOS
 sudo dnf install verilator verilator-devel
+# MacOS
+brew install verilator
 ```
 
-但是有一些 Linux 的发行版，他会将包拆的比较奇怪，导致没法找到 `verilated.mk` 之类的情况发生。亦或者是版本比较老，则可以使用编译安装：
+但是有一些 Linux 的发行版，他会将包拆的比较奇怪，导致没法找到 `verilated.mk` 之类的情况发生。
+亦或者是版本比较老，则可以使用编译安装：
 
 ```sh
 # 先 cd 到一个文件夹中，推荐 cd 到 $HOME/Downloads
@@ -72,7 +62,7 @@ echo 'export verilator_ROOT=$HOME/app/verilator' >> .bashrc # 追加环境变量
 
 如果想要其他支持，请查阅 [Verilator 的安装文档](https://verilator.org/guide/latest/install.html) 。
 
-Verilator 在编译过程中，需要用到 GNU 方言，因此推荐使用 Linux。当然 MacOS 下的 `brew install` 就已经可以正常工作了。
+Verilator 在编译过程中，需要用到 GNU 方言，因此推荐使用 Linux。
 
 ## 安装 JDK/sbt/Scala
 
