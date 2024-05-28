@@ -222,7 +222,7 @@ int gcd(uint16_t a, uint16_t b)
 }
 ```
 
-下面是仿真我们的硬件 module 。 这里的`#include "VGCD.h"`是 Verilator 将 Verilog 编译成 C++ class 时产生的。
+下面是仿真我们的硬件 module。这里的`#include "VGCD.h"`是 Verilator 将 Verilog 编译成 C++ class 时产生的。
 
 ```cpp
 #include "VGCD.h"
@@ -240,7 +240,7 @@ int main(int argc, char* argv[])
     auto dut = std::make_unique<VGCD>();
     VerilatedVcdC* vcd = new VerilatedVcdC();
     dut->trace(vcd, 99); // 设定跟踪级别
-    vcd->open("gcd.vcd"); // 打开VCD文件
+    vcd->open("gcd.vcd"); // 打开 VCD 文件
 
     // 重置设备
     dut->reset = 1;
@@ -277,7 +277,7 @@ int main(int argc, char* argv[])
     uint16_t top_z = dut->io_outputGCD;
 
     dut->final();
-    vcd->close(); // 关闭VCD文件
+    vcd->close(); // 关闭 VCD 文件
 
     if (uint16_t z = gcd(x, y); z == top_z) {
         std::cout << "success" << std::endl;
@@ -384,7 +384,7 @@ sh <(curl -L https://nixos.org/nix/install)
 nix-env -iA nixpkgs.gtkwave
 ```
 
-当然 Nix 的用法远不止于此，但是就先介绍到这里。 Nix 可以用的很优雅，但是这超过了本文的范围了。
+当然 Nix 的用法远不止于此，但是就先介绍到这里。Nix 可以用的很优雅，但是这超过了本文的范围了。
 
 想要卸载 Nix？请翻阅 [Nix 文档](https://nixos.org) 。
 
@@ -411,7 +411,7 @@ sudo port install gtkwave
 那么该如何打开远程的`.vcd`呢？比较繁琐的办法是：将 server 上的`.vcd`下载到 client 上，然后打开（。
 比较灵活的方式是：将 server 的`<chisel-project>`目录挂载到 client 上，然后在 client 的 mount point 处通过 GTKWave 打开。
 
-常见的挂载软件有: CyberDuck, MountainDuck（付费）, sshfs
+常见的挂载软件有：CyberDuck, MountainDuck（付费）, sshfs
 
 ## Chisel(Scala) IDE 的选择
 
