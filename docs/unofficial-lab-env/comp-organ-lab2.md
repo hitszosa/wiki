@@ -359,3 +359,64 @@ gtkwave::/Time/Zoom/Zoom_Full
 # -f, --dump=FILE. specify dumpfile name
 gtkwave -S load_all_waves.tcl -f gcd.vcd
 ```
+
+# 附录
+
+## MacOS 安装 GTKWave
+
+MacOS 下安装 GTKWave 是一件非常令人感到疑惑的事情。MacOS 有着地狱一般的向下兼容问题。
+
+通过`brew install`并不能直接安装 GTKWave,
+不过可以通过`brew tap randomplum/gtkWave && brew install --HEAD randomplum/gtkwave/gtkwave`这样安装。这种安装方式并不推荐，因为`randomplum/gtkwave`这个 tap 提供的 GTKWave 并不支持 tcl 脚本。
+
+但是我们可以使用 Nix 或者 MacPort 安装 GTKWave（支持 tcl 脚本）。
+
+下面两种方式选一种就行了。
+
+### Nix
+
+NixOS 是一个更加强大的 Linux 发行版，感兴趣有可以进一步了解。NixOS 上有一种环境管理的工具叫做 Nix，
+但是 Nix 作为环境管理工具现在已经支持了 Linux（可以是不同于 NixOS 的其他发行版）和 MacOS。
+
+通过这行命令安装 Nix。安装过程中请注意看提示。
+
+```sh
+sh <(curl -L https://nixos.org/nix/install)
+```
+
+下面是通过 Nix 安装 GTKWave。
+
+```sh
+# i 表示 install
+# A 表示 attr 这告诉 nix-env 通过它的属性名来选择软件包
+nix-env -iA nixpkgs.gtkwave
+```
+
+当然 Nix 的用法远不止于此，但是就先介绍到这里。 Nix 可以用的很优雅，但是这超过了本文的范围了。
+
+想要卸载 Nix？请翻阅 [Nix 文档](https://nixos.org) 。
+
+### MacPort
+
+MacPort 是 MacOS 上老牌的包管理器了，现在 Homebrew 比较流行。
+但是 Homebrew 在安装 GTKWave 上表现的并不顺利。
+
+在 [这里](https://www.MacOSports.org/install.php) 下载 MacPort 并安装（注意要选择当前系统的版本）。
+
+```sh
+sudo port install gtkwave
+```
+
+想要卸载 MacPort？请翻阅 [MacPort 文档](https://guide.MacOSports.org/chunked/installing.MacOSports.uninstalling.html) 。
+
+## 远程开发的 GTKWave 的问题
+
+我们将远端称为 server, 将本地端称为 client.
+
+远程开发，然后尝试 `gtkwave <.vcd>` 这肯定是有问题的，因为这相当于是打开 server 的 GTKWave,
+而不是 client 上的 GTKWave。当然这样也打不开了，他会报错 `Could not initialize GTK! Is DISPLAY env var/xhost set?`。
+
+那么该如何打开远程的`.vcd`呢？比较繁琐的办法是：将 server 上的`.vcd`下载到 client 上，然后打开（。
+比较灵活的方式是：将 server 的`<chisel-project>`目录挂载到 client 上，然后在 client 的 mount point 处通过 GTKWave 打开。
+
+常见的挂载软件有: CyberDuck, MountainDuck（付费）, sshfs
