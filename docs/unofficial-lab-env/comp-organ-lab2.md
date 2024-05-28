@@ -429,7 +429,7 @@ Chisel 只是 Scala 中的一个库。因此，只要 IDE 能支持 Scala，那�
 - Scala Snippets
 - Scala Syntax (official)
 
-### VSCode 对 Chisel(Scala) 的支持
+### JetBrains IDEA 对 Chisel(Scala) 的支持
 
 下面是笔者使用的 JetBrain IDEA 插件
 
