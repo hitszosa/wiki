@@ -10,7 +10,7 @@
 - Chisel
 - GTKWave
 
-## 安装依赖
+## 安装 C/C++ 编译环境
 
 实验工具安装需要
 
@@ -19,11 +19,7 @@
 - gcc
 - git
 - g++
-- Java
 - make
-- sbt
-- Scala
-- SDKMAN
 - Verilator
 
 通过以下命令可以安装
@@ -31,19 +27,15 @@
 ```sh
 # Debian/Ubuntu
 sudo apt install build-essential git device-tree-compiler
-# Ubuntu
-sudo apt install build-essential git device-tree-compiler
-# ArchLinux
-sudo pacman -Sy base-devel git dtc
-# OpenSUSE
-sudo zypper in -t pattern devel_C_C++
+# Fedora
+sudo dnf install build-essential git device-tree-compiler
 ```
 
 如果配置环境过程中出现 "command not found." 可能是有依赖的工具没装，此时可以利用搜索引擎。
 
 MacOS 需要安装 Homebrew 作为包管理器，请查阅 [Tuna Mirrors 的安装指南](https://mirrors.tuna.tsinghua.edu.cn/help/homebrew) 。
 
-## 安装 Bison 和 Flex
+### 安装 Bison 和 Flex
 
 Bison 和 Flex 是 GNU 提供的两个语法解析工具。Verilator 依赖这两个工具将 Verilog 代码编译成 C++ 的 class。
 
@@ -52,12 +44,6 @@ Bison 和 Flex 是 GNU 提供的两个语法解析工具。Verilator 依赖这�
 sudo apt install bison flex
 # Fedora/CentOS
 sudo dnf install bison flex
-# ArchLinux
-sudo pacman -Sy bison flex
-# OpenSUSE
-sudo zypper in bison flex
-# MacOS
-brew install bison flex
 ```
 
 ## 安装 Verilator
@@ -69,10 +55,6 @@ brew install bison flex
 sudo apt install verilator
 # Fedora/CentOS
 sudo dnf install verilator verilator-devel
-# ArchLinux
-sudo pacman -Sy verilator
-# MacOS
-brew install verilator
 ```
 
 但是有一些 Linux 的发行版，他会将包拆的比较奇怪，导致没法找到 `verilated.mk` 之类的情况发生。亦或者是版本比较老，则可以使用编译安装：
@@ -92,25 +74,9 @@ echo 'export verilator_ROOT=$HOME/app/verilator' >> .bashrc # 追加环境变量
 
 Verilator 在编译过程中，需要用到 GNU 方言，因此推荐使用 Linux。当然 MacOS 下的 `brew install` 就已经可以正常工作了。
 
-## 安装 SDKMAN
+## 安装 JDK/sbt/Scala
 
-注意，并不一定要安装 SDKMAN。SDKMAN 是一个用于管理 Java' 相关开发环境的软件。
-如果我们发行版的包管理器可以顺利安装 java, scala@2.12.13, sbt，那么实际上也不需要 SDKMAN。
-
-```sh
-# ArchLinux
-sudo pacman -S sbt openjdk
-paru -S scala_2.12 # 或者其他 AUR helper
-# Fedora
-sudo dnf install sbt openjdk scala-2.12
-# MacOS
-brew install sbt openjdk scala@2.12
-```
-
-注意，笔者没有查到 Ubuntu/Debian/OpenSUSE/CentOS 可以使用包管理安装 sbt 的方式。
-因此，推荐通过 SDKMAN 安装 sbt。当然，scala 和 openjdk 是可以通过包管理器安装的。
-
-可以通过下面这个命令安装：
+SDKMAN 是一个用于管理 Java 相关开发环境的软件。可以通过下面这个命令安装：
 
 ```sh
 curl -s "https://get.sdkman.io" | bash
@@ -143,96 +109,11 @@ sdk install sbt
 ```sh
 # Debian/Ubuntu
 sudo apt install gtkwave
-# Fedora/CentOS
+# Fedora
 sudo dnf install gtkwave
-# ArchLinux
-sudo pacman -Sy gtkwave
-# OpenSUSE
-sudo zypper in gtkwave
-# Windows
-winget install gtkwave
 ```
 
-如果 Windows/MacOS 作为宿主系统，应该是在 Windows/MacOS 中安装 GTKWave，然后在 Windows/MacOS 打开 `.vcd` 文件。
-如果是 ssh 连接的 linux，可以使用 CyberDuck 或者是 MountainDuck（付费）或者是 sshfs 挂载目录，然后在 宿主机上 `gtkwave <.vcd>` 或者是双击打开，笔者就是用的这种方式。
-
-### MacOS 下安装 GTKWave
-
-MacOS 下安装 GTKWave 是一件非常令人感到疑惑的事情。MacOS 有着地狱一般的向下兼容问题。
-
-通过`brew install`并不能直接安装 GTKWave,
-不过可以通过`brew tap randomplum/gtkWave && brew install --HEAD randomplum/gtkwave/gtkwave`这样安装。这种安装方式并不推荐，因为`randomplum/gtkwave`这个 tap 提供的 GTKWave 并不支持 tcl 脚本。
-
-但是我们可以使用 Nix 或者 MacPort 安装 GTKWave（支持 tcl 脚本）。
-
-下面两种方式选一种就行了。
-
-#### Nix
-
-NixOS 是一个更加强大的 Linux 发行版，感兴趣有可以进一步了解。NixOS 上有一种环境管理的工具叫做 Nix，
-但是 Nix 作为环境管理工具现在已经支持了 Linux（可以是不同于 NixOS 的其他发行版）和 MacOS。
-
-通过这行命令安装 Nix。安装过程中请注意看提示。
-
-```sh
-sh <(curl -L https://nixos.org/nix/install)
-```
-
-下面是通过 Nix 安装 GTKWave。
-
-```sh
-# i 表示 install
-# A 表示 attr 这告诉 nix-env 通过它的属性名来选择软件包
-nix-env -iA nixpkgs.gtkwave
-```
-
-下面是卸载 Nix 下的 GTKWave。
-
-```sh
-nix-env -e gtkwave
-```
-
-当然 Nix 的用法远不止于此，但是就先介绍到这里。
-Nix 可以用的很优雅，但是这超过了本文的范围了。
-
-想要卸载 Nix？请翻阅 [Nix 文档](https://nixos.org) 。
-
-#### MacPort
-
-MacPort 是 MacOS 上老牌的包管理器了，现在 Homebrew 比较流行。
-但是 Homebrew 在安装 GTKWave 上表现的并不顺利。
-
-在 [这里](https://www.MacOSports.org/install.php) 下载 MacPort 并安装（注意要选择当前系统的版本）。
-
-```sh
-sudo port install gtkwave
-```
-
-想要卸载 MacPort？请翻阅 [MacPort 文档](https://guide.MacOSports.org/chunked/installing.MacOSports.uninstalling.html) 。
-
-## Chisel(Scala) IDE 的选择
-
-Chisel 只是 Scala 中的一个库。因此，只要 IDE 能支持 Scala，那么自然也是支持 Chisel 了。
-但是一些 IDE 如 VSCode/JetBrains IDEA 会对 Chisel 语法有更加好的 highlight 支持。
-
-经观察：对于稍微大一些的 Chisel 项目（小学期级别）, VSCode + Metals 会很卡，建议使用 JetBrain IDEA。
-
-### VSCode 对 Chisel(Scala) 的支持
-
-下面是笔者使用的 VSCode 插件:
-
-- Chisel Syntax
-- Scala (Metals)
-- Scala Snippets
-- Scala Syntax (official)
-
-### VSCode 对 Chisel(Scala) 的支持
-
-下面是笔者使用的 JetBrain IDEA 插件:
-
-- Scala
-
-## example
+## 一个 Chisel 与 Verilator 结合的例子
 
 下面这个例子可以在 [这里](https://github.com/KINGFIOX/chisel-verilator-example) 找到。
 
@@ -285,9 +166,6 @@ class GCD extends Module {
   io.outputValid := y === 0.U
 }
 
-/**
- * Generate Verilog sources and save it in file GCD.v
- */
 object GCD extends App {
   ChiselStage.emitSystemVerilogFile(
     new GCD,
@@ -299,7 +177,7 @@ object GCD extends App {
 上面这个 `class GCD extends Module` 继承了 Chisel 的 Module 抽象类。在这个类里面，我们实现了 GCD 模块。
 对应的也就是 Verilog 中的 `module GCD();`。在这个 `class GCD` 中，我们描述了 GCD 的行为。
 
-除了一个 `class GCD` ，下面还有一个 `object GCD` 单例。这个单例继承了 App, App 相当于是 Scala 中的 `class Main`。
+除了一个 `class GCD` ，还有一个 `object GCD` 单例。这个单例继承了 App, App 相当于是 Scala 中的 `class Main`。
 `object GCD` 中，我们执行了 sv file 的发射。然后我们可以通过执行 `sbt "runMain gcd.GCD"` 运行 sv file 的发射。
 最后，我们就可以在根目录下看到对应的 GCD.sv 文件。
 
@@ -337,16 +215,9 @@ endmodule
 
 ### 使用 Verilator C++ 调试 Chisel 生成的 Verilog
 
-下面是一个 C++ 下的 testbench。
+我们可以用 C++ 编写一个软件的 golden model 作为对照。
 
-```cxx
-#include "VGCD.h"
-#include "verilated.h"
-#include "verilated_vcd_c.h"
-
-#include <cstdlib>
-#include <iostream>
-
+```cpp
 // 一个正确的 gcd 实现
 int gcd(uint16_t a, uint16_t b)
 {
@@ -357,8 +228,16 @@ int gcd(uint16_t a, uint16_t b)
     }
     return a;
 }
+```
 
-int main(int argc, char** argv)
+下面是仿真我们的硬件 module 。 这里的`#include "VGCD.h"`是 Verilator 将 Verilog 编译成 C++ class 时产生的。
+
+```cpp
+#include "VGCD.h"
+#include "verilated.h"
+#include "verilated_vcd_c.h"
+
+int main(int argc, char* argv[])
 {
     Verilated::commandArgs(argc, argv);
     Verilated::traceEverOn(true); // 启用波形跟踪
@@ -435,13 +314,13 @@ make -C obj_dir -f VGCD.mk
 
 详细的用法查阅 [Verilator 的使用教程](https://itsembedded.com/dhd_list) 。
 
-## 使用 GTKWave 打开波形仿真文件
+### 使用 GTKWave 打开波形仿真文件
 
 ```sh
 gtkwave gcd.vcd
 ```
 
-### 使用 tcl 脚本
+#### 使用 tcl 脚本
 
 每次我们使用 GTKWave 调试波形图的时候。每次打开需要一个步骤：选中信号，然后 append/insert。
 这很不优雅。尤其是：当我们需要频繁的调试。打开 GTKWave -> 选中信号 -> a/i -> 看波形 -> 改代码 -> make run -> 打开 GTKWave ->
