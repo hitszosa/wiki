@@ -405,10 +405,32 @@ sudo port install gtkwave
 
 我们将远端称为 server, 将本地端称为 client.
 
-远程开发，然后尝试 `gtkwave <.vcd>` 这肯定是有问题的，因为这相当于是打开 server 的 GTKWave,
-而不是 client 上的 GTKWave。当然这样也打不开了，他会报错 `Could not initialize GTK! Is DISPLAY env var/xhost set?`。
+远程开发，然后尝试 `gtkwave <.vcd>` 这肯定是有问题的，因为这相当于是打开 server 的 GTKWave, 而不是 client 上的 GTKWave。
+当然这样也不能打开，报错 `Could not initialize GTK! Is DISPLAY env var/xhost set?`。
 
 那么该如何打开远程的`.vcd`呢？比较繁琐的办法是：将 server 上的`.vcd`下载到 client 上，然后打开（。
 比较灵活的方式是：将 server 的`<chisel-project>`目录挂载到 client 上，然后在 client 的 mount point 处通过 GTKWave 打开。
 
 常见的挂载软件有: CyberDuck, MountainDuck（付费）, sshfs
+
+## Chisel(Scala) IDE 的选择
+
+Chisel 只是 Scala 中的一个库。因此，只要 IDE 能支持 Scala，那么自然也是支持 Chisel 了。
+但是一些 IDE 如 VSCode/JetBrains IDEA 会对 Chisel 语法有更加好的 highlight 支持。
+
+经观察：对于稍微大一些的 Chisel 项目 (小学期级别), VSCode + Metals 会很卡，建议使用 JetBrain IDEA
+
+### VSCode 对 Chisel(Scala) 的支持
+
+下面是笔者使用的 VSCode 插件
+
+- Chisel Syntax
+- Scala (Metals)
+- Scala Snippets
+- Scala Syntax (official)
+
+### VSCode 对 Chisel(Scala) 的支持
+
+下面是笔者使用的 JetBrain IDEA 插件
+
+- Scala
