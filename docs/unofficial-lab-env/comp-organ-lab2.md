@@ -103,6 +103,8 @@ sudo apt install gtkwave
 sudo dnf install gtkwave
 ```
 
+MacOS 请看 [附录：MacOS-安装-GTKWave](#macos-安装-gtkwave)
+
 ## 一个 Chisel 与 Verilator 结合的例子
 
 下面这个例子可以在 [这里](https://github.com/KINGFIOX/chisel-verilator-example) 找到。
