@@ -346,20 +346,20 @@ gtkwave -S load_all_waves.tcl -f gcd.vcd
 
 MacOS 下安装 GTKWave 是一件非常令人疑惑的事情。MacOS 有着地狱一般的向下兼容问题。
 
-GTKWave 并没有被 Homebrew 官方收录, 但可以使用第三方仓库 randomplum/gtkwave 安装:
+GTKWave 并没有被 Homebrew 官方收录，但可以使用第三方仓库 randomplum/gtkwave 安装：
 
 ```sh
 brew tap randomplum/gtkWave
 brew install --HEAD randomplum/gtkwave/gtkwave
 ```
 
-然而, 此仓库中维护的 GTKWave 并不包含 TCL 脚本支持, 无法使用[上文](链接)提到的便利方法, 因此并不推荐使用这种方式安装.
+然而，此仓库中维护的 GTKWave 并不包含 TCL 脚本支持，无法使用[上文](链接)提到的便利方法，因此并不推荐使用这种方式安装。
 
 Nix 是 Mac 上不同于 Homebrew 的其他包管理器，可以用于安装带 TCL 脚本支持的 GTKWave:
 
 ### Nix
 
-Nix 是 Linux 发行版 NixOS 的包管理器, 具有强大而可复现的环境管理功能; 它也可以脱离 NixOS, 单独作为一些其他 Linux distro 以及 MacOS 的包管理器使用.
+Nix 是 Linux 发行版 NixOS 的包管理器，具有强大而可复现的环境管理功能; 它也可以脱离 NixOS, 单独作为一些其他 Linux distro 以及 MacOS 的包管理器使用。
 
 通过这行命令安装 Nix。安装过程中请注意看提示。
 
@@ -375,12 +375,12 @@ sh <(curl -L https://nixos.org/nix/install)
 nix-env -iA nixpkgs.gtkwave
 ```
 
-实际上 Nix 不仅仅能起到包管理的作用, 它几乎可以完成任何项目的完整环境复现。 对 Nix 和 NixOS 感兴趣的同学可以额外阅读 [Nix 中文指南](https://nixoscn.vercel.app/user_guide/)
+实际上 Nix 不仅仅能起到包管理的作用，它几乎可以完成任何项目的完整环境复现。对 Nix 和 NixOS 感兴趣的同学可以额外阅读 [Nix 中文指南](https://nixoscn.vercel.app/user_guide/)
 
 ## 远程开发的 GTKWave 的问题
 
 远端机器上通常没有桌面环境，当我们连接到远端机器开发时，肯定是不能指望直接在远端机器上执行 `gtkwave <.vcd>` 就能在本地弹出一个窗口出来的。
-自然, 我们可以为远端机器安装桌面环境和配置 X-Forward。配置步骤如下：
+自然，我们可以为远端机器安装桌面环境和配置 X-Forward。配置步骤如下：
 
 ### 在远端机器配置 ssh
 
@@ -414,10 +414,10 @@ gtkwave <.vcd>
 
 ## 挂载远端文件系统
 
-但倘若只是想用 GTKWave 查看波形, 那么将波形文件以某种方式下载到本地, 再使用本地的 GTKWave 打开查看显然是更合理的选择。
-但每次重新运行仿真都要手动通过 VSCode 或 scp 下载波形文件确实令人烦躁, 那么应该如何快捷地将远端的某个文件下载或同步到本地呢?
-我们可以使用 SSHFS 或者基于 SSHFS 的其他软件（例如 CyberDuck, MountainDuck 等）将远端的目录直接挂载到本地,
-每次本地打开挂载点内文件时自动从远端拉取文件内容, 从而便利我们在本地使用 GTKWave 查看波形。
+但倘若只是想用 GTKWave 查看波形，那么将波形文件以某种方式下载到本地，再使用本地的 GTKWave 打开查看显然是更合理的选择。
+但每次重新运行仿真都要手动通过 VSCode 或 scp 下载波形文件确实令人烦躁，那么应该如何快捷地将远端的某个文件下载或同步到本地呢？
+我们可以使用 SSHFS 或者基于 SSHFS 的其他软件（例如 CyberDuck, MountainDuck 等）将远端的目录直接挂载到本地，
+每次本地打开挂载点内文件时自动从远端拉取文件内容，从而便利我们在本地使用 GTKWave 查看波形。
 
 ### 安装 SSHFS
 
