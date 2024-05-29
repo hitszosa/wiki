@@ -64,7 +64,7 @@ echo 'export verilator_ROOT=$HOME/app/verilator' >> .bashrc # 追加环境变量
 
 Verilator 在编译过程中，需要用到 GNU 方言，因此推荐使用 Linux。
 
-## 安装 JDK/sbt/Scala
+## 使用 SDKMAN 安装 Scala/Java/sbt
 
 SDKMAN 是一个用于管理 Java 相关开发环境的软件。可以通过下面这个命令安装：
 
@@ -74,23 +74,11 @@ curl -s "https://get.sdkman.io" | bash
 
 安装过程中，注意看提示，会要求在安装完成后配置环境变量。
 
-### 使用 SDKMAN 安装 Java
+通过 SDKMAN 安装 Scala/Java/sbt:
 
 ```sh
 sdk install java
-```
-
-### 使用 SDKMAN 安装 Scala 2.12.13
-
-```sh
 sdk install scala 2.12.13
-```
-
-### 使用 SDKMAN 安装 sbt
-
-sbt 是 Scala 项目的构建软件
-
-```sh
 sdk install sbt
 ```
 
@@ -356,19 +344,22 @@ gtkwave -S load_all_waves.tcl -f gcd.vcd
 
 ## MacOS 安装 GTKWave
 
-MacOS 下安装 GTKWave 是一件非常令人感到疑惑的事情。MacOS 有着地狱一般的向下兼容问题。
+MacOS 下安装 GTKWave 是一件非常令人疑惑的事情。MacOS 有着地狱一般的向下兼容问题。
 
-通过`brew install`并不能直接安装 GTKWave,
-不过可以通过`brew tap randomplum/gtkWave && brew install --HEAD randomplum/gtkwave/gtkwave`这样安装。这种安装方式并不推荐，因为`randomplum/gtkwave`这个 tap 提供的 GTKWave 并不支持 tcl 脚本。
+GTKWave 并没有被 Homebrew 官方收录, 但可以使用第三方仓库 randomplum/gtkwave 安装:
 
-但是我们可以使用 Nix 或者 MacPort 安装 GTKWave（支持 tcl 脚本）。
+```sh
+brew tap randomplum/gtkWave
+brew install --HEAD randomplum/gtkwave/gtkwave
+```
 
-下面两种方式选一种就行了。
+然而, 此仓库中维护的 GTKWave 并不包含 TCL 脚本支持, 无法使用[上文](链接)提到的便利方法, 因此并不推荐使用这种方式安装.
+
+Nix 是 Mac 上不同于 Homebrew 的其他包管理器，可以用于安装带 TCL 脚本支持的 GTKWave:
 
 ### Nix
 
-NixOS 是一个更加强大的 Linux 发行版，感兴趣有可以进一步了解。NixOS 上有一种环境管理的工具叫做 Nix，
-但是 Nix 作为环境管理工具现在已经支持了 Linux（可以是不同于 NixOS 的其他发行版）和 MacOS。
+Nix 是 Linux 发行版 NixOS 的包管理器, 具有强大而可复现的环境管理功能; 它也可以脱离 NixOS, 单独作为一些其他 Linux distro 以及 MacOS 的包管理器使用.
 
 通过这行命令安装 Nix。安装过程中请注意看提示。
 
@@ -376,7 +367,7 @@ NixOS 是一个更加强大的 Linux 发行版，感兴趣有可以进一步了�
 sh <(curl -L https://nixos.org/nix/install)
 ```
 
-下面是通过 Nix 安装 GTKWave。
+下面是通过 Nix 安装 GTKWave 的方法：
 
 ```sh
 # i 表示 install
@@ -384,34 +375,82 @@ sh <(curl -L https://nixos.org/nix/install)
 nix-env -iA nixpkgs.gtkwave
 ```
 
-当然 Nix 的用法远不止于此，但是就先介绍到这里。Nix 可以用的很优雅，但是这超过了本文的范围了。
-
-想要卸载 Nix？请翻阅 [Nix 文档](https://nixos.org) 。
-
-### MacPort
-
-MacPort 是 MacOS 上老牌的包管理器了，现在 Homebrew 比较流行。
-但是 Homebrew 在安装 GTKWave 上表现的并不顺利。
-
-在 [这里](https://www.MacOSports.org/install.php) 下载 MacPort 并安装（注意要选择当前系统的版本）。
-
-```sh
-sudo port install gtkwave
-```
-
-想要卸载 MacPort？请翻阅 [MacPort 文档](https://guide.MacOSports.org/chunked/installing.MacOSports.uninstalling.html) 。
+实际上 Nix 不仅仅能起到包管理的作用, 它几乎可以完成任何项目的完整环境复现。 对 Nix 和 NixOS 感兴趣的同学可以额外阅读 [Nix 中文指南](https://nixoscn.vercel.app/user_guide/)
 
 ## 远程开发的 GTKWave 的问题
 
-我们将远端称为 server, 将本地端称为 client.
+远端机器上通常没有桌面环境，当我们连接到远端机器开发时，肯定是不能指望直接在远端机器上执行 `gtkwave <.vcd>` 就能在本地弹出一个窗口出来的。
+自然, 我们可以为远端机器安装桌面环境和配置 X-Forward。配置步骤如下：
 
-远程开发，然后尝试 `gtkwave <.vcd>` 这肯定是有问题的，因为这相当于是打开 server 的 GTKWave, 而不是 client 上的 GTKWave。
-当然这样也不能打开，报错 `Could not initialize GTK! Is DISPLAY env var/xhost set?`。
+### 在远端机器配置 ssh
 
-那么该如何打开远程的`.vcd`呢？比较繁琐的办法是：将 server 上的`.vcd`下载到 client 上，然后打开（。
-比较灵活的方式是：将 server 的`<chisel-project>`目录挂载到 client 上，然后在 client 的 mount point 处通过 GTKWave 打开。
+在远端机器上，我们需要在`/etc/ssh/sshd_config`写入`X11Forwarding yes`。
 
-常见的挂载软件有：CyberDuck, MountainDuck（付费）, sshfs
+但是有一些 Linux distro 的目录结构是 `/etc/ssh/sshd_config.d`，我们可以输入命令
+
+```sh
+sudo echo 'X11Forwarding yes' >> /etc/ssh/sshd_config.d/x11-forwarding.conf
+```
+
+### 在本地机器安装 X-Server
+
+```sh
+# Windows
+winget install Xming.Xming
+# MacOS
+brew install xquartz
+```
+
+### 连接到远端机器并打开 GTKWave
+
+```sh
+# 连接到远端
+ssh -X <user>@<ip>
+# 在远端上打开 GTKWave
+gtkwave <.vcd>
+```
+
+然后我们就可以看到
+
+## 挂载远端文件系统
+
+但倘若只是想用 GTKWave 查看波形, 那么将波形文件以某种方式下载到本地, 再使用本地的 GTKWave 打开查看显然是更合理的选择。
+但每次重新运行仿真都要手动通过 VSCode 或 scp 下载波形文件确实令人烦躁, 那么应该如何快捷地将远端的某个文件下载或同步到本地呢?
+我们可以使用 SSHFS 或者基于 SSHFS 的其他软件（例如 CyberDuck, MountainDuck 等）将远端的目录直接挂载到本地,
+每次本地打开挂载点内文件时自动从远端拉取文件内容, 从而便利我们在本地使用 GTKWave 查看波形。
+
+### 安装 SSHFS
+
+#### Windows/Linux
+
+```sh
+# Windows
+winget install -h -e --id "WinFsp.WinFsp"
+# Ubuntu/Debian
+sudo apt install sshfs
+# Fedora/Centos
+sudo dnf install sshfs
+```
+
+#### MacOS 安装 SSHFS
+
+MacOS 安装 SSHFS 相对来说比较复杂，需要开启 MacOS 的内核拓展。
+
+可以在这里下载 MacOS 下 SSHFS 的相关软件 [macFUSE 和 SSHFS](https://osxfuse.github.io)
+
+使用 macFUSE 需要开启内核拓展，请看这个教程 [Getting Started with macFUSE](https://github.com/macfuse/macfuse/wiki/Getting-Started)
+
+### 使用 SSHFS
+
+```sh
+sshfs <user>@<ip>:<远端目录> <挂载点>
+```
+
+例如在笔者的电脑上是这样挂载的
+
+```sh
+sshfs wangfiox@192.168.1.1:/home/wangfiox/Documents/organ ~/Document/workspace/organ
+```
 
 ## Chisel(Scala) IDE 的选择
 
