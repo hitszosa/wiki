@@ -452,6 +452,20 @@ sshfs <user>@<ip>:<远端目录> <挂载点>
 sshfs wangfiox@192.168.1.1:/home/wangfiox/Documents/organ ~/Document/workspace/organ
 ```
 
+我们可以通过下面这个命令验证
+
+```sh
+ll mountpoint
+# 输出结果如下
+# total 48
+# -rw-r--r--  1 wangfiox  staff     9B May 25 19:30 README.md
+# drwxr-xr-x  1 wangfiox  staff    32B May 26 19:04 archive
+# drwxr-xr-x  1 wangfiox  staff    16B May 26 18:49 hitsz
+# drwxr-xr-x  1 wangfiox  staff   162B May 25 19:30 lab1
+# drwxr-xr-x  1 wangfiox  staff   272B May 29 20:22 lab2
+# drwxr-xr-x  1 wangfiox  staff    96B May 25 19:30 rars
+```
+
 ## Chisel(Scala) IDE 的选择
 
 Chisel 只是 Scala 中的一个库。因此，只要 IDE 能支持 Scala，那么自然也是支持 Chisel 了。
