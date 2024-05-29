@@ -455,7 +455,7 @@ sshfs wangfiox@192.168.1.1:/home/wangfiox/Documents/organ ~/Document/workspace/o
 我们可以通过下面这个命令验证
 
 ```sh
-ll mountpoint
+ll organ
 # 输出结果如下
 # total 48
 # -rw-r--r--  1 wangfiox  staff     9B May 25 19:30 README.md
