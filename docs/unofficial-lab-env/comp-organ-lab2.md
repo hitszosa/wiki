@@ -392,6 +392,12 @@ nix-env -iA nixpkgs.gtkwave
 sudo echo 'X11Forwarding yes' >> /etc/ssh/sshd_config.d/x11-forwarding.conf
 ```
 
+然后我们重启 sshd 使配置生效
+
+```sh
+sudo systemctl restart sshd.service
+```
+
 ### 在本地机器安装 X-Server
 
 ```sh
