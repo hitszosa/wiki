@@ -87,6 +87,7 @@ nav:
       - PyTorch on SLURM: hpc-doc/pytorch.md
   - 非官方实验环境指南:
       - 计算机组成原理lab1: unofficial-lab-env/comp-organ-lab1.md
+      - 计算机组成原理lab2: unofficial-lab-env/comp-organ-lab2.md
 
 plugins:
   - search:
