@@ -1,6 +1,6 @@
 # 计算机组成原理实验 2 环境指南（非官方）
 
-以下指南适合有 Linux/MacOS 环境的同学使用。
+以下指南适合有 Linux/macOS 环境的同学使用。
 
 笔者心态：对 Verilog 感到不适，并且想折腾一些花样。
 
@@ -10,55 +10,27 @@
 - Chisel
 - GTKWave
 
-## 安装依赖
+## 安装 C/C++ 编译环境
 
 实验工具安装需要
 
-- Bison
-- Flex
 - gcc
 - git
 - g++
-- Java
 - make
-- sbt
-- Scala
-- SDKMAN
-- Verilator
 
 通过以下命令可以安装
 
 ```sh
 # Debian/Ubuntu
 sudo apt install build-essential git device-tree-compiler
-# Ubuntu
-sudo apt install build-essential git device-tree-compiler
-# ArchLinux
-sudo pacman -Sy base-devel git dtc
-# OpenSUSE
-sudo zypper in -t pattern devel_C_C++
+# Fedora
+sudo dnf install build-essential git device-tree-compiler
 ```
 
 如果配置环境过程中出现 "command not found." 可能是有依赖的工具没装，此时可以利用搜索引擎。
 
-MacOS 需要安装 Homebrew 作为包管理器，请查阅 [Tuna Mirrors 的安装指南](https://mirrors.tuna.tsinghua.edu.cn/help/homebrew) 。
-
-## 安装 Bison 和 Flex
-
-Bison 和 Flex 是 GNU 提供的两个语法解析工具。Verilator 依赖这两个工具将 Verilog 代码编译成 C++ 的 class。
-
-```sh
-# Debian/Ubuntu
-sudo apt install bison flex
-# Fedora/CentOS
-sudo dnf install bison flex
-# ArchLinux
-sudo pacman -Sy bison flex
-# OpenSUSE
-sudo zypper in bison flex
-# MacOS
-brew install bison flex
-```
+macOS 需要安装 Homebrew 作为包管理器，请查阅 [Tuna Mirrors 的安装指南](https://mirrors.tuna.tsinghua.edu.cn/help/homebrew) 。
 
 ## 安装 Verilator
 
@@ -69,13 +41,12 @@ brew install bison flex
 sudo apt install verilator
 # Fedora/CentOS
 sudo dnf install verilator verilator-devel
-# ArchLinux
-sudo pacman -Sy verilator
-# MacOS
+# macOS
 brew install verilator
 ```
 
-但是有一些 Linux 的发行版，他会将包拆的比较奇怪，导致没法找到 `verilated.mk` 之类的情况发生。亦或者是版本比较老，则可以使用编译安装：
+但是有一些 Linux 的发行版，他会将包拆的比较奇怪，导致没法找到 `verilated.mk` 之类的情况发生。
+亦或者是版本比较老，则可以使用编译安装：
 
 ```sh
 # 先 cd 到一个文件夹中，推荐 cd 到 $HOME/Downloads
@@ -90,27 +61,11 @@ echo 'export verilator_ROOT=$HOME/app/verilator' >> .bashrc # 追加环境变量
 
 如果想要其他支持，请查阅 [Verilator 的安装文档](https://verilator.org/guide/latest/install.html) 。
 
-Verilator 在编译过程中，需要用到 GNU 方言，因此推荐使用 Linux。当然 MacOS 下的 `brew install` 就已经可以正常工作了。
+Verilator 在编译过程中，需要用到 GNU 方言，因此推荐使用 Linux。
 
-## 安装 SDKMAN
+## 使用 SDKMAN 安装 Scala/Java/sbt
 
-注意，并不一定要安装 SDKMAN。SDKMAN 是一个用于管理 Java' 相关开发环境的软件。
-如果我们发行版的包管理器可以顺利安装 java, scala@2.12.13, sbt，那么实际上也不需要 SDKMAN。
-
-```sh
-# ArchLinux
-sudo pacman -S sbt openjdk
-paru -S scala_2.12 # 或者其他 AUR helper
-# Fedora
-sudo dnf install sbt openjdk scala-2.12
-# MacOS
-brew install sbt openjdk scala@2.12
-```
-
-注意，笔者没有查到 Ubuntu/Debian/OpenSUSE/CentOS 可以使用包管理安装 sbt 的方式。
-因此，推荐通过 SDKMAN 安装 sbt。当然，scala 和 openjdk 是可以通过包管理器安装的。
-
-可以通过下面这个命令安装：
+SDKMAN 是一个用于管理 Java 相关开发环境的软件。可以通过下面这个命令安装：
 
 ```sh
 curl -s "https://get.sdkman.io" | bash
@@ -118,23 +73,11 @@ curl -s "https://get.sdkman.io" | bash
 
 安装过程中，注意看提示，会要求在安装完成后配置环境变量。
 
-### 使用 SDKMAN 安装 Java
+通过 SDKMAN 安装 Scala/Java/sbt:
 
 ```sh
 sdk install java
-```
-
-### 使用 SDKMAN 安装 Scala 2.12.13
-
-```sh
 sdk install scala 2.12.13
-```
-
-### 使用 SDKMAN 安装 sbt
-
-sbt 是 Scala 项目的构建软件
-
-```sh
 sdk install sbt
 ```
 
@@ -143,96 +86,13 @@ sdk install sbt
 ```sh
 # Debian/Ubuntu
 sudo apt install gtkwave
-# Fedora/CentOS
+# Fedora
 sudo dnf install gtkwave
-# ArchLinux
-sudo pacman -Sy gtkwave
-# OpenSUSE
-sudo zypper in gtkwave
-# Windows
-winget install gtkwave
 ```
 
-如果 Windows/MacOS 作为宿主系统，应该是在 Windows/MacOS 中安装 GTKWave，然后在 Windows/MacOS 打开 `.vcd` 文件。
-如果是 ssh 连接的 linux，可以使用 CyberDuck 或者是 MountainDuck（付费）或者是 sshfs 挂载目录，然后在 宿主机上 `gtkwave <.vcd>` 或者是双击打开，笔者就是用的这种方式。
+macOS 请看 [附录：macOS-安装-GTKWave](#macos-安装-gtkwave)
 
-### MacOS 下安装 GTKWave
-
-MacOS 下安装 GTKWave 是一件非常令人感到疑惑的事情。MacOS 有着地狱一般的向下兼容问题。
-
-通过`brew install`并不能直接安装 GTKWave,
-不过可以通过`brew tap randomplum/gtkWave && brew install --HEAD randomplum/gtkwave/gtkwave`这样安装。这种安装方式并不推荐，因为`randomplum/gtkwave`这个 tap 提供的 GTKWave 并不支持 tcl 脚本。
-
-但是我们可以使用 Nix 或者 MacPort 安装 GTKWave（支持 tcl 脚本）。
-
-下面两种方式选一种就行了。
-
-#### Nix
-
-NixOS 是一个更加强大的 Linux 发行版，感兴趣有可以进一步了解。NixOS 上有一种环境管理的工具叫做 Nix，
-但是 Nix 作为环境管理工具现在已经支持了 Linux（可以是不同于 NixOS 的其他发行版）和 MacOS。
-
-通过这行命令安装 Nix。安装过程中请注意看提示。
-
-```sh
-sh <(curl -L https://nixos.org/nix/install)
-```
-
-下面是通过 Nix 安装 GTKWave。
-
-```sh
-# i 表示 install
-# A 表示 attr 这告诉 nix-env 通过它的属性名来选择软件包
-nix-env -iA nixpkgs.gtkwave
-```
-
-下面是卸载 Nix 下的 GTKWave。
-
-```sh
-nix-env -e gtkwave
-```
-
-当然 Nix 的用法远不止于此，但是就先介绍到这里。
-Nix 可以用的很优雅，但是这超过了本文的范围了。
-
-想要卸载 Nix？请翻阅 [Nix 文档](https://nixos.org) 。
-
-#### MacPort
-
-MacPort 是 MacOS 上老牌的包管理器了，现在 Homebrew 比较流行。
-但是 Homebrew 在安装 GTKWave 上表现的并不顺利。
-
-在 [这里](https://www.MacOSports.org/install.php) 下载 MacPort 并安装（注意要选择当前系统的版本）。
-
-```sh
-sudo port install gtkwave
-```
-
-想要卸载 MacPort？请翻阅 [MacPort 文档](https://guide.MacOSports.org/chunked/installing.MacOSports.uninstalling.html) 。
-
-## Chisel(Scala) IDE 的选择
-
-Chisel 只是 Scala 中的一个库。因此，只要 IDE 能支持 Scala，那么自然也是支持 Chisel 了。
-但是一些 IDE 如 VSCode/JetBrains IDEA 会对 Chisel 语法有更加好的 highlight 支持。
-
-经观察：对于稍微大一些的 Chisel 项目（小学期级别）, VSCode + Metals 会很卡，建议使用 JetBrain IDEA。
-
-### VSCode 对 Chisel(Scala) 的支持
-
-下面是笔者使用的 VSCode 插件:
-
-- Chisel Syntax
-- Scala (Metals)
-- Scala Snippets
-- Scala Syntax (official)
-
-### VSCode 对 Chisel(Scala) 的支持
-
-下面是笔者使用的 JetBrain IDEA 插件:
-
-- Scala
-
-## example
+## 一个 Chisel 与 Verilator 结合的例子
 
 下面这个例子可以在 [这里](https://github.com/KINGFIOX/chisel-verilator-example) 找到。
 
@@ -285,9 +145,6 @@ class GCD extends Module {
   io.outputValid := y === 0.U
 }
 
-/**
- * Generate Verilog sources and save it in file GCD.v
- */
 object GCD extends App {
   ChiselStage.emitSystemVerilogFile(
     new GCD,
@@ -296,12 +153,9 @@ object GCD extends App {
 }
 ```
 
-上面这个 `class GCD extends Module` 继承了 Chisel 的 Module 抽象类。在这个类里面，我们实现了 GCD 模块。
-对应的也就是 Verilog 中的 `module GCD();`。在这个 `class GCD` 中，我们描述了 GCD 的行为。
+上面这个 `class GCD` 继承了 Chisel 的 Module 抽象类。在这个类里面，我们描述了 GCD 模块的行为。等价于 SystemVerilog 中的 `module GCD();`。`object GCD` 表示创建了一个名为 GCD 的单例，这个单例继承自 App，起到程序入口的作用，这里用于发射 SystemVerilog 代码。
 
-除了一个 `class GCD` ，下面还有一个 `object GCD` 单例。这个单例继承了 App, App 相当于是 Scala 中的 `class Main`。
-`object GCD` 中，我们执行了 sv file 的发射。然后我们可以通过执行 `sbt "runMain gcd.GCD"` 运行 sv file 的发射。
-最后，我们就可以在根目录下看到对应的 GCD.sv 文件。
+然后我们通过在命令行中输入 `sbt "runMain gcd.GCD"` 来启动 SystemVerilog 代码的发射 。最后，我们就可以在项目的根目录下找到生成的 `GCD.sv` 文件。
 
 ```sv
 // Generated by CIRCT firtool-1.62.0
@@ -335,18 +189,11 @@ endmodule
 - 这里是 Scala 教程：https://docs.scala-lang.org/zh-cn/
 - 这里是 Chisel 教程：https://www.chisel-lang.org/docs/cookbooks/cookbook
 
-### 使用 Verilator C++ 调试 Chisel 生成的 Verilog
+### 使用 Verilator C++ 调试 Chisel 生成的 SystemVerilog
 
-下面是一个 C++ 下的 testbench。
+我们可以用 C++ 编写一个 golden model 作为对照。
 
-```cxx
-#include "VGCD.h"
-#include "verilated.h"
-#include "verilated_vcd_c.h"
-
-#include <cstdlib>
-#include <iostream>
-
+```cpp
 // 一个正确的 gcd 实现
 int gcd(uint16_t a, uint16_t b)
 {
@@ -357,8 +204,16 @@ int gcd(uint16_t a, uint16_t b)
     }
     return a;
 }
+```
 
-int main(int argc, char** argv)
+下面我们进行了硬件模块的仿真。这里的 `#include "VGCD.h"` 是在使用 Verilator 将 SystemVerilog 代码编译成 C++ 类的过程中自动生成的头文件。这个头文件包含了编译后的 C++ 类，用于在仿真环境中模拟硬件行为。
+
+```cpp
+#include "VGCD.h"
+#include "verilated.h"
+#include "verilated_vcd_c.h"
+
+int main(int argc, char* argv[])
 {
     Verilated::commandArgs(argc, argv);
     Verilated::traceEverOn(true); // 启用波形跟踪
@@ -369,7 +224,7 @@ int main(int argc, char** argv)
     auto dut = std::make_unique<VGCD>();
     VerilatedVcdC* vcd = new VerilatedVcdC();
     dut->trace(vcd, 99); // 设定跟踪级别
-    vcd->open("gcd.vcd"); // 打开VCD文件
+    vcd->open("gcd.vcd"); // 打开 VCD 文件
 
     // 重置设备
     dut->reset = 1;
@@ -406,7 +261,7 @@ int main(int argc, char** argv)
     uint16_t top_z = dut->io_outputGCD;
 
     dut->final();
-    vcd->close(); // 关闭VCD文件
+    vcd->close(); // 关闭 VCD 文件
 
     if (uint16_t z = gcd(x, y); z == top_z) {
         std::cout << "success" << std::endl;
@@ -422,33 +277,30 @@ int main(int argc, char** argv)
 }
 ```
 
-### 编译 C++ 和 Verilog
+### 编译 C++ 和 SystemVerilog
 
 ```sh
-verilator -Wall --cc --trace -Iobj_dir -Wno-UNUSEDSIGNAL GCD.sv --exe tb.cxx # 会生成 obj_dir 文件夹，这是将 Verilog 编译成了 C++ 的 class
+verilator -Wall --cc --trace -Iobj_dir -Wno-UNUSEDSIGNAL GCD.sv --exe tb.cxx # 会生成 obj_dir 文件夹，这是将 SystemVerilog 编译成了 C++ 的 class
 make -C obj_dir -f VGCD.mk
 ```
 
-这样我们就用 Verilator 编译完成了 C++ 和 Verilog。我们可以在 obj_dir 文件夹下面找到 VGCD 可执行文件。
-我们可以通过 `./VGCD` 执行可执行文件。执行完成以后，可以看到输出 `success` 字样并且在项目的根目录下生成了 `gcd.vcd` 文件。
-我们可以使用 VSCode 的 wavetrace 插件（付费）打开 `.vcd` 文件。
+这样，我们就使用 Verilator 完成了 C++ 和 SystemVerilog 的编译。我们可以在 `obj_dir` 文件夹中找到 `VGCD` 可执行文件。通过在命令行中执行 `./obj_dir/VGCD`，我们可以运行这个可执行文件。执行完成后，如果看到输出中显示 `success` 字样，这表示仿真成功。同时，在项目的根目录下会生成一个名为 `gcd.vcd` 的文件。我们可以使用 VSCode 的插件 wavetrace(付费) 来打开这个 `.vcd` 文件，以便查看波形数据。
 
 详细的用法查阅 [Verilator 的使用教程](https://itsembedded.com/dhd_list) 。
 
-## 使用 GTKWave 打开波形仿真文件
+### 使用 GTKWave 打开波形仿真文件
 
 ```sh
 gtkwave gcd.vcd
 ```
 
-### 使用 tcl 脚本
+#### 使用 tcl 脚本
 
-每次我们使用 GTKWave 调试波形图的时候。每次打开需要一个步骤：选中信号，然后 append/insert。
-这很不优雅。尤其是：当我们需要频繁的调试。打开 GTKWave -> 选中信号 -> a/i -> 看波形 -> 改代码 -> make run -> 打开 GTKWave ->
+每次使用 GTKWave 调试波形图时，我们需要执行一系列重复的步骤：打开程序、选择信号、然后使用 append/insert 将信号添加到视图中。
+这很不优雅。尤其是：当我们需要频繁的调试：打开 GTKWave -> 选中信号 -> a/i -> 看波形 -> 改代码 -> make run -> 打开 GTKWave ->
 选中信号 -> a/i -> 看波形 -> ...
 
-但是，实际上，"选中信号 -> a/i" 这个步骤我们可以实现的更加自动化一些 —— 编写 tcl 脚本！
-实现打开 GTKWave 的时候，就将所有的信号 append/insert 到屏幕上。
+然而，我们可以通过自动化来简化这个流程。具体做法是编写一个 tcl 脚本，这样每次打开 GTKWave 时，脚本会自动将所有必要的信号添加到显示界面中。这样可以提高调试效率。
 
 创建一个 `load_all_waves.tcl` 文件，写入以下内容，保存。
 
@@ -480,3 +332,118 @@ gtkwave::/Time/Zoom/Zoom_Full
 # -f, --dump=FILE. specify dumpfile name
 gtkwave -S load_all_waves.tcl -f gcd.vcd
 ```
+
+# 附录
+
+## macOS 安装 GTKWave
+
+macOS 下安装 GTKWave 是一件非常令人疑惑的事情。macOS 有着地狱一般的向下兼容问题。
+
+GTKWave 并没有被 Homebrew 官方收录，但可以使用第三方仓库 randomplum/gtkwave 安装：
+
+```sh
+brew tap randomplum/gtkWave
+brew install --HEAD randomplum/gtkwave/gtkwave
+```
+
+然而，此仓库中维护的 GTKWave 并不包含 TCL 脚本支持，无法使用[上文](#使用-tcl-脚本)提到的便利方法，因此并不推荐使用这种方式安装。
+
+Nix 是 Mac 上不同于 Homebrew 的其他包管理器，可以用于安装带 TCL 脚本支持的 GTKWave:
+
+### Nix
+
+Nix 是 Linux 发行版 NixOS 的包管理器，具有强大而可复现的环境管理功能; 它也可以脱离 NixOS, 单独作为一些其他 Linux distro 以及 macOS 的包管理器使用。
+
+通过这行命令安装 Nix。安装过程中请注意看提示。
+
+```sh
+sh <(curl -L https://nixos.org/nix/install)
+```
+
+下面是通过 Nix 安装 GTKWave 的方法：
+
+```sh
+# i 表示 install
+# A 表示 attr 这告诉 nix-env 通过它的属性名来选择软件包
+nix-env -iA nixpkgs.gtkwave
+```
+
+实际上 Nix 不仅仅能起到包管理的作用，它几乎可以完成任何项目的完整环境复现。对 Nix 和 NixOS 感兴趣的同学可以额外阅读 [Nix 中文指南](https://nixoscn.vercel.app/user_guide/)
+
+## 远程开发的 GTKWave 的问题
+
+远端机器上通常没有桌面环境，当我们连接到远端机器开发时，肯定是不能指望直接在远端机器上执行 `gtkwave <.vcd>` 就能在本地弹出一个窗口出来的。
+自然，我们可以为远端机器安装桌面环境和配置 X-Forward。
+但倘若只是想用 GTKWave 查看波形，那么将波形文件以某种方式下载到本地，再使用本地的 GTKWave 打开查看显然是更合理的选择。
+但每次重新运行仿真都要手动通过 VSCode 或 scp 下载波形文件确实令人烦躁，那么应该如何快捷地将远端的某个文件下载或同步到本地呢？
+我们可以使用 SSHFS 或者基于 SSHFS 的其他软件（例如 CyberDuck, MountainDuck 等）将远端的目录直接挂载到本地，
+每次本地打开挂载点内文件时自动从远端拉取文件内容，从而便利我们在本地使用 GTKWave 查看波形。
+
+### 安装 SSHFS
+
+#### Windows/Linux
+
+```sh
+# Windows
+winget install -h -e --id "WinFsp.WinFsp"
+# Ubuntu/Debian
+sudo apt install sshfs
+# Fedora/Centos
+sudo dnf install sshfs
+```
+
+#### macOS 安装 SSHFS
+
+macOS 安装 SSHFS 相对来说比较复杂，需要开启 macOS 的内核拓展。
+
+可以在这里下载 macOS 下 SSHFS 的相关软件 [macFUSE 和 SSHFS](https://osxfuse.github.io)
+
+使用 macFUSE 需要开启内核拓展，请看这个教程 [Getting Started with macFUSE](https://github.com/macfuse/macfuse/wiki/Getting-Started)
+
+### 使用 SSHFS
+
+```sh
+sshfs <user>@<ip>:<远端目录> <挂载点>
+```
+
+例如在笔者的电脑上是这样挂载的
+
+```sh
+sshfs wangfiox@192.168.1.1:/home/wangfiox/Documents/organ ~/Document/workspace/organ
+```
+
+我们可以通过下面这个命令验证
+
+```sh
+ll organ
+# 输出结果如下
+# total 48
+# -rw-r--r--  1 wangfiox  staff     9B May 25 19:30 README.md
+# drwxr-xr-x  1 wangfiox  staff    32B May 26 19:04 archive
+# drwxr-xr-x  1 wangfiox  staff    16B May 26 18:49 hitsz
+# drwxr-xr-x  1 wangfiox  staff   162B May 25 19:30 lab1
+# drwxr-xr-x  1 wangfiox  staff   272B May 29 20:22 lab2
+# drwxr-xr-x  1 wangfiox  staff    96B May 25 19:30 rars
+```
+
+## Chisel(Scala) IDE 的选择
+
+Chisel 只是 Scala 中的一个库。因此，只要 IDE 能支持 Scala，那么自然也是支持 Chisel 了。
+但是一些 IDE 如 VSCode/JetBrains IDEA 会对 Chisel 语法有更加好的 highlight 支持。
+
+经观察：对于稍微大一些的 Chisel 项目 (小学期级别), VSCode + Metals 会很卡，建议使用 JetBrain IDEA
+
+### VSCode 对 Chisel(Scala) 的支持
+
+下面是笔者使用的 VSCode 插件
+
+- Chisel Syntax
+- Scala (Metals)
+- Scala Snippets
+- Scala Syntax (official)
+
+### JetBrains IDEA 对 Chisel(Scala) 的支持
+
+下面是笔者使用的 JetBrain IDEA 插件
+
+- Scala
