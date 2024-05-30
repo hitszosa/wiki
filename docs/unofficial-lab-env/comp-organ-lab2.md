@@ -398,7 +398,10 @@ sudo echo 'X11Forwarding yes' >> /etc/ssh/sshd_config.d/x11-forwarding.conf
 sudo systemctl restart sshd.service
 ```
 
-### 在本地机器安装 X-Server
+### 在本地机器安装 X Server
+
+X Server 是 X Window System 的核心组件，它是一种在 UNIX 和 Linux 系统中普遍使用的图形界面系统。
+能够处理来自本地机器或网络上其他机器的图形和用户输入请求。我们可以通过以下命令在 Windows/MacOS 上安装 X Server
 
 ```sh
 # Windows
@@ -416,7 +419,7 @@ ssh -X <user>@<ip>
 gtkwave <.vcd>
 ```
 
-然后我们就可以看到
+然后我们就可以看到 GTKWave 程序的图形界面通过 X11 转发显示在本地机器上。
 
 ## 挂载远端文件系统
 
