@@ -1,6 +1,6 @@
 # 计算机组成原理实验 2 环境指南（非官方）
 
-以下指南适合有 Linux/MacOS 环境的同学使用。
+以下指南适合有 Linux/macOS 环境的同学使用。
 
 笔者心态：对 Verilog 感到不适，并且想折腾一些花样。
 
@@ -18,7 +18,6 @@
 - git
 - g++
 - make
-- Verilator
 
 通过以下命令可以安装
 
@@ -31,7 +30,7 @@ sudo dnf install build-essential git device-tree-compiler
 
 如果配置环境过程中出现 "command not found." 可能是有依赖的工具没装，此时可以利用搜索引擎。
 
-MacOS 需要安装 Homebrew 作为包管理器，请查阅 [Tuna Mirrors 的安装指南](https://mirrors.tuna.tsinghua.edu.cn/help/homebrew) 。
+macOS 需要安装 Homebrew 作为包管理器，请查阅 [Tuna Mirrors 的安装指南](https://mirrors.tuna.tsinghua.edu.cn/help/homebrew) 。
 
 ## 安装 Verilator
 
@@ -42,7 +41,7 @@ MacOS 需要安装 Homebrew 作为包管理器，请查阅 [Tuna Mirrors 的安�
 sudo apt install verilator
 # Fedora/CentOS
 sudo dnf install verilator verilator-devel
-# MacOS
+# macOS
 brew install verilator
 ```
 
@@ -91,7 +90,7 @@ sudo apt install gtkwave
 sudo dnf install gtkwave
 ```
 
-MacOS 请看 [附录：MacOS-安装-GTKWave](#macos-安装-gtkwave)
+macOS 请看 [附录：macOS-安装-GTKWave](#macos-安装-gtkwave)
 
 ## 一个 Chisel 与 Verilator 结合的例子
 
@@ -195,7 +194,7 @@ endmodule
 
 ### 使用 Verilator C++ 调试 Chisel 生成的 Verilog
 
-我们可以用 C++ 编写一个软件的 golden model 作为对照。
+我们可以用 C++ 编写一个 golden model 作为对照。
 
 ```cpp
 // 一个正确的 gcd 实现
@@ -342,9 +341,9 @@ gtkwave -S load_all_waves.tcl -f gcd.vcd
 
 # 附录
 
-## MacOS 安装 GTKWave
+## macOS 安装 GTKWave
 
-MacOS 下安装 GTKWave 是一件非常令人疑惑的事情。MacOS 有着地狱一般的向下兼容问题。
+macOS 下安装 GTKWave 是一件非常令人疑惑的事情。macOS 有着地狱一般的向下兼容问题。
 
 GTKWave 并没有被 Homebrew 官方收录，但可以使用第三方仓库 randomplum/gtkwave 安装：
 
@@ -353,13 +352,13 @@ brew tap randomplum/gtkWave
 brew install --HEAD randomplum/gtkwave/gtkwave
 ```
 
-然而，此仓库中维护的 GTKWave 并不包含 TCL 脚本支持，无法使用[上文](链接)提到的便利方法，因此并不推荐使用这种方式安装。
+然而，此仓库中维护的 GTKWave 并不包含 TCL 脚本支持，无法使用[上文](#使用-tcl-脚本)提到的便利方法，因此并不推荐使用这种方式安装。
 
 Nix 是 Mac 上不同于 Homebrew 的其他包管理器，可以用于安装带 TCL 脚本支持的 GTKWave:
 
 ### Nix
 
-Nix 是 Linux 发行版 NixOS 的包管理器，具有强大而可复现的环境管理功能; 它也可以脱离 NixOS, 单独作为一些其他 Linux distro 以及 MacOS 的包管理器使用。
+Nix 是 Linux 发行版 NixOS 的包管理器，具有强大而可复现的环境管理功能; 它也可以脱离 NixOS, 单独作为一些其他 Linux distro 以及 macOS 的包管理器使用。
 
 通过这行命令安装 Nix。安装过程中请注意看提示。
 
@@ -380,49 +379,7 @@ nix-env -iA nixpkgs.gtkwave
 ## 远程开发的 GTKWave 的问题
 
 远端机器上通常没有桌面环境，当我们连接到远端机器开发时，肯定是不能指望直接在远端机器上执行 `gtkwave <.vcd>` 就能在本地弹出一个窗口出来的。
-自然，我们可以为远端机器安装桌面环境和配置 X-Forward。配置步骤如下：
-
-### 在远端机器配置 ssh
-
-在远端机器上，我们需要在`/etc/ssh/sshd_config`写入`X11Forwarding yes`。
-
-但是有一些 Linux distro 的目录结构是 `/etc/ssh/sshd_config.d`，我们可以输入命令
-
-```sh
-sudo echo 'X11Forwarding yes' >> /etc/ssh/sshd_config.d/x11-forwarding.conf
-```
-
-然后我们重启 sshd 使配置生效
-
-```sh
-sudo systemctl restart sshd.service
-```
-
-### 在本地机器安装 X Server
-
-X Server 是 X Window System 的核心组件，它是一种在 UNIX 和 Linux 系统中普遍使用的图形界面系统。
-能够处理来自本地机器或网络上其他机器的图形和用户输入请求。我们可以通过以下命令在 Windows/MacOS 上安装 X Server 。
-
-```sh
-# Windows
-winget install Xming.Xming
-# MacOS
-brew install xquartz
-```
-
-### 连接到远端机器并打开 GTKWave
-
-```sh
-# 连接到远端
-ssh -X <user>@<ip>
-# 在远端上打开 GTKWave
-gtkwave <.vcd>
-```
-
-然后我们就可以看到 GTKWave 程序的图形界面通过 X11 转发显示在本地机器上。
-
-## 挂载远端文件系统
-
+自然，我们可以为远端机器安装桌面环境和配置 X-Forward。
 但倘若只是想用 GTKWave 查看波形，那么将波形文件以某种方式下载到本地，再使用本地的 GTKWave 打开查看显然是更合理的选择。
 但每次重新运行仿真都要手动通过 VSCode 或 scp 下载波形文件确实令人烦躁，那么应该如何快捷地将远端的某个文件下载或同步到本地呢？
 我们可以使用 SSHFS 或者基于 SSHFS 的其他软件（例如 CyberDuck, MountainDuck 等）将远端的目录直接挂载到本地，
@@ -441,11 +398,11 @@ sudo apt install sshfs
 sudo dnf install sshfs
 ```
 
-#### MacOS 安装 SSHFS
+#### macOS 安装 SSHFS
 
-MacOS 安装 SSHFS 相对来说比较复杂，需要开启 MacOS 的内核拓展。
+macOS 安装 SSHFS 相对来说比较复杂，需要开启 macOS 的内核拓展。
 
-可以在这里下载 MacOS 下 SSHFS 的相关软件 [macFUSE 和 SSHFS](https://osxfuse.github.io)
+可以在这里下载 macOS 下 SSHFS 的相关软件 [macFUSE 和 SSHFS](https://osxfuse.github.io)
 
 使用 macFUSE 需要开启内核拓展，请看这个教程 [Getting Started with macFUSE](https://github.com/macfuse/macfuse/wiki/Getting-Started)
 
