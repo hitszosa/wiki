@@ -1,0 +1,10 @@
+[project]
+name = "wiki"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.10"
+dependencies = [
+    "mkdocs>=1.6.1",
+    "mkdocs-material>=9.6.10",
+    "pymdown-extensions>=10.14.3",
+]
