@@ -7,6 +7,8 @@ on:
     branches: [main]
 
 jobs:
+  autocorrect:
+    uses: ./.github/workflows/action-autocorrect.yaml
   build:
     uses: ./.github/workflows/action-build.yaml
   push-oras:
