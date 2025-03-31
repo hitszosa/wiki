@@ -8,9 +8,9 @@ on:
 
 jobs:
   autocorrect:
-    uses: ./.github/workflows/action-autocorrect.yaml
+    uses: ./.github/workflows/action-autocorrect.yml
   build:
-    uses: ./.github/workflows/action-build.yaml
+    uses: ./.github/workflows/action-build.yml
   push-oras:
-    uses: ./.github/workflows/action-push-oras.yaml
+    uses: ./.github/workflows/action-push-oras.yml
     needs: build
