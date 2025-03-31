@@ -1,0 +1,39 @@
+name: Push Artifact with ORAS
+
+on:
+  workflow_call:
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_BASENAME: hitszosa/wiki-static
+
+jobs:
+  push-oras:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: mkdocs-site
+          path: site/
+      - name: Install jq
+        uses: dcarbone/install-jq-action@v3.1.1
+      - name: Install ORAS
+        uses: oras-project/setup-oras@v1
+      - name: Login ORAS
+        run: |
+          echo ${{ secrets.GITHUB_TOKEN }} | oras login ghcr.io -u ${{ github.actor }} --password-stdin
+      - name: Generate Annotations
+        id: meta
+        uses: docker/metadata-action@v5
+      - name: Push to $REGISTRY
+        run: |
+          echo '${{ steps.meta.outputs.json }}' > meta.json
+          first_tag=$(jq -r '.tags[0]' meta.json)
+          extra_tags=$(jq -r '.tags[1:][]' meta.json)
+          jq -c '{ "$manifest": .labels }' meta.json > annotations.json
+          oras push \
+            --annotation-file annotations.json \
+            $REGISTRY/$IMAGE_BASENAME:$first_tag ./site/
+          for tag in $extra_tags; do
+            oras tag $REGISTRY/$IMAGE_BASENAME:$first_tag $tag
+          done
