@@ -24,7 +24,7 @@ jobs:
           echo ${{ secrets.GITHUB_TOKEN }} | oras login ghcr.io -u ${{ github.actor }} --password-stdin
       - name: Generate Annotations
         id: meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v6
       - name: Push to $REGISTRY
         run: |
           echo '${{ steps.meta.outputs.json }}' > meta.json
