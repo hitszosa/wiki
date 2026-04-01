@@ -16,7 +16,7 @@ jobs:
           name: mkdocs-site
           path: site/
       - name: Install jq
-        uses: dcarbone/install-jq-action@v3.1.1
+        uses: dcarbone/install-jq-action@v3.2.0
       - name: Install ORAS
         uses: oras-project/setup-oras@v1
       - name: Login ORAS
